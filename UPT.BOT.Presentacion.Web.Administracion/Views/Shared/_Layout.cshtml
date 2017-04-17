@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - UPT BOT</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura:300,400,500,600">
+</head>
+
+<body ng-app="uptAdministracion">
+    <div>
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".upt--general-menu">
+                        <i class="fa fa-bars" aria-hidden="true"></i>
+                    </button>
+                    <a class="navbar-brand" href="/">UPT BOT</a>
+                </div>
+                <div class="collapse navbar-collapse upt--general-menu">
+                    <ul class="nav navbar-nav">
+                        <li> <a href="#">Portada</a> </li>
+                        <li> <a href="@Url.Action("Inicio","Gestion")">Gestión de contenido</a></li>
+                        <li> <a href="@Url.Action("Inicio","Buzon")">Buzón de sugerencias</a></li>
+                        <li> <a href="@Url.Action("Inicio","Configuracion")">Configuración</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">WCONDORI <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title upt--general-titulopanel">Información del usuario</h3>
+                        </div>
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+
+                        <li><a href="#">Menu 1</a></li>
+                        <li><a href="#">Menu 2</a></li>
+                        <li><a href="#">Menu 3</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-18 col-sm-18 col-md-18 col-lg-18">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesBootstrap.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesDefiniciones.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Angular/app.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

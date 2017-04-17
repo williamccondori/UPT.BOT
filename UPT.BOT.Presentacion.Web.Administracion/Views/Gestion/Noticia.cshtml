@@ -1,0 +1,127 @@
+﻿@{ ViewBag.Title = "Gestión de contenido"; }
+
+<div ng-controller="NoticiaController" ng-init="Iniciar()">
+
+    <div class="row">
+
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <h4>Gestionar noticias</h4>
+
+            <ol class="breadcrumb">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li class="active">Current</li>
+            </ol>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis nam assumenda deleniti eum facere dicta provident
+                numquam natus accusantium ullam possimus iusto vero, adipisci voluptates ipsum quia molestiae, molestias
+                distinctio!
+            </p>
+            <hr>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Gestionar noticias
+                        <span class="badge" ng-bind="ListaNoticia.length">2</span>
+                    </h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Titulo</th>
+                                <th class="col-xs-4">Fecha</th>
+                                <th class="text-center col-xs-4"><button type="button" class="btn btn-xs btn-success" ng-click="AbrirModalNoticiaAgregar()"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Noticia in ListaNoticia">
+                            <tr>
+                                <td ng-bind="Noticia.DescripcionTitulo"></td>
+                                <td ng-bind="Noticia.FechaRegistro | Fecha | date: 'yyyy-MM-dd HH:mm'"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-xs btn-warning"  ng-click="AbrirModalNoticiaModificar(Noticia)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button type="button" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">¿Cómo funciona?</h3>
+                </div>
+                <div class="panel-body">
+                    Panel content
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalNoticia">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ingrese la información necesaria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Título:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-model="Noticia.DescripcionTitulo">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Resumen:</label>
+                                    <div class="col-xs-20">
+                                        <textarea rows="3" cols="3" class="form-control" ng-model="Noticia.DescripcionResumen"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Imagen:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-model="Noticia.DescripcionImagen">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Url:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-model="Noticia.DescripcionUrl">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success btn-sm" ng-click="GuardarNoticia()">Guardar <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="CerrarModalNoticia()">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Angular/Factories/Gestion/NoticiaFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/NoticiaController.js"></script>
+}
