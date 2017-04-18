@@ -2,9 +2,10 @@
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
-    public class SeguridadController : Controller
+    public class EncuestaController : BaseController
     {
-        public ActionResult Ingresar()
+        // GET: Encuesta
+        public ActionResult Inicio()
         {
             return View();
         }

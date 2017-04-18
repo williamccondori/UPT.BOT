@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace UPT.BOT.Presentacion.Web.Administracion
@@ -16,7 +12,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Inicio", action = "Portada", id = UrlParameter.Optional }
+                defaults: new { controller = "Principal", action = "inicio", id = UrlParameter.Optional }
             );
         }
     }

@@ -2,9 +2,9 @@
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
-    public class ConfiguracionController : BaseController
+    public class BuzonController : BaseController
     {
-        // GET: Configuracion
+        // GET: Buzon
         public ActionResult Inicio()
         {
             return View();

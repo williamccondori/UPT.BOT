@@ -1,0 +1,94 @@
+﻿ @{ ViewBag.Title = "Inicio"; }
+
+<div class="row">
+    <div class="col-xs-24">
+        <h4><b>BUZÓN DE SUGERENCIAS</b></h4>
+        <div class="well">El buzón de sugerencias obtiene los daots ingresados por sus usurios a través del módulo del comentarios del BOT.</div>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-24 col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Tareas de buzón
+                <span class="badge">3</span>
+            </div>      
+            <div class="list-group">
+                <a href="#" class="list-group-item active">Inbox <span class="badge">2</span></a>
+                <a href="#" class="list-group-item">Mensajes guardados</a>
+                <a href="#" class="list-group-item">Historial</a>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-info btn-sm">Ayuda</button>
+            </div>  
+        </div>
+    </div>
+    <div class="col-xs-24 col-sm-16">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Mensajes entrantes
+                <span class="badge">2</span>
+            </div>
+        <table class="table table-condensed table-hover table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Tipo</th>
+                    <th>Usuario</th>
+                    <td>Mensaje</td>
+                    <td>Fecha</td>
+                    <td>Visualizar</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td><button class="btn btn-info btn-xs" data-toggle="modal" href='#modal-mensaje'>Visualizar</button></td>
+                </tr>
+                <tr>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td>Texto</td>
+                    <td><button class="btn btn-info btn-xs" data-toggle="modal" href='#modal-mensaje'>Visualizar</button></td>
+                </tr>
+            </tbody>
+        </table>
+         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-mensaje">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                            Comentario de: {{  }}
+                      </div>
+                      <div class="panel-body">
+                            <div>
+                                <h5><b>TIPO DE MENSAJE: {{ }}</b></h5>
+                                <h4><b>{{ }}}</b></h4>
+                                <small>{{}}</small>
+                                <hr>
+                                <blockquote>
+                                    {{ }}
+                                </blockquote>
+                            </div>
+                      </div>
+                      <div class="panel-footer">
+                            <button class="btn btn-success btn-sm">Guardar</button>
+                            <button class="btn btn-danger btn-sm">Eliminar</button>
+                            <button class="btn btn-warning btn-sm">Enviar a historial</button>
+                            <button class="btn btn-default btn-sm">Cerrar</button>
+                      </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

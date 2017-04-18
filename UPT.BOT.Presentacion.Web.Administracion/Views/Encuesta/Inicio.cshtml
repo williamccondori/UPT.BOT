@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Inicio";
+}
+
+<div class="row">
+    <div class="col-xs-24">
+        <h4><b>ENCUESTAS</b></h4>
+        <div class="well">El módulo de encuestas obtiene las respuestas de las preguntas formuladas a sus usuarios.</div>
+        <hr />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-24 col-sm-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Tareas de encuesta
+                <span class="badge">2</span>
+            </div>
+            <div class="list-group">
+                <a href="#" class="list-group-item active">Encuestas <span class="badge">2</span></a>
+                <a href="#" class="list-group-item">Resultados</a>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-info btn-sm">Ayuda</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-24 col-sm-16">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Lista de encuestas
+                <span class="badge">2</span>
+            </div>
+            <table class="table table-condensed table-hover table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th class="col-lg-12">Nombre</th>
+                        <th class="col-lg-6">Fecha de emisión</th>
+                        <td class="col-lg-6 text-center"><button class="btn btn-success btn-xs" data-toggle="modal" href='#modal-encuesta'>Agregar</button></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Texto</td>
+                        <td>Texto</td>
+                        <td class="text-center"><button class="btn btn-warning btn-xs" data-toggle="modal" href='#modal-encuesta'>Modificar</button>
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" href='#modal-encuesta'>Eliminar</button></td>
+                    </tr>
+                    <tr>
+                        <td>Texto</td>
+                        <td>Texto</td>
+                        <td class="text-center"><button class="btn btn-warning btn-xs" data-toggle="modal" href='#modal-encuesta'>Modificar</button>
+                        <button class="btn btn-danger btn-xs" data-toggle="modal" href='#modal-encuesta'>Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-encuesta">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Datos de la encuesta
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-4 control-label">Nombre:</label>
+                                    <div class="col-lg-20">
+                                        <input type="text" class="form-control" >
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <div class="col-lg-24">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Lista de preguntas <span class="badge">2</span>
+                                        </div>
+                                        <table class="table table-condensed table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-lg-18">Pregunta</th>
+                                                    <th class="col-lg-6 text-center"><button class="btn btn-success btn-xs" data-toggle="modal" href='#modal-pregunta'>Agregar</button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Texto</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-warning btn-xs" data-toggle="modal" href='#modal-pregunta'>Modificar</button>
+                                                        <button class="btn btn-danger btn-xs" data-toggle="modal" href='#modal-pregunta'>Eliminar</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <button class="btn btn-success btn-sm">Guardar</button>
+                        <button class="btn btn-default btn-sm">Cerrar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modal-pregunta">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Datos de las preguntas
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-lg-24">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            Lista de alternativas <span class="badge">2</span>
+                                        </div>
+                                        <table class="table table-condensed table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-lg-18">Pregunta</th>
+                                                    <th class="col-lg-6 text-center"><button class="btn btn-success btn-xs" data-toggle="modal" href='#modal-pregunta'>Agregar</button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Texto</td>
+                                                    <td class="text-center">
+                                                        <button class="btn btn-warning btn-xs" data-toggle="modal" href='#modal-pregunta'>Modificar</button>
+                                                        <button class="btn btn-danger btn-xs" data-toggle="modal" href='#modal-pregunta'>Eliminar</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
