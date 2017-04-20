@@ -126,10 +126,12 @@
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\PrincipalController.cs" />
+    <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\Sesion.cs" />
     <Compile Include="Utilidades\VariableConfiguracion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +139,7 @@
     <Content Include="Angular\config.js" />
     <Content Include="Angular\Controllers\Gestion\NoticiaController.js" />
     <Content Include="Angular\Controllers\Inicio\InicioController.js" />
-    <Content Include="Angular\Controllers\Seguridad\Usuario.js" />
+    <Content Include="Angular\Controllers\Seguridad\InicioController.js" />
     <Content Include="Angular\Factories\Gestion\NoticiaFactory.js" />
     <Content Include="Angular\Utilidades\UtilidadesBootstrap.js" />
     <Content Include="Angular\Utilidades\UtilidadesDefiniciones.js" />
@@ -186,6 +188,7 @@
     <Content Include="Views\Principal\Inicio.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Seguridad\Inicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

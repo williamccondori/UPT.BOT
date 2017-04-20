@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using UPT.BOT.Aplicacion.DTOs.Shared;
+using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
 using UPT.BOT.Presentacion.Web.Administracion.Utilidades;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
@@ -31,6 +32,24 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             catch (Exception loExepcion)
             {
                 return new RespuestaApi<T>(loExepcion.Message, loExepcion.StackTrace);
+            }
+        }
+
+        protected override void OnActionExecuting(ActionExecutingContext aoContexto)
+        {
+            string lsControlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
+            string lsAccion = aoContexto.ActionDescriptor.ActionName;
+
+            if (!Sesion.Validar())
+            {
+                //MensajeError("DEBE INICIAR SESIÓN");
+                aoContexto.Result = new RedirectResult("~/Seguridad/Inicio");
+                return;
+            }
+
+            if (aoContexto.HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+            {
+
             }
         }
     }

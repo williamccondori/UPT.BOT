@@ -1,0 +1,75 @@
+﻿@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - UPT BOT</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> @Html.ActionLink("UPT BOT", "Inicio", "Principal", new { area = "" }, new { @class
+                = "navbar-brand" })
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
+                    <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Información del usuario
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-5">Usuario:</label>
+                                        <div class="col-xs-19">
+                                            <input type="text" name="Usuario" class="form-control" ng-model="Usuario.DescripcionUsuario">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-5">Contraseña:</label>
+                                        <div class="col-xs-19">
+                                            <input type="password" name="Password" class="form-control" ng-model="Usuario.DescripcionPassword">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer">
+                                <div class="text-right">
+                                    <button type="submit" class="btn btn-primary btn-sm">Iniciar sesión <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                    <button type="reset" class="btn btn-default btn-sm">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/respond.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Angular/app.js"></script>
+    <script src="~/Angular/config.js"></script>
+    <script src="~/Angular/Controllers/Seguridad/InicioController.js"></script>
+</body>
+
+</html>
