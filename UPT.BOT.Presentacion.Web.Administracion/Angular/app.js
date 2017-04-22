@@ -1,4 +1,4 @@
-﻿angular.module('uptAdministracion', ['ngResource']);
+﻿angular.module("uptAdministracion", ["ngResource", "toastr"]);
 
 (function (module) {
 

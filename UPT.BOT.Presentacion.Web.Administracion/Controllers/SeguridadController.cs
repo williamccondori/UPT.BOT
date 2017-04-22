@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
@@ -11,7 +12,22 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         public ActionResult Validar(DtoUsuarioSesion aoDtoUsuarioSesion)
         {
-            return RedirectToAction("Inicio");
+            string lsNombreControlador = "Seguridad";
+
+            bool lbIndicadorPermiso = true;
+
+            if (lbIndicadorPermiso)
+            {
+                Sesion.IniciarSesion(aoDtoUsuarioSesion.Usuario, aoDtoUsuarioSesion.Password);
+
+                lsNombreControlador = "Principal";
+            }
+            else
+            {
+                TempData["MensajeError"] = "Sus credenciales son incorrectas.";
+            }
+
+            return RedirectToAction("Inicio", lsNombreControlador);
         }
     }
 

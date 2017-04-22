@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - UPT BOT</title>
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />    
+    <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
 </head>
-<body>
+<body ng-app="uptAdministracion">
     <div class="navbar navbar-inverse navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -33,33 +34,35 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-24 col-sm-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Información del usuario
-                        </div>
-                        <div class="panel-body">
-                            <div class="text-center">
-                                <img src="#" alt="Perfil" class="img-circle img-thumbnail" width="100" height="100" />
-                                <h4>William Condori Quispe</h4>
-                                <small>Administrador</small>
+                    <div ng-controller="InicioController" ng-init="Iniciar()">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Información del usuario
                             </div>
-                        </div>
-                        <div class="panel-footer">
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <button class="btn btn-success btn-sm btn-block">Mi perfil</button>
-                                </div>
-                                <div class="col-xs-12">
-                                    <button class="btn btn-danger btn-sm btn-block">Configuración</button>
+                            <div class="panel-body">
+                                <div class="text-center">
+                                    <img src="{{ Usuario.DescripcionImagen }}" alt="Perfil" class="img-circle img-thumbnail" width="100" height="100" />
+                                    <h4 ng-bind="Usuario.DescripcionNombre + ' ' +  Usuario.DescripcionApellido"></h4>
+                                    <small ng-bind="Usuario.DescripcionCargo"></small>
                                 </div>
                             </div>
+                            <div class="panel-footer">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-success btn-sm btn-block">Mi perfil</button>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <button class="btn btn-danger btn-sm btn-block">Configuración</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Tareas comunes
-                        </div>
-                        <div class="panel-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Tareas comunes
+                            </div>
+                            <div class="panel-body">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,15 +78,14 @@
     <script src="~/Scripts/respond.min.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
-
-    <script src="~/Angular/app.js"></script>
-    <script src="~/Angular/config.js"></script>
+    <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
     <script src="~/Angular/Utilidades/UtilidadesBootstrap.js"></script>
     <script src="~/Angular/Utilidades/UtilidadesDefiniciones.js"></script>
 
-    <script src="~/Angular/Factories/Gestion/NoticiaFactory.js"></script>
-    <script src="~/Angular/Controllers/Gestion/NoticiaController.js"></script>
+    <script src="~/Angular/app.js"></script>
+    <script src="~/Angular/Controllers/Principal/InicioController.js"></script>
+   
     @RenderSection("scripts", required: false)
 </body>
 </html>

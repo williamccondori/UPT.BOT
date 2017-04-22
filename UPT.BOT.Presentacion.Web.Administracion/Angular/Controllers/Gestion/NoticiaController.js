@@ -1,8 +1,8 @@
 ﻿(function (module) {
 
-    NoticiaController.$inject = ["$scope", "NoticiaFactory"];
+    NoticiaController.$inject = ["$scope", "toastr", "NoticiaFactory"];
 
-    function NoticiaController($scope, NoticiaFactory) {
+    function NoticiaController($scope, toastr, NoticiaFactory) {
 
         $scope.ListaNoticia = [];
 
@@ -42,11 +42,11 @@
             NoticiaFactory.GuardarNoticia($scope.Noticia).$promise.then(function (RespuestaApi) {
                 if (RespuestaApi.Estado) {
                     Bootstrap.CerrarModal(Modal.Noticia);
-                    alert("Correcto!");
+                    toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
                     $scope.ObtenerNoticia();
                 } else {
                     Bootstrap.CerrarModal(Modal.Noticia);
-                    alert(RespuestaApi.Mensaje);
+                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
                 }
             });
         };
@@ -57,7 +57,7 @@
                 {
                     $scope.ListaNoticia = RespuestaApi.Datos;
                 } else {
-                    alert(RespuestaApi.Mensaje);
+                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
                 }
             });
         };
@@ -69,4 +69,15 @@
 
 var Modal = {
     Noticia: "#ModalNoticia"
+}
+
+var Mensaje = {
+    Correcto: {
+        Titulo: "CORRECTO !",
+        Descripcion: "Se han guardado los cambios."
+    },
+    Error: {
+        Titulo: "ERROR !",
+        Descripcion: "Se ha presentado un problema en la aplicación."
+    }
 }

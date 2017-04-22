@@ -40,10 +40,12 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             string lsControlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
             string lsAccion = aoContexto.ActionDescriptor.ActionName;
 
-            if (!Sesion.Validar())
+            if (!Sesion.ValidarSesion())
             {
-                //MensajeError("DEBE INICIAR SESIÓN");
+                TempData["MensajeError"] = "Su sesión ha expirado, por favor, vuelva a validar sus credenciales.";
+
                 aoContexto.Result = new RedirectResult("~/Seguridad/Inicio");
+
                 return;
             }
 

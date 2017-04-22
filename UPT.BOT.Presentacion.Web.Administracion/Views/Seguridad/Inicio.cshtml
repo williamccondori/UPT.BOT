@@ -28,6 +28,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
+                    
+                    @{
+                        string lsMensaje = (string)TempData["MensajeError"];
+
+                        if (!string.IsNullOrEmpty(lsMensaje))
+                        {
+                            <div class="alert alert-danger">
+                                @lsMensaje
+                            </div>
+                        }
+                    }
+
+
                     <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
                         <div class="panel panel-default">
                             <div class="panel-heading">
