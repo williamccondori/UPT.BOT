@@ -52,7 +52,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicacion\ActualidadProxy.cs" />
     <Compile Include="Publicacion\NoticiaProxy.cs" />
-    <Compile Include="Seguridad\ActividadProxy.cs" />
+    <Compile Include="Seguridad\ClienteProxy.cs" />
+    <Compile Include="Seguridad\MensajeProxy.cs" />
     <Compile Include="Utilidades\AgenteApi.cs" />
   </ItemGroup>
   <ItemGroup>

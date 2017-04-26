@@ -12,7 +12,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Principal", action = "inicio", id = UrlParameter.Optional }
+                defaults: new { controller = "Seguridad", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

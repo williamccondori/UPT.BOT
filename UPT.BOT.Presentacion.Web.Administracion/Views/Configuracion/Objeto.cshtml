@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "Objetos";
+}
+
+<div ng-controller="ObjetoController" ng-init="Iniciar()">
+    <div class="row">
+        <div class="col-xs-24">
+            <h4><b>GESTIÓN DE VENTANAS</b></h4>
+            <div class="well">Gestione las ventanas del sistema.</div>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div class="panel panel-default will--panel will--sombra">
+                <div class="panel-heading">
+                    <h3 class="panel-title will--titulo-panel blue-text">
+                        Todos los registros
+                        <span class="badge" ng-bind="ListaObjeto.length"></span>
+                    </h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Titulo</th>
+                                <th class="col-xs-4">Fecha</th>
+                                <th class="text-center col-xs-6"><button type="button" data-toggle="modal" data-target="#ModalObjeto" class="btn will--boton-accion btn-xs btn-success green" ng-click="AbrirModalObjetoAgregar()">Agregar <span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Objeto in ListaObjeto">
+                            <tr>
+                                <td ng-bind="Objeto.DescripcionTitulo"></td>
+                                <td ng-bind="Objeto.FechaRegistro | Fecha | date: 'yyyy-MM-dd HH:mm'"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-warning amber" ng-click="AbrirModalObjetoModificar(Objeto)">Modificar <span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-danger red">Eliminar <span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">¿Cómo funciona?</h3>
+                </div>
+                <div class="panel-body">
+                    Gestione las ventanas del sistema.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalObjeto">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ingrese la información necesaria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Ventana:</label>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" placeholder="Controlador..." ng-model="Objeto.DescripcionControlador">
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" placeholder="Acción..." ng-model="Objeto.DescripcionAccion">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Objeto:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-readonly="true" ng-model="Objeto.DescripcionObjeto" style="text-transform: uppercase;" value="{{ Objeto.DescripcionControlador + 'X' + Objeto.DescripcionAccion }}"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Restringir:</label>
+                                    <div class="col-xs-20">
+                                        <input type="checkbox" ng-model="Objeto.IndicadorGeneral">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Habilitado:</label>
+                                    <div class="col-xs-20">
+                                        <input type="checkbox" ng-model="Objeto.IndicadorHabilitado">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success btn-sm" ng-click="GuardarObjeto()">Guardar <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="CerrarModalObjeto()">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Angular/Factories/Configuracion/ObjetoFactory.js"></script>
+    <script src="~/Angular/Controllers/Configuracion/ObjetoController.js"></script>
+}

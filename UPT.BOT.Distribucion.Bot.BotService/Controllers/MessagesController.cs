@@ -5,9 +5,10 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente;
+using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Distribucion.Bot.Acceso.Seguridad;
+using UPT.BOT.Distribucion.Bot.BotService.Ai.Api;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
@@ -21,48 +22,52 @@ namespace UPT.CMS.Servicios.Bot.Servicio
 
             if (aoActividad.Type == ActivityTypes.Message)
             {
-                //Typing
                 ConnectorClient loConector = new ConnectorClient(new Uri(aoActividad.ServiceUrl));
+
                 Activity loActividadEscribiendo = aoActividad.CreateReply();
                 loActividadEscribiendo.Type = ActivityTypes.Typing;
+
                 await loConector.Conversations.ReplyToActivityAsync(loActividadEscribiendo);
 
-                ActividadDto loAccion = new ActividadDto
+                ClienteDto loClienteDto = new ClienteDto
                 {
-                    EstadoObjeto = EstadoObjeto.Nuevo,
-                    DescripcionAccion = aoActividad.Action,
-                    DescripcionIdCanal = aoActividad.ChannelId,
-                    DescripcionLocalidad = aoActividad.Locale,
-                    DescripcionIdActividadRespuesta = aoActividad.ReplyToId,
-                    DescripcionUrlServicio = aoActividad.ServiceUrl,
-                    DescripcionContenido = aoActividad.Text,
-                    DescripcionTipoContenido = aoActividad.TextFormat,
-                    FechaMensaje = aoActividad.Timestamp,
-                    DescripcionIdActividad = aoActividad.Id,
-                    Emisor = new ActividadCuentaDto
-                    {
-                        CodigoActividadCuenta = 0,
-                        DescripcionId = aoActividad.From.Id,
-                        DescripcionNombre = aoActividad.From.Name,
-                        IndicadorTipo = ActividadCuentaDto.Emisor
-                    },
-                    Receptor = new ActividadCuentaDto
-                    {
-                        CodigoActividadCuenta = 0,
-                        DescripcionId = aoActividad.Recipient.Id,
-                        DescripcionNombre = aoActividad.Recipient.Name,
-                        IndicadorTipo = ActividadCuentaDto.Receptor
-                    }
+                    CodigoCliente = aoActividad.From.Id,
+                    DescripcionNombre = aoActividad.From.Name,
+                    DescripcionConversacion = aoActividad.Conversation.Id,
+                    DescripcionConversacionNombre = aoActividad.Conversation.Name,
+                    DescripcionCanal = aoActividad.ChannelId,
+                    EstadoObjeto = EstadoObjeto.Nuevo
                 };
 
-                ActividadProxy loActividadProxy = new ActividadProxy(
+                ClienteProxy loClienteProxy = new ClienteProxy(
                     VariableConfiguracion.RutaApi(),
                     VariableConfiguracion.VersionApi(),
                     VariableConfiguracion.ServicioApi());
 
-                loActividadProxy.Registrar(loAccion);
+                loClienteProxy.Guardar(loClienteDto);
 
-                await Conversation.SendAsync(aoActividad, () => new LuisDialog());
+                StateClient loStateClient = aoActividad.GetStateClient();
+
+                BotData loUserData = await loStateClient.BotState.GetUserDataAsync(aoActividad.ChannelId, aoActividad.From.Id);
+
+                loUserData.SetProperty("Mensaje", new MensajeDto
+                {
+                    CodigoCliente = aoActividad.From.Id,
+                    DescripcionActividad = aoActividad.Id,
+                    DescripcionCanal = aoActividad.ChannelId,
+                    DescripcionContenido = aoActividad.Text,
+                    DescripcionIntencion = null,
+                    DescripcionLocalidad = aoActividad.Locale,
+                    DescripcionServicio = aoActividad.ServiceUrl,
+                    DescripcionTipoContenido = aoActividad.TextFormat,
+                    EstadoObjeto = EstadoObjeto.Nuevo,
+                    FechaMensaje = aoActividad.Timestamp,
+                    PorcentajeIntencion = 0
+                });
+
+                await loStateClient.BotState.SetUserDataAsync(aoActividad.ChannelId, aoActividad.From.Id, loUserData);
+
+                await Conversation.SendAsync(aoActividad, () => new GestorApiAi());
             }
             else
             {

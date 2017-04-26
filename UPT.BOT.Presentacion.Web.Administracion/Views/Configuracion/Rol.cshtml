@@ -1,0 +1,100 @@
+﻿@{ ViewBag.Title = "Roles"; }
+
+<div ng-controller="RolController" ng-init="Iniciar()">
+    <div class="row">
+        <div class="col-xs-24">
+            <h4><b>GESTIONAR ROLES</b></h4>
+            <div class="well">Gestione los roles de acceso.</div>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div class="panel panel-default will--panel will--sombra">
+                <div class="panel-heading">
+                    <h3 class="panel-title blue-text">
+                        Todos los registros
+                        <span class="badge" ng-bind="ListaRol.length"></span>
+                    </h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Rol</th>
+                                <th class="col-xs-4">Fecha</th>
+                                <th class="text-center col-xs-6"><button type="button" class="btn btn-xs btn-success green" ng-click="AbrirModalRolAgregar()">Agregar <span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Rol in ListaRol">
+                            <tr>
+                                <td ng-bind="Rol.DescripcionRol"></td>
+                                <td ng-bind="Rol.FechaRegistro | Fecha | date: 'yyyy-MM-dd HH:mm'"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-warning amber" ng-click="AbrirModalRolModificar(Rol)">Modificar <span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-danger red">Eliminar <span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">¿Cómo funciona?</h3>
+                </div>
+                <div class="panel-body">
+                    Gestione los roles de acceso.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalRol">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ingrese la información necesaria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-6">Nombre del rol:</label>
+                                    <div class="col-xs-18">
+                                        <input type="text" class="form-control" ng-model="Rol.DescripcionRol">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success btn-sm" ng-click="GuardarRol()">Guardar <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="CerrarModalRol()">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Angular/Factories/Configuracion/RolFactory.js"></script>
+    <script src="~/Angular/Controllers/Configuracion/RolController.js"></script>
+}

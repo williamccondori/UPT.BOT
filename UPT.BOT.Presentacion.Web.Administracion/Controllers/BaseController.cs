@@ -44,7 +44,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             {
                 TempData["MensajeError"] = "Su sesión ha expirado, por favor, vuelva a validar sus credenciales.";
 
-                aoContexto.Result = new RedirectResult("~/Seguridad/Inicio");
+                aoContexto.Result = new RedirectResult("~/Seguridad/Login");
 
                 return;
             }

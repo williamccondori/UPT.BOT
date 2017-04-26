@@ -32,6 +32,17 @@ var MensajeRespuesta = {
     Error: "Se ha generado un error."
 }
 
+var Mensaje = {
+    Correcto: {
+        Titulo: "CORRECTO !",
+        Descripcion: "Se han guardado los cambios."
+    },
+    Error: {
+        Titulo: "ERROR !",
+        Descripcion: "Se ha presentado un problema en la aplicación."
+    }
+}
+
 var EstadoObjeto = {
     SinCambios: 0,
     Nuevo: 1,

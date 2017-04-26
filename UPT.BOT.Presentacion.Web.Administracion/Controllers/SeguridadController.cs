@@ -1,33 +1,52 @@
 ﻿using System.Web.Mvc;
+using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Seguridad;
+using UPT.BOT.Aplicacion.DTOs.Shared;
+using UPT.BOT.Presentacion.Web.Acceso.Seguridad;
 using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
+using UPT.BOT.Presentacion.Web.Administracion.Utilidades;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class SeguridadController : Controller
     {
-        public ActionResult Inicio()
+        SesionProxy goSesionProxy;
+
+        public SeguridadController()
+        {
+            goSesionProxy = new SesionProxy(
+                VariableConfiguracion.RutaApi()
+                , VariableConfiguracion.VersionApi()
+                , VariableConfiguracion.ServicioApi());
+        }
+
+        public ActionResult Login()
         {
             return View();
         }
 
         public ActionResult Validar(DtoUsuarioSesion aoDtoUsuarioSesion)
         {
-            string lsNombreControlador = "Seguridad";
 
-            bool lbIndicadorPermiso = true;
+            RespuestaApi<object> loResultado = goSesionProxy.Verificar(new SesionDto
+            {
+                Usuario = aoDtoUsuarioSesion.Usuario,
+                Password = aoDtoUsuarioSesion.Password
+            });
+
+            bool lbIndicadorPermiso = (bool)loResultado.Datos;
 
             if (lbIndicadorPermiso)
             {
                 Sesion.IniciarSesion(aoDtoUsuarioSesion.Usuario, aoDtoUsuarioSesion.Password);
 
-                lsNombreControlador = "Principal";
+                return RedirectToAction("Inicio", "Principal");
             }
             else
             {
-                TempData["MensajeError"] = "Sus credenciales son incorrectas.";
-            }
+                TempData["MensajeError"] = loResultado.Mensaje;
 
-            return RedirectToAction("Inicio", lsNombreControlador);
+                return RedirectToAction("Login", "Seguridad");
+            }
         }
     }
 

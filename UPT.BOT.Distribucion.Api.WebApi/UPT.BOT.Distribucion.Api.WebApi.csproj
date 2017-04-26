@@ -128,8 +128,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Controllers\Administracion\Analisis\" />
+    <Folder Include="Controllers\Administracion\Buzon\" />
+    <Folder Include="Controllers\Administracion\Encuesta\" />
+    <Folder Include="Controllers\Asistente\Buzon\" />
+    <Folder Include="Controllers\Asistente\Documento\" />
+    <Folder Include="Controllers\Asistente\Encuesta\" />
+    <Folder Include="Controllers\Asistente\Estudio\" />
+    <Folder Include="Controllers\Asistente\Informacion\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Boticia\" />
+    <Folder Include="Views\Sesion\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
@@ -137,10 +146,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administracion\Configuracion\RolController.cs" />
     <Compile Include="Controllers\Administracion\Configuracion\TipoPublicacionController.cs" />
+    <Compile Include="Controllers\Administracion\Configuracion\UsuarioController.cs" />
     <Compile Include="Controllers\Administracion\Gestion\NoticiaController.cs" />
+    <Compile Include="Controllers\Administracion\Seguridad\SesionController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotNoticiaController.cs" />
-    <Compile Include="Controllers\Asistente\Seguridad\BotActividadController.cs" />
+    <Compile Include="Controllers\Asistente\Seguridad\BotClienteController.cs" />
+    <Compile Include="Controllers\Asistente\Seguridad\BotMensajeController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -154,6 +167,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\uptbotwebapi - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

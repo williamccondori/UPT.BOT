@@ -21,5 +21,10 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion
         {
             return goAgente.Ejecutar<object>("Noticia", RestSharp.Method.POST, null, new object[] { aoNoticia });
         }
+
+        public RespuestaApi<object> Eliminar(NoticiaRegistroDto aoNoticia)
+        {
+            return goAgente.Ejecutar<object>("Noticia", RestSharp.Method.DELETE, null, new object[] { aoNoticia });
+        }
     }
 }

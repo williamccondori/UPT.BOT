@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Gestión;
 using UPT.BOT.Presentacion.Web.Acceso.Gestion;
+using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
@@ -52,7 +53,18 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
+                aoNoticia.Usuario = Sesion.Usuario();
                 return goNoticiaProxy.Guardar(aoNoticia);
+            }), JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarNoticia(NoticiaRegistroDto aoNoticia)
+        {
+            return Json(Ejecutar(() =>
+            {
+                aoNoticia.Usuario = Sesion.Usuario();
+                return goNoticiaProxy.Eliminar(aoNoticia);
             }), JsonRequestBehavior.AllowGet);
         }
     }

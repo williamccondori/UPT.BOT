@@ -40,10 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\Administracion\Configuracion\IRolService.cs" />
     <Compile Include="BOT\Administracion\Configuracion\ITipoPublicacionService.cs" />
     <Compile Include="BOT\Administracion\Gestion\INoticiaService.cs" />
+    <Compile Include="BOT\Administracion\Configuracion\IUsuarioService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\INoticiaService.cs" />
-    <Compile Include="BOT\Asistente\Seguridad\IActividadService.cs" />
+    <Compile Include="BOT\Asistente\Seguridad\IClienteService.cs" />
+    <Compile Include="BOT\Asistente\Seguridad\IMensajeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

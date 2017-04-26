@@ -1,20 +1,22 @@
-﻿namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
+﻿using System.Configuration;
+
+namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
 {
     public class VariableConfiguracion
     {
         public static string RutaApi()
         {
-            return "http://localhost:53418/api";
+            return ConfigurationManager.AppSettings["ApiRuta"].ToString();
         }
 
         public static string VersionApi()
         {
-            return "v1";
+            return ConfigurationManager.AppSettings["ApiVersion"].ToString();
         }
 
         public static string ServicioApi()
         {
-            return "administracion";
+            return ConfigurationManager.AppSettings["ApiServicio"].ToString();
         }
     }
 }

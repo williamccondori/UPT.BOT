@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseProxy.cs" />
+    <Compile Include="Configuracion\RolProxy.cs" />
     <Compile Include="Gestion\NoticiaProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Configuracion\UsuarioProxy.cs" />
+    <Compile Include="Seguridad\SesionProxy.cs" />
     <Compile Include="Utilidades\AgenteApi.cs" />
   </ItemGroup>
   <ItemGroup>

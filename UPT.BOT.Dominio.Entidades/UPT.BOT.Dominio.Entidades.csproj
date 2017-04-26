@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\ActividadCuentaEntity.cs" />
-    <Compile Include="BOT\ActividadEntity.cs" />
+    <Compile Include="BOT\ClienteEntity.cs" />
+    <Compile Include="BOT\MensajeEntity.cs" />
+    <Compile Include="BOT\ObjetoEntity.cs" />
+    <Compile Include="BOT\ObjetoXRolEntity.cs" />
     <Compile Include="BOT\PublicacionEntity.cs" />
+    <Compile Include="BOT\RolEntity.cs" />
     <Compile Include="BOT\TipoPublicacionEntity.cs" />
+    <Compile Include="BOT\UsuarioEntity.cs" />
+    <Compile Include="BOT\UsuarioXRolEntity.cs" />
     <Compile Include="IBaseEntity.cs" />
     <Compile Include="IEstadoObjeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

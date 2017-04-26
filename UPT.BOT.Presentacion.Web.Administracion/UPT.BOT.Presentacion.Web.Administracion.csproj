@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AnalisisController.cs" />
     <Compile Include="Controllers\BuzonController.cs" />
     <Compile Include="Controllers\ConfiguracionController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
@@ -137,9 +138,16 @@
   <ItemGroup>
     <Content Include="Angular\app.js" />
     <Content Include="Angular\config.js" />
+    <Content Include="Angular\Controllers\Configuracion\ObjetoController.js" />
+    <Content Include="Angular\Controllers\Configuracion\RolController.js" />
+    <Content Include="Angular\Controllers\Configuracion\UsuarioController.js" />
+    <Content Include="Angular\Controllers\Gestion\ActualidadController.js" />
     <Content Include="Angular\Controllers\Gestion\NoticiaController.js" />
     <Content Include="Angular\Controllers\Principal\InicioController.js" />
+    <Content Include="Angular\Factories\Configuracion\RolFactory.js" />
+    <Content Include="Angular\Factories\Configuracion\UsuarioFactory.js" />
     <Content Include="Angular\Factories\Gestion\NoticiaFactory.js" />
+    <Content Include="Angular\Factories\Configuracion\ObjetoFactory.js" />
     <Content Include="Angular\Utilidades\UtilidadesBootstrap.js" />
     <Content Include="Angular\Utilidades\UtilidadesDefiniciones.js" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -170,7 +178,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -188,7 +198,12 @@
     <Content Include="Views\Principal\Inicio.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Seguridad\Inicio.cshtml" />
+    <Content Include="Views\Seguridad\Login.cshtml" />
+    <Content Include="Views\Configuracion\Acceso.cshtml" />
+    <Content Include="Views\Configuracion\Usuario.cshtml" />
+    <Content Include="Views\Configuracion\Rol.cshtml" />
+    <Content Include="Views\Configuracion\Objeto.cshtml" />
+    <Content Include="Views\Analisis\Inicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

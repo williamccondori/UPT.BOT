@@ -24,7 +24,7 @@ namespace UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Gestión
     public class NoticiaRegistroDto : NoticiaDto
     {
         public DateTime FechaRegistro { get; set; }
-        public string CodigoUsuario { get; set; }
+        public string Usuario { get; set; }
     }
 
     public class NoticiaConsultaBotDto : NoticiaDto

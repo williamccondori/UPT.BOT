@@ -2,7 +2,7 @@
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 
-namespace CMACT.SAD.Infraestructura.Datos.Shared
+namespace UPT.BOT.Infraestructura.Datos.BOT.Shared
 {
     public class BaseRepository
     {

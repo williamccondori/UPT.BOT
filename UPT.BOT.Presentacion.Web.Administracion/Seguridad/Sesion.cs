@@ -1,4 +1,5 @@
-﻿using System.Web;
+﻿using System;
+using System.Web;
 using System.Web.SessionState;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Seguridad
@@ -20,6 +21,22 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Seguridad
 
             loSesion["sUsuario"] = asCodigoUsuario;
             loSesion["sPassword"] = asPassword;
+        }
+
+        public static string Usuario()
+        {
+            HttpSessionState loSesion = HttpContext.Current.Session;
+
+            string lsUsuario = (string)loSesion["sUsuario"];
+
+            if (string.IsNullOrEmpty(lsUsuario))
+            {
+                throw new ApplicationException("La sesión del usuario ha terminado.");
+            }
+            else
+            {
+                return lsUsuario;
+            }
         }
     }
 }

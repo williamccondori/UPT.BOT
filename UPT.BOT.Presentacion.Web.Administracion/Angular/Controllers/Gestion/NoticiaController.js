@@ -51,6 +51,18 @@
             });
         };
 
+
+        $scope.EliminarNoticia = function () {
+            NoticiaFactory.EliminarNoticia($scope.Noticia).$promise.then(function (RespuestaApi) {
+                if (RespuestaApi.Estado) {
+                    toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
+                    $scope.ObtenerNoticia();
+                } else {
+                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
+                }
+            });
+        };
+
         $scope.ObtenerNoticia = function () {
             NoticiaFactory.ObtenerNoticia().$promise.then(function (RespuestaApi) {
                 if (RespuestaApi.Estado)

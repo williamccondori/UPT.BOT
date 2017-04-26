@@ -24,6 +24,15 @@
             }).Post(Noticia);
         };
 
+        GestionController.EliminarNoticia = function (Noticia) {
+            return $resource('/Gestion/EliminarNoticia', {}, {
+                Delete: {
+                    method: 'DELETE',
+                    isArray: false
+                }
+            }).Delete(Noticia);
+        };
+
         return GestionController;
     }
 

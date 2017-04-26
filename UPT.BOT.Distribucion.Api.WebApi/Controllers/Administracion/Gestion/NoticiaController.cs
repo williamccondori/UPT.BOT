@@ -21,7 +21,7 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Administracion.Gestion
         {
             return Ejecutar(() =>
             {
-                return new RespuestaApi<IList<NoticiaConsultaDto>>(goNoticiaService.Consultar());
+                return new RespuestaApi<IList<NoticiaConsultaDto>>(goNoticiaService.Obtener());
             });
         }
 
@@ -31,6 +31,15 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Administracion.Gestion
             return Ejecutar(() =>
             {
                 return new RespuestaApi<bool>(goNoticiaService.Guardar(aoNoticia));
+            });
+        }
+
+        [HttpDelete]
+        public RespuestaApi<bool> Delete([FromBody]NoticiaRegistroDto aoNoticia)
+        {
+            return Ejecutar(() =>
+            {
+                return new RespuestaApi<bool>(goNoticiaService.Eliminar(aoNoticia.CodigoPublicacion));
             });
         }
     }

@@ -20,7 +20,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             goPublicacionRepository = new PublicacionRepository(new BotContext());
         }
 
-        public IList<NoticiaConsultaDto> Consultar()
+        public IList<NoticiaConsultaDto> Obtener()
         {
             List<PublicacionEntity> listaPublicacion = goPublicacionRepository.Consultar()
                 .Where(p => p.CodigoTipoPublicacion == 1)

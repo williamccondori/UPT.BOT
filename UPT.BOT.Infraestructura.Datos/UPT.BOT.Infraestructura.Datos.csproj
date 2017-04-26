@@ -49,14 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\Configuraciones\ActividadConfiguration.cs" />
-    <Compile Include="BOT\Configuraciones\ActividadCuentaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\ClienteConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\MensajeConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\ObjetoConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\ObjetoXRolConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\PublicacionConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\RolConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\TipoPublicacionConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\UsuarioConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\UsuarioXRolConfiguration.cs" />
     <Compile Include="BOT\Contextos\BotContext.cs" />
-    <Compile Include="BOT\Repositorios\ActividadRepository.cs" />
+    <Compile Include="BOT\Repositorios\ClienteRepository.cs" />
+    <Compile Include="BOT\Repositorios\MensajeRepository.cs" />
+    <Compile Include="BOT\Repositorios\ObjetoRepository.cs" />
     <Compile Include="BOT\Repositorios\PublicacionRepository.cs" />
+    <Compile Include="BOT\Repositorios\RolRepository.cs" />
     <Compile Include="BOT\Repositorios\TipoPublicacionRepository.cs" />
+    <Compile Include="BOT\Repositorios\UsuarioRepository.cs" />
+    <Compile Include="BOT\Repositorios\UsuarioXRolRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BaseConfiguration.cs" />
     <Compile Include="Shared\BaseContext.cs" />

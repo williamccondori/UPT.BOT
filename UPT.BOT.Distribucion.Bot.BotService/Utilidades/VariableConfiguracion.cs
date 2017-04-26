@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Utilidades
 {
@@ -7,17 +8,17 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Utilidades
     {
         public static string RutaApi()
         {
-            return "http://localhost:53418/api";
+            return ConfigurationManager.AppSettings["ApiRuta"].ToString();
         }
 
         public static string VersionApi()
         {
-            return "v1";
+            return ConfigurationManager.AppSettings["ApiVersion"].ToString();
         }
 
         public static string ServicioApi()
         {
-            return "asistente";
+            return ConfigurationManager.AppSettings["ApiServicio"].ToString();
         }
     }
 }

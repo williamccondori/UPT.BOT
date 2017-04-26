@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div ng-controller="UsuarioController" ng-init="Iniciar()">
+    <div class="row">
+        <div class="col-xs-24">
+            <h4><b>GESTIÓN DE USUARIOS</b></h4>
+            <div class="well">Gestione los usuarios que tendrán acceso al sistema.</div>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-24 col-sm-18 col-md-18 col-lg-18">
+            <div class="panel panel-default will--panel will--sombra">
+                <div class="panel-heading">
+                    <h3 class="panel-title will--titulo-panel blue-text">
+                        Todos los registros
+                        <span class="badge" ng-bind="ListaUsuario.length"></span>
+                    </h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th class="col-xs-4">Fecha</th>
+                                <th class="text-center col-xs-6"><button type="button" data-toggle="modal" data-target="#ModalUsuario" class="btn will--boton-accion btn-xs btn-success green" ng-click="AbrirModalUsuarioAgregar()">Agregar <span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Usuario in ListaUsuario">
+                            <tr>
+                                <td ng-bind="Usuario.DescripcionNombre"></td>
+                                <td ng-bind="Usuario.DescripcionApellido"></td>
+                                <td ng-bind="Usuario.FechaRegistro | Fecha | date: 'yyyy-MM-dd HH:mm'"></td>
+                                <td class="text-center">
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-warning amber" ng-click="AbrirModalUsuarioModificar(Usuario)">Modificar <span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button type="button" class="btn will--boton-accion btn-xs btn-danger red">Eliminar <span class="glyphicon glyphicon-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-xs-24 col-sm-6 col-md-6 col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">¿Cómo funciona?</h3>
+                </div>
+                <div class="panel-body">
+                    Gestione los usuarios que tendrán acceso al sistema.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="ModalUsuario">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Ingrese la información necesaria</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Nombres y apellidos:</label>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" placeholder="Apellido..." ng-model="Usuario.DescripcionApellido">
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <input type="text" class="form-control" placeholder="Nombre..." ng-model="Usuario.DescripcionNombre">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Correo electrónico:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-model="Usuario.DescripcionEmail">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Nombre de usuario:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control" ng-model="Usuario.DescripcionUsuario">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Contraseña:</label>
+                                    <div class="col-xs-10">
+                                        <input type="password" class="form-control" placeholder="Contraseña..." ng-model="Usuario.DescripcionPassword">
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <input type="password" class="form-control" placeholder="Repita la contraseña..." ng-model="Usuario.DescripcionPasswordAdicional">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Descripción:</label>
+                                    <div class="col-xs-20">
+                                        <textarea rows="3" cols="3" class="form-control" ng-model="Usuario.DescripcionResena"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Imagen:</label>
+                                    <div class="col-xs-20">
+                                        <input type="text" class="form-control input-sm" ng-model="Usuario.DescripcionImagen">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-xs-4">Habilitado:</label>
+                                    <div class="col-xs-20">
+                                        <input type="checkbox" ng-model="Usuario.IndicadorHabilitado">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <div class="text-right">
+                                <button type="button" class="btn btn-success btn-sm" ng-click="GuardarUsuario()">Guardar <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                <button type="button" class="btn btn-default btn-sm" ng-click="CerrarModalUsuario()">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts{
+    <script src="~/Angular/Factories/Configuracion/UsuarioFactory.js"></script>
+    <script src="~/Angular/Controllers/Configuracion/UsuarioController.js"></script>
+}

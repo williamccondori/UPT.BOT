@@ -5,7 +5,7 @@ namespace UPT.BOT.Aplicacion.Servicios.BOT.Administracion.Gestion
 {
     public interface INoticiaService
     {
-        IList<NoticiaConsultaDto> Consultar();
+        IList<NoticiaConsultaDto> Obtener();
         bool Guardar(NoticiaRegistroDto Noticia);
         bool Eliminar(long Id);
     }

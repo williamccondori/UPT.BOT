@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\IActividadRepository.cs" />
+    <Compile Include="BOT\IClienteRepository.cs" />
+    <Compile Include="BOT\IMensajeRepository.cs" />
+    <Compile Include="BOT\IObjetoRepository.cs" />
     <Compile Include="BOT\IPublicacionRepository.cs" />
+    <Compile Include="BOT\IRolRepository.cs" />
     <Compile Include="BOT\ITipoPublicacionRepository.cs" />
+    <Compile Include="BOT\IUsuarioRepository.cs" />
+    <Compile Include="BOT\IUsuarioXRolRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -40,12 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\Administracion\Configuracion\RolDto.cs" />
     <Compile Include="BOT\Administracion\Configuracion\TipoPublicacionDto.cs" />
+    <Compile Include="BOT\Administracion\Configuracion\UsuarioDto.cs" />
     <Compile Include="BOT\Administracion\Gestión\ActualidadDto.cs" />
     <Compile Include="BOT\Administracion\Gestión\NoticiaDto.cs" />
-    <Compile Include="BOT\Asistente\ActividadDto.cs" />
+    <Compile Include="BOT\Administracion\Seguridad\SesionDto.cs" />
     <Compile Include="BOT\Asistente\AdjuntoDto.cs" />
-    <Compile Include="BOT\Asistente\ActividadCuentaDto.cs" />
+    <Compile Include="BOT\Asistente\Seguridad\ClienteDto.cs" />
+    <Compile Include="BOT\Asistente\Seguridad\MensajeDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BaseDto.cs" />
     <Compile Include="Shared\EstadoObjeto.cs" />
