@@ -120,26 +120,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiSdk\ApiApiModel.cs" />
-    <Compile Include="Ai\Api\BaseApiAi.cs" />
-    <Compile Include="Ai\Api\GestorApiAi.cs" />
-    <Compile Include="ApiSdk\ApiAiDialog.cs" />
-    <Compile Include="ApiSdk\ApiAiIntent.cs" />
-    <Compile Include="ApiSdk\ApiAiResult.cs" />
+    <Compile Include="ApiAiSdk\Ai\AiModel.cs" />
+    <Compile Include="ApiAiSdk\Ai\AiService.cs" />
+    <Compile Include="ApiAiSdk\Dialogs\AiDialog.cs" />
+    <Compile Include="ApiAiSdk\Scorables\AttributeString.cs" />
+    <Compile Include="Intents\Api\BaseAi.cs" />
+    <Compile Include="Intents\Api\GestorAi.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogos\Adjunto\MallaCurricularDialog.cs" />
     <Compile Include="Dialogos\Adjunto\ReglamentoDialog.cs" />
-    <Compile Include="Ai\Luis\BaseLuis.cs" />
+    <Compile Include="Intents\Luis\BaseLuis.cs" />
     <Compile Include="Dialogos\Publicacion\NoticiaDialog.cs" />
-    <Compile Include="Dialogos\Shared\ApiDialog.cs" />
-    <Compile Include="Ai\Luis\GestorLuis.cs" />
+    <Compile Include="Intents\Luis\GestorLuis.cs" />
     <Compile Include="Dialogos\Shared\EmpezarDialog.cs" />
     <Compile Include="Dialogos\Shared\PredeterminadoDialog.cs" />
     <Compile Include="Dialogos\Shared\SaludarDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Intents\Luis\ResultadoLuis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Intencion.cs" />
     <Compile Include="Utilidades\VariableConfiguracion.cs" />

@@ -14,13 +14,20 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
             IMessageActivity loActividad = aoContexto.MakeMessage();
             loActividad.Recipient = loActividad.From;
             loActividad.Type = ActivityTypes.Message;
-            loActividad.Text = "Estas son algunas cosas que puedo hacer por ti...";
+            loActividad.Text = "Estas son algunas cosas que puedo hacer por ti 😀";
             loActividad.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             loActividad.Attachments = new List<Attachment>();
 
             HeroCard loTarjetaInformacion = new HeroCard()
             {
                 Title = "Nosotros",
+                Images = new List<CardImage>()
+                {
+                    new CardImage
+                    {
+                        Url = "http://w.radiouno.pe/imagenes/noticias/56054.jpg"
+                    }
+                },
                 Buttons = new List<CardAction>()
                 {
                     new CardAction

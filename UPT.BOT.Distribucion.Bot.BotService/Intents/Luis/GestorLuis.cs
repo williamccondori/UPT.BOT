@@ -1,5 +1,4 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Bot.Builder.Luis.Models;
 using System;
 using System.Threading.Tasks;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto;
@@ -7,7 +6,7 @@ using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Bot;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
-namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
+namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Luis
 {
     [Serializable]
     public class GestorLuis : BaseLuis
@@ -18,7 +17,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
         }
 
         [LuisIntent(Intencion.Predeterminado)]
-        public async Task None(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task None(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {
@@ -26,7 +25,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
             });
         }
 
-        public async Task Noticia(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task Noticia(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {
@@ -35,7 +34,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
         }
 
         [LuisIntent("MallaCurricular")]
-        public async Task MallaCurricular(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task MallaCurricular(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {
@@ -44,7 +43,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
         }
 
         [LuisIntent("Reglamento")]
-        public async Task Reglamento(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task Reglamento(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {
@@ -53,7 +52,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
         }
 
         [LuisIntent(Intencion.Agradecer)]
-        public async Task Agradecer(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task Agradecer(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {
@@ -62,7 +61,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos
         }
 
         [LuisIntent(Intencion.Saludar)]
-        public async Task Saludar(IDialogContext aoContexto, LuisResult aoResultado)
+        public async Task Saludar(IDialogContext aoContexto, ResultadoLuis aoResultado)
         {
             await EmpezarDialogo(() =>
             {

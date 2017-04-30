@@ -2,7 +2,7 @@
 
 namespace UPT.BOT.Dominio.Entidades.BOT
 {
-    public class ClienteEntity
+    public class ClienteEntity : IEstadoObjeto
     {
         public string CodigoCliente { get; set; }
         public string DescripcionCanal { get; set; }

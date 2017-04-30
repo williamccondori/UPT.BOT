@@ -18,7 +18,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
 
         }
 
-        public static PublicacionEntity Agregar(
+        public static PublicacionEntity Crear(
             int aiCodigoTipoPublicacion,
             string asDescripcionTitulo,
             string asDescripcionResumen,

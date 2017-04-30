@@ -3,7 +3,7 @@ using UPT.BOT.Dominio.Entidades.Shared;
 
 namespace UPT.BOT.Dominio.Entidades.BOT
 {
-    public class MensajeEntity
+    public class MensajeEntity : IEstadoObjeto
     {
         public long CodigoMensaje { get; set; }
         public string CodigoCliente { get; set; }

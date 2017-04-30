@@ -28,50 +28,57 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
-                    
-                    @{
-                        string lsMensaje = (string)TempData["MensajeError"];
-
-                        if (!string.IsNullOrEmpty(lsMensaje))
-                        {
-                            <div class="alert alert-danger">
-                                @lsMensaje
-                            </div>
-                        }
-                    }
-
-
-                    <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Información del usuario
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-horizontal">
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-5">Usuario:</label>
-                                        <div class="col-xs-19">
-                                            <input type="text" name="Usuario" class="form-control" ng-model="Usuario.DescripcionUsuario">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-xs-5">Contraseña:</label>
-                                        <div class="col-xs-19">
-                                            <input type="password" name="Password" class="form-control" ng-model="Usuario.DescripcionPassword">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="text-right">
-                                    <button type="submit" class="btn btn-primary btn-sm">Iniciar sesión <span class="glyphicon glyphicon-ok-sign"></span></button>
-                                    <button type="reset" class="btn btn-default btn-sm">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <br /> 
+                    <div class="text-center">
+                        <img src="http://www.upt.edu.pe/contents/espg/web/public/images/logo_upt.png" width="120" alt="logo" />
+                    </div>
+                    <br />
                 </div>
-            </div>
+                    <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
+
+                        @{
+                            string lsMensaje = (string)TempData["MensajeError"];
+
+                            if (!string.IsNullOrEmpty(lsMensaje))
+                            {
+                                <div class="alert alert-danger">
+                                    @lsMensaje
+                                </div>
+                            }
+                        }
+
+
+                        <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Información del usuario
+                                </div>
+                                <div class="panel-body">
+                                    <div class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-5">Usuario:</label>
+                                            <div class="col-xs-19">
+                                                <input type="text" name="Usuario" class="form-control" ng-model="Usuario.DescripcionUsuario">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-xs-5">Contraseña:</label>
+                                            <div class="col-xs-19">
+                                                <input type="password" name="Password" class="form-control" ng-model="Usuario.DescripcionPassword">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary btn-sm">Iniciar sesión <span class="glyphicon glyphicon-ok-sign"></span></button>
+                                        <button type="reset" class="btn btn-default btn-sm">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
         </div>
     </div>
 

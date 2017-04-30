@@ -7,9 +7,21 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
     [Serializable]
     public class SaludarDialog : IDialog<object>
     {
+        public string Mensaje { get; set; }
+
+        public SaludarDialog(string asMensaje = "")
+        {
+            Mensaje = asMensaje;
+        }
+
         public async Task StartAsync(IDialogContext aoContexto)
         {
-            await aoContexto.PostAsync("Hola! ");
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                Mensaje = "Hola!";
+            }
+
+            await aoContexto.PostAsync(Mensaje);
 
             aoContexto.Done(this);
         }

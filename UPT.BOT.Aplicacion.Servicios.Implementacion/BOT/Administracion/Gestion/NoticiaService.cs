@@ -47,7 +47,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
         {
             if (aoNoticia.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                PublicacionEntity loPublicacion = PublicacionEntity.Agregar(
+                PublicacionEntity loPublicacion = PublicacionEntity.Crear(
                     1,
                     aoNoticia.DescripcionTitulo,
                     aoNoticia.DescripcionResumen,
