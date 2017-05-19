@@ -1,56 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
-using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Shared;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
     public class UsuarioRepository : BaseRepository, IUsuarioRepository
     {
-        private readonly BotContext goBotContext;
+        private readonly BotContext contextoBot;
 
-        public UsuarioRepository(BotContext aoBotContext)
+        public UsuarioRepository(BotContext contextoBot)
         {
-            goBotContext = aoBotContext;
+            this.contextoBot = contextoBot;
         }
 
-        public UsuarioEntity Buscar(string asUsuario)
+        public UsuarioEntity Buscar(object id)
         {
-            UsuarioEntity loUsuario = goBotContext.Usuario
-                .FirstOrDefault(p => p.DescripcionUsuario == asUsuario);
-
-            return loUsuario;
-        }
-
-        public UsuarioEntity Buscar(long algId)
-        {
-            UsuarioEntity loUsuario = goBotContext.Usuario.Find(algId);
-
-            return loUsuario;
-        }
-
-        public void Crear(UsuarioEntity aoUsuario)
-        {
-            Ejecutar(() =>
+            return Ejecutar(() =>
             {
-                goBotContext.Usuario.Add(aoUsuario);
-
-                goBotContext.GuardarCambios();
+                return contextoBot.Usuario.Find(id);
             });
         }
 
-        public void Eliminar(long algId)
+        public void Crear(UsuarioEntity entidad)
         {
             Ejecutar(() =>
             {
-                UsuarioEntity loUsuario = goBotContext.Usuario.Find(algId);
+                contextoBot.Usuario.Add(entidad);
+                contextoBot.GuardarCambios();
+            });
+        }
 
-                goBotContext.Usuario.Remove(loUsuario);
-
-                goBotContext.GuardarCambios();
+        public void Eliminar(object id)
+        {
+            Ejecutar(() =>
+            {
+                UsuarioEntity entidad = contextoBot.Usuario.Find(id);
+                contextoBot.Usuario.Remove(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
@@ -58,20 +48,21 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
         {
             return Ejecutar(() =>
             {
-                List<UsuarioEntity> listaUsuario = goBotContext.Usuario
-                    .Where(p => p.IndicadorEstado == EstadoEntidad.Activo)
-                    .ToList();
-
-                return listaUsuario;
+                return contextoBot.Usuario.Where(p => p.IndicadorEstado == EstadoEntidad.Activo).OrderByDescending(p => p.FechaRegistro).ToList();
             });
         }
 
-        public void Modificar(UsuarioEntity Usuario)
+        public void Modificar()
         {
             Ejecutar(() =>
             {
-                goBotContext.GuardarCambios();
+                contextoBot.GuardarCambios();
             });
+        }
+
+        public bool Verificar(string usuario, string password)
+        {
+            return contextoBot.Usuario.Any(p => p.IndicadorEstado == EstadoEntidad.Activo && p.DescripcionUsuario == usuario && p.DescripcionPassword == password);
         }
     }
 }

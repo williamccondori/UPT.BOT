@@ -40,16 +40,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\Administracion\Configuracion\IRolService.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\ITipoPublicacionService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\INoticiaService.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\IUsuarioService.cs" />
+    <Compile Include="BOT\Administracion\Buzon\IBuzonService.cs" />
+    <Compile Include="BOT\Asistente\Buzon\IBuzonService.cs" />
+    <Compile Include="BOT\Asistente\Documento\IBoletinService.cs" />
+    <Compile Include="BOT\Asistente\Documento\IFormatoService.cs" />
+    <Compile Include="BOT\Asistente\Documento\IReglamentoService.cs" />
+    <Compile Include="BOT\Asistente\Encuesta\IEncuestaService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\IActualidadService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\IEventoService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\IGaleriaService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\INoticiaService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\IClienteService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\IMensajeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BOT\Administracion\Analisis\" />
+    <Folder Include="BOT\Administracion\Configuracion\" />
+    <Folder Include="BOT\Administracion\Gestion\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>

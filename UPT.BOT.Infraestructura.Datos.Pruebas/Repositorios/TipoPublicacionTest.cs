@@ -7,6 +7,7 @@ using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
 {
@@ -25,7 +26,7 @@ namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
         {
             TipoPublicacionEntity loPublicacion = new TipoPublicacionEntity
             {
-                CodigoTipoPublicacion = 1,
+                CodigoTipoPublicacion = "N",
                 DescripcionTipoPublicacion = "NOTICIA",
                 EstadoObjeto = EstadoObjeto.Nuevo,
                 FechaRegistro = DateTime.Now,
@@ -33,7 +34,7 @@ namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
                 UsuarioRegistro = "WCONDORI"
             };
 
-            goTipoPublicacionRepository.Agregar(loPublicacion);
+            goTipoPublicacionRepository.Crear(loPublicacion);
 
             Assert.IsNotNull(loPublicacion);
         }
@@ -41,7 +42,7 @@ namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
         [TestMethod]
         public void ConsultarTipoPublicacion()
         {
-            List<TipoPublicacionEntity> listaTipoPublicacion = goTipoPublicacionRepository.Consultar().ToList();
+            List<TipoPublicacionEntity> listaTipoPublicacion = goTipoPublicacionRepository.Leer().ToList();
 
             Assert.IsNotNull(listaTipoPublicacion);
         }

@@ -14,21 +14,22 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
             IMessageActivity loActividad = aoContexto.MakeMessage();
             loActividad.Recipient = loActividad.From;
             loActividad.Type = ActivityTypes.Message;
-            loActividad.Text = "Estas son algunas cosas que puedo hacer por ti 😀";
+            loActividad.Text = "Estas son algunas de las opciones que tengo para ti 😀";
             loActividad.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             loActividad.Attachments = new List<Attachment>();
 
             HeroCard loTarjetaInformacion = new HeroCard()
             {
-                Title = "Nosotros",
-                Images = new List<CardImage>()
+                Title = "Información",
+                Text = "Información a cerca de la universidad o de la escuela profesional.",
+                Images = new List<CardImage>
                 {
                     new CardImage
                     {
-                        Url = "http://w.radiouno.pe/imagenes/noticias/56054.jpg"
+                        Url = "http://uptbotadministracion.azurewebsites.net/images/01.png"
                     }
                 },
-                Buttons = new List<CardAction>()
+                Buttons = new List<CardAction>
                 {
                     new CardAction
                     {
@@ -48,6 +49,14 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
             HeroCard loTarjetaPublicacion = new HeroCard()
             {
                 Title = "Publicaciones",
+                Text = "Mantente al día con las principales noticias y actualidades.",
+                Images = new List<CardImage>
+                {
+                    new CardImage
+                    {
+                        Url = "http://uptbotadministracion.azurewebsites.net/images/02.png"
+                    }
+                },
                 Buttons = new List<CardAction>()
                 {
                     new CardAction
@@ -61,6 +70,18 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
                         Title = "Actualidades",
                         Value = "Actualidades",
                         Type = ActionTypes.ImBack
+                    },
+                    new CardAction
+                    {
+                        Title = "Eventos",
+                        Value = "Eventos",
+                        Type = ActionTypes.ImBack
+                    },
+                    new CardAction
+                    {
+                        Title = "Galería de fotos",
+                        Value = "Galería",
+                        Type = ActionTypes.ImBack
                     }
                 }
             };
@@ -68,6 +89,14 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
             HeroCard loTarjetaPlanEstudio = new HeroCard()
             {
                 Title = "Plan de estudios",
+                Text = "Información a cerca del plan de estudio actual.",
+                Images = new List<CardImage>
+                {
+                    new CardImage
+                    {
+                        Url = "http://uptbotadministracion.azurewebsites.net/images/03.png"
+                    }
+                },
                 Buttons = new List<CardAction>()
                 {
                     new CardAction
@@ -87,8 +116,16 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
 
             HeroCard loTarjetaDocumento = new HeroCard()
             {
-                Title = "Documentos importantes",
-                Buttons = new List<CardAction>()
+                Title = "Documentos",
+                Text = "Documentos importantes para estudiantes y docentes.",
+                Images = new List<CardImage>
+                {
+                    new CardImage
+                    {
+                        Url = "http://uptbotadministracion.azurewebsites.net/images/04.png"
+                    }
+                },
+                Buttons = new List<CardAction>
                 {
                     new CardAction
                     {
@@ -107,7 +144,15 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
 
             HeroCard loTarjetaOpinion = new HeroCard()
             {
-                Title = "Tu opinión nos importa",
+                Title = "Contáctenos",
+                Text = "Tu opinión nos importa, no perdamos contacto.",
+                Images = new List<CardImage>
+                {
+                    new CardImage
+                    {
+                        Url = "http://uptbotadministracion.azurewebsites.net/images/05.png"
+                    }
+                },
                 Buttons = new List<CardAction>()
                 {
                     new CardAction

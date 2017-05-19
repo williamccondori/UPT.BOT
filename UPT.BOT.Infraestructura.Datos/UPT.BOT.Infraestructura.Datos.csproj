@@ -49,21 +49,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\Configuraciones\AdmisionConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\AlertaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\AlternativaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\BuzonConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\ClienteConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\DetalleGaleriaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\DetallePlanEstudioConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\DireccionConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\DocumentoConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\EncuestaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\EnlaceConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\EventoConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\GaleriaConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\InformacionConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\MensajeConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\ObjetoConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\ObjetoXRolConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\PlanEstudioConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\PreguntaConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\PublicacionConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\RedSocialConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\RespuestaConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\RolConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\TelefonoConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\TipoAdjuntoConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\TipoBuzonConfiguration.cs" />
+    <Compile Include="BOT\Configuraciones\TipoDocumentoConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\TipoPublicacionConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\UsuarioConfiguration.cs" />
     <Compile Include="BOT\Configuraciones\UsuarioXRolConfiguration.cs" />
     <Compile Include="BOT\Contextos\BotContext.cs" />
+    <Compile Include="BOT\Configuraciones\AdjuntoConfiguration.cs" />
+    <Compile Include="BOT\Repositorios\BuzonRepository.cs" />
     <Compile Include="BOT\Repositorios\ClienteRepository.cs" />
+    <Compile Include="BOT\Repositorios\DetalleGaleriaRepository.cs" />
+    <Compile Include="BOT\Repositorios\DocumentoRepository.cs" />
+    <Compile Include="BOT\Repositorios\EncuestaRepository.cs" />
+    <Compile Include="BOT\Repositorios\EventoRepository.cs" />
+    <Compile Include="BOT\Repositorios\GaleriaRepository.cs" />
     <Compile Include="BOT\Repositorios\MensajeRepository.cs" />
     <Compile Include="BOT\Repositorios\ObjetoRepository.cs" />
     <Compile Include="BOT\Repositorios\PublicacionRepository.cs" />
     <Compile Include="BOT\Repositorios\RolRepository.cs" />
+    <Compile Include="BOT\Repositorios\TipoBuzonRepository.cs" />
     <Compile Include="BOT\Repositorios\TipoPublicacionRepository.cs" />
     <Compile Include="BOT\Repositorios\UsuarioRepository.cs" />
     <Compile Include="BOT\Repositorios\UsuarioXRolRepository.cs" />
@@ -91,6 +120,10 @@
     <ProjectReference Include="..\UPT.BOT.Dominio.Repositorios\UPT.BOT.Dominio.Repositorios.csproj">
       <Project>{ba848719-305e-440d-83c8-bc81c002aa2b}</Project>
       <Name>UPT.BOT.Dominio.Repositorios</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPT.BOT.Utilidades.Utilidades\UPT.BOT.Utilidades.Utilidades.csproj">
+      <Project>{FCF535B6-81B0-4398-9E01-EFFE2653A82C}</Project>
+      <Name>UPT.BOT.Utilidades.Utilidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,6 @@
 ﻿using System;
-using UPT.BOT.Dominio.Entidades.Shared;
 
-namespace UPT.BOT.Dominio.Entidades
+namespace UPT.BOT.Dominio.Entidades.Shared
 {
     public class BaseEntity : IBaseEntity
     {

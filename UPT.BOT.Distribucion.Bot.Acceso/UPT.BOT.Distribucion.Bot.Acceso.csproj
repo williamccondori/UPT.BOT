@@ -30,12 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,17 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adjunto\BoletinProxy.cs" />
+    <Compile Include="Adjunto\FormatoProxy.cs" />
     <Compile Include="Adjunto\MallaCurricularProxy.cs" />
+    <Compile Include="Adjunto\ReglamentoProxy.cs" />
     <Compile Include="BaseProxy.cs" />
+    <Compile Include="Encuesta\EncuestaProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicacion\ActualidadProxy.cs" />
+    <Compile Include="Publicacion\EventoProxy.cs" />
+    <Compile Include="Publicacion\GaleriaProxy.cs" />
     <Compile Include="Publicacion\NoticiaProxy.cs" />
     <Compile Include="Seguridad\ClienteProxy.cs" />
     <Compile Include="Seguridad\MensajeProxy.cs" />
-    <Compile Include="Utilidades\AgenteApi.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
@@ -65,7 +63,12 @@
       <Name>UPT.BOT.Aplicacion.DTOs</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utilidades\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

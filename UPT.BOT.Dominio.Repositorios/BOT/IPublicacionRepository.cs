@@ -3,16 +3,8 @@ using UPT.BOT.Dominio.Entidades.BOT;
 
 namespace UPT.BOT.Dominio.Repositorios.BOT
 {
-    public interface IPublicacionRepository
+    public interface IPublicacionRepository : IBaseRepository<PublicacionEntity>
     {
-        IList<PublicacionEntity> Consultar();
-
-        PublicacionEntity Buscar(long Id);
-
-        void Crear(PublicacionEntity Publicacion);
-
-        void Modificar(PublicacionEntity Publicacion);
-
-        void Eliminar(long Id);
+        IList<PublicacionEntity> LeerXTipo(string tipoPublicacion);
     }
 }

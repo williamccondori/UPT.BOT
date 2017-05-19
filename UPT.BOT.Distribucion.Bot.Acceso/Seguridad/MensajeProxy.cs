@@ -1,23 +1,17 @@
-﻿using System;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
-using UPT.BOT.Aplicacion.DTOs.Shared;
+﻿using UPT.BOT.Aplicacion.DTOs.BOT;
 
 namespace UPT.BOT.Distribucion.Bot.Acceso.Seguridad
 {
-    [Serializable]
     public class MensajeProxy : BaseProxy
     {
-        public MensajeProxy(string asRuta, string asVersion, string asServicio)
-            : base(asRuta, asVersion, asServicio)
+        public MensajeProxy(string rutaApi) : base(rutaApi)
         {
 
         }
 
-        public bool Registrar(MensajeDto aoMensajeDto)
+        public bool Guardar(MensajeDto mensaje)
         {
-            RespuestaApi<object> loResultado = goAgente.Ejecutar<object>("Mensaje", RestSharp.Method.POST, null, new object[] { aoMensajeDto });
-
-            return loResultado.Estado ? true : false;
+            return Ejecutar<bool>("mensaje", Metodo.Post, mensaje);
         }
     }
 }

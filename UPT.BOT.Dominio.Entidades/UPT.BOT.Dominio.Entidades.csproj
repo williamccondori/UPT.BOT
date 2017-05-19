@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +41,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\AdjuntoEntity.cs" />
+    <Compile Include="BOT\AdmisionEntity.cs" />
+    <Compile Include="BOT\AlertaEntity.cs" />
+    <Compile Include="BOT\AlternativaEntity.cs" />
+    <Compile Include="BOT\BuzonEntity.cs" />
     <Compile Include="BOT\ClienteEntity.cs" />
+    <Compile Include="BOT\DetalleGaleriaEntity.cs" />
+    <Compile Include="BOT\DetallePlanEstudioEntity.cs" />
+    <Compile Include="BOT\DireccionEntity.cs" />
+    <Compile Include="BOT\DocumentoEntity.cs" />
+    <Compile Include="BOT\EncuestaEntity.cs" />
+    <Compile Include="BOT\EnlaceEntity.cs" />
+    <Compile Include="BOT\EventoEntity.cs" />
+    <Compile Include="BOT\GaleriaEntity.cs" />
+    <Compile Include="BOT\InformacionEntity.cs" />
     <Compile Include="BOT\MensajeEntity.cs" />
     <Compile Include="BOT\ObjetoEntity.cs" />
     <Compile Include="BOT\ObjetoXRolEntity.cs" />
+    <Compile Include="BOT\PlanEstudioEntity.cs" />
+    <Compile Include="BOT\PreguntaEntity.cs" />
     <Compile Include="BOT\PublicacionEntity.cs" />
+    <Compile Include="BOT\RedSocialEntity.cs" />
+    <Compile Include="BOT\RespuestaEntity.cs" />
     <Compile Include="BOT\RolEntity.cs" />
+    <Compile Include="BOT\TelefonoEntity.cs" />
+    <Compile Include="BOT\TipoAdjuntoEntity.cs" />
+    <Compile Include="BOT\TipoBuzonEntity.cs" />
+    <Compile Include="BOT\TipoDocumentoEntity.cs" />
     <Compile Include="BOT\TipoPublicacionEntity.cs" />
     <Compile Include="BOT\UsuarioEntity.cs" />
     <Compile Include="BOT\UsuarioXRolEntity.cs" />
@@ -53,10 +76,14 @@
     <Compile Include="IEstadoObjeto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BaseEntity.cs" />
-    <Compile Include="Shared\EstadoEntidad.cs" />
     <Compile Include="Shared\EstadoObjeto.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\UPT.BOT.Utilidades.Utilidades\UPT.BOT.Utilidades.Utilidades.csproj">
+      <Project>{FCF535B6-81B0-4398-9E01-EFFE2653A82C}</Project>
+      <Name>UPT.BOT.Utilidades.Utilidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

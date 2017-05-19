@@ -1,71 +1,62 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
-using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Shared;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
     public class TipoPublicacionRepository : BaseRepository, ITipoPublicacionRepository
     {
-        private readonly BotContext goBotContext;
+        private readonly BotContext contextoBot;
 
-        public TipoPublicacionRepository(BotContext aoBotContext)
+        public TipoPublicacionRepository(BotContext contextoBot)
         {
-            goBotContext = aoBotContext;
+            this.contextoBot = contextoBot;
         }
 
-        public IList<TipoPublicacionEntity> Consultar()
+        public TipoPublicacionEntity Buscar(object id)
         {
             return Ejecutar(() =>
             {
-                List<TipoPublicacionEntity> listaTipoPublicacion = goBotContext.TipoPublicacion
-                    .Where(p => p.IndicadorEstado == EstadoEntidad.Activo)
-                    .ToList();
-
-                return listaTipoPublicacion;
+                return contextoBot.TipoPublicacion.Find(id);
             });
         }
 
-        public void Agregar(TipoPublicacionEntity aoTipoPublicacion)
+        public void Crear(TipoPublicacionEntity entidad)
         {
             Ejecutar(() =>
             {
-                goBotContext.TipoPublicacion.Add(aoTipoPublicacion);
-
-                goBotContext.GuardarCambios();
+                contextoBot.TipoPublicacion.Add(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
-        public void Modificar(TipoPublicacionEntity aoTipoPublicacion)
+        public void Eliminar(object id)
         {
             Ejecutar(() =>
             {
-                goBotContext.GuardarCambios();
+                TipoPublicacionEntity entidad = contextoBot.TipoPublicacion.Find(id);
+                contextoBot.TipoPublicacion.Remove(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
-        public void Eliminar(long algId)
-        {
-            Ejecutar(() =>
-            {
-                TipoPublicacionEntity loTipoPublicacion = goBotContext.TipoPublicacion.Find(algId);
-
-                goBotContext.TipoPublicacion.Remove(loTipoPublicacion);
-
-                goBotContext.GuardarCambios();
-            });
-        }
-
-        public TipoPublicacionEntity Buscar(long algId)
+        public IList<TipoPublicacionEntity> Leer()
         {
             return Ejecutar(() =>
             {
-                TipoPublicacionEntity loTipoPublicacion = goBotContext.TipoPublicacion.Find(algId);
+                return contextoBot.TipoPublicacion.Where(p => p.IndicadorEstado == EstadoEntidad.Activo).OrderByDescending(p => p.FechaRegistro).ToList();
+            });
+        }
 
-                return loTipoPublicacion;
+        public void Modificar()
+        {
+            Ejecutar(() =>
+            {
+                contextoBot.GuardarCambios();
             });
         }
     }

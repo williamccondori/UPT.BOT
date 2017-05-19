@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Seguridad;
 using UPT.BOT.Aplicacion.DTOs.Shared;
-using UPT.BOT.Presentacion.Web.Acceso.Seguridad;
+using UPT.BOT.Presentacion.Web.Acceso.Configuracion;
 using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
 using UPT.BOT.Presentacion.Web.Administracion.Utilidades;
 
@@ -9,11 +9,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class SeguridadController : Controller
     {
-        SesionProxy goSesionProxy;
+        UsuarioProxy proxyUsuario;
 
         public SeguridadController()
         {
-            goSesionProxy = new SesionProxy(
+            proxyUsuario = new UsuarioProxy(
                 VariableConfiguracion.RutaApi()
                 , VariableConfiguracion.VersionApi()
                 , VariableConfiguracion.ServicioApi());
@@ -27,7 +27,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         public ActionResult Validar(DtoUsuarioSesion aoDtoUsuarioSesion)
         {
 
-            RespuestaApi<object> loResultado = goSesionProxy.Verificar(new SesionDto
+            RespuestaDto<object> loResultado = proxyUsuario.Verificar(new SesionDto
             {
                 Usuario = aoDtoUsuarioSesion.Usuario,
                 Password = aoDtoUsuarioSesion.Password

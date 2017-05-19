@@ -9,32 +9,35 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
     public class MensajeRepository : BaseRepository, IMensajeRepository
     {
-        private readonly BotContext goBotContext;
+        private readonly BotContext contextoBot;
 
-        public MensajeRepository(BotContext aoBotContext)
+        public MensajeRepository(BotContext contextoBot)
         {
-            goBotContext = aoBotContext;
+            this.contextoBot = contextoBot;
         }
 
-        public void Crear(MensajeEntity aoMensaje)
+        public void Crear(MensajeEntity entidad)
         {
             Ejecutar(() =>
             {
-                goBotContext.Mensaje.Add(aoMensaje);
-
-                goBotContext.GuardarCambios();
+                contextoBot.Mensaje.Add(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
-        public IList<MensajeEntity> Leer(string asCodigoCliente)
+        public IList<MensajeEntity> LeerXCliente(string cliente)
         {
             return Ejecutar(() =>
             {
-                List<MensajeEntity> listaMensaje = goBotContext.Mensaje
-                    .Where(p => p.CodigoCliente == asCodigoCliente)
-                    .ToList();
+                return contextoBot.Mensaje.Where(p => p.CodigoCliente == cliente).OrderByDescending(p => p.FechaMensaje).ToList();
+            });
+        }
 
-                return listaMensaje;
+        public long TotalXCliente(string cliente)
+        {
+            return Ejecutar(() =>
+            {
+                return contextoBot.Mensaje.LongCount(p => p.CodigoCliente == cliente);
             });
         }
     }

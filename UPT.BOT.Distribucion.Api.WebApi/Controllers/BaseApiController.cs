@@ -6,7 +6,10 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers
 {
     public class BaseApiController : ApiController
     {
-        protected RespuestaApi<T> Ejecutar<T>(Func<RespuestaApi<T>> aoAccion)
+
+        public const string Predeterminado = "";
+
+        protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)
         {
             try
             {
@@ -14,11 +17,11 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers
             }
             catch (ApplicationException loExepcion)
             {
-                return new RespuestaApi<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
             }
             catch (Exception loExepcion)
             {
-                return new RespuestaApi<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
             }
         }
     }

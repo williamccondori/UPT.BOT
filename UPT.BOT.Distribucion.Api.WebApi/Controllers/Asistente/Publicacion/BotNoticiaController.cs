@@ -1,27 +1,28 @@
 ﻿using System.Collections.Generic;
-using System.Web.Mvc;
-using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Gestión;
+using System.Web.Http;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Publicacion;
 using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Publicacion
 {
+    [RoutePrefix("api/v1/asistente/noticia")]
     public class BotNoticiaController : BaseApiController
     {
-        private readonly INoticiaService goNoticiaService;
+        private readonly INoticiaService servicioNoticia;
 
         public BotNoticiaController()
         {
-            goNoticiaService = new NoticiaService();
+            servicioNoticia = new NoticiaService();
         }
 
-        [HttpGet]
-        public RespuestaApi<IList<NoticiaConsultaBotDto>> Get()
+        [HttpGet, Route(Predeterminado)]
+        public RespuestaDto<IList<NoticiaDto>> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaApi<IList<NoticiaConsultaBotDto>>(goNoticiaService.Consultar());
+                return new RespuestaDto<IList<NoticiaDto>>(servicioNoticia.Obtener());
             });
         }
     }

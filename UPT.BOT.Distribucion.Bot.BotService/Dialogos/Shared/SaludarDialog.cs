@@ -7,7 +7,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
     [Serializable]
     public class SaludarDialog : IDialog<object>
     {
-        public string Mensaje { get; set; }
+        private string Mensaje { get; set; }
 
         public SaludarDialog(string asMensaje = "")
         {

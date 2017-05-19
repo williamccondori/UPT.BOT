@@ -12,14 +12,14 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Configuracion
 
         }
 
-        public RespuestaApi<List<RolConsultaDto>> Obtener()
+        public RespuestaDto<List<RolConsultaDto>> Obtener()
         {
-            return goAgente.Ejecutar<List<RolConsultaDto>>("Rol");
+            return agenteApi.Ejecutar<List<RolConsultaDto>>("Rol");
         }
 
-        public RespuestaApi<object> Guardar(RolRegistroDto aoRol)
+        public RespuestaDto<object> Guardar(RolRegistroDto aoRol)
         {
-            return goAgente.Ejecutar<object>("Rol", RestSharp.Method.POST, null, new object[] { aoRol });
+            return agenteApi.Ejecutar<object>("Rol", RestSharp.Method.POST, null, new object[] { aoRol });
         }
     }
 }

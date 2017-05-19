@@ -12,19 +12,19 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion
 
         }
 
-        public RespuestaApi<List<NoticiaConsultaDto>> Obtener()
+        public RespuestaDto<List<NoticiaConsultaDto>> Obtener()
         {
-            return goAgente.Ejecutar<List<NoticiaConsultaDto>>("Noticia");
+            return agenteApi.Ejecutar<List<NoticiaConsultaDto>>("Noticia");
         }
 
-        public RespuestaApi<object> Guardar(NoticiaRegistroDto aoNoticia)
+        public RespuestaDto<object> Guardar(NoticiaRegistroDto aoNoticia)
         {
-            return goAgente.Ejecutar<object>("Noticia", RestSharp.Method.POST, null, new object[] { aoNoticia });
+            return agenteApi.Ejecutar<object>("Noticia", RestSharp.Method.POST, null, new object[] { aoNoticia });
         }
 
-        public RespuestaApi<object> Eliminar(NoticiaRegistroDto aoNoticia)
+        public RespuestaDto<object> Eliminar(NoticiaRegistroDto aoNoticia)
         {
-            return goAgente.Ejecutar<object>("Noticia", RestSharp.Method.DELETE, null, new object[] { aoNoticia });
+            return agenteApi.Ejecutar<object>("Noticia", RestSharp.Method.DELETE, null, new object[] { aoNoticia });
         }
     }
 }

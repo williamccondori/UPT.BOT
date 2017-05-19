@@ -40,16 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\Administracion\Configuracion\RolService.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\TipoPublicacionService.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\UsuarioService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\NoticiaService.cs" />
+    <Compile Include="BOT\Administracion\Buzon\BuzonService.cs" />
+    <Compile Include="BOT\Asistente\Buzon\BuzonService.cs" />
+    <Compile Include="BOT\Asistente\Documento\BoletinService.cs" />
+    <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />
+    <Compile Include="BOT\Asistente\Documento\ReglamentoService.cs" />
+    <Compile Include="BOT\Asistente\Encuesta\EncuestaService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\ActualidadService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\EventoService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\GaleriaService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\NoticiaService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\ClienteService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\MensajeService.cs" />
+    <Compile Include="BOT\Shared\BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="BOT\Administracion\Analisis\" />
+    <Folder Include="BOT\Administracion\Configuracion\" />
+    <Folder Include="BOT\Administracion\Gestion\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>
@@ -70,6 +80,10 @@
     <ProjectReference Include="..\UPT.BOT.Infraestructura.Datos\UPT.BOT.Infraestructura.Datos.csproj">
       <Project>{AFE5DC76-9650-4B20-9D09-D0D8B8559536}</Project>
       <Name>UPT.BOT.Infraestructura.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UPT.BOT.Utilidades.Utilidades\UPT.BOT.Utilidades.Utilidades.csproj">
+      <Project>{FCF535B6-81B0-4398-9E01-EFFE2653A82C}</Project>
+      <Name>UPT.BOT.Utilidades.Utilidades</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

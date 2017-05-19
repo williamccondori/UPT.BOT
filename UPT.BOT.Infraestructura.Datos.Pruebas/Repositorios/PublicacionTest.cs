@@ -7,6 +7,7 @@ using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
 {
@@ -25,8 +26,8 @@ namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
         {
             PublicacionEntity loPublicacion = new PublicacionEntity
             {
-                CodigoTipoPublicacion = 1,
-                DescripcionContenido = "Contenido de la noticia",
+                CodigoTipoPublicacion = "N",
+                DescripcionResena = "Contenido de la noticia",
                 DescripcionImagen = "Imagen.jpg",
                 DescripcionResumen = "Resumen",
                 DescripcionTitulo = "Este es el titulo",
@@ -45,7 +46,7 @@ namespace UPT.BOT.Infraestructura.Datos.Pruebas.Repositorios
         [TestMethod]
         public void ConsultarPublicacion()
         {
-            List<PublicacionEntity> listaPublicacion = goPublicacionRepository.Consultar().ToList();
+            List<PublicacionEntity> listaPublicacion = goPublicacionRepository.Leer().ToList();
 
             Assert.IsNotNull(listaPublicacion);
         }

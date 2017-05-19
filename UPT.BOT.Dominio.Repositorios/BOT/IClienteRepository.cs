@@ -3,10 +3,8 @@ using UPT.BOT.Dominio.Entidades.BOT;
 
 namespace UPT.BOT.Dominio.Repositorios.BOT
 {
-    public interface IClienteRepository
+    public interface IClienteRepository : IBaseInsercionRepository<ClienteEntity>, IBaseLecturaRepository<ClienteEntity>
     {
-        void Crear(ClienteEntity Cliente);
-        IList<ClienteEntity> Leer(string Canal);
-        ClienteEntity Buscar(string CodigoCliente);
+        IList<ClienteEntity> LeerXCanal(string canal);
     }
 }

@@ -9,7 +9,6 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
         {
             ToTable("BOT_MENSAJE");
             HasKey(m => new { m.CodigoMensaje });
-
             Property(m => m.CodigoMensaje).HasColumnName("COD_MENSAJE");
             Property(m => m.CodigoCliente).HasColumnName("COD_CLIENTE");
             Property(m => m.DescripcionActividad).HasColumnName("DES_ACTIVIDAD");
@@ -19,9 +18,8 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
             Property(m => m.DescripcionContenido).HasColumnName("DES_CONTENIDO");
             Property(m => m.DescripcionTipoContenido).HasColumnName("DES_TIPO_CONTENIDO");
             Property(m => m.DescripcionIntencion).HasColumnName("DES_INTENCION");
-            Property(m => m.PorcentajeIntencion).HasColumnName("POR_INTENCION");
+            Property(m => m.PorIntencion).HasColumnName("POR_INTENCION");
             Property(m => m.FechaMensaje).HasColumnName("FEC_MENSAJE");
-
             Ignore(g => g.EstadoObjeto);
         }
     }

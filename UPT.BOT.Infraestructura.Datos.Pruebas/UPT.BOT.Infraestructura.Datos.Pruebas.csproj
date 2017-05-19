@@ -76,6 +76,10 @@
       <Project>{AFE5DC76-9650-4B20-9D09-D0D8B8559536}</Project>
       <Name>UPT.BOT.Infraestructura.Datos</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UPT.BOT.Utilidades.Utilidades\UPT.BOT.Utilidades.Utilidades.csproj">
+      <Project>{FCF535B6-81B0-4398-9E01-EFFE2653A82C}</Project>
+      <Name>UPT.BOT.Utilidades.Utilidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

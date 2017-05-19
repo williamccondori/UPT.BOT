@@ -1,47 +1,48 @@
 ﻿using System;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Seguridad;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
+using UPT.BOT.Utilidades.Utilidades.Mensajes;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Seguridad
 {
     public class MensajeService : IMensajeService
     {
-        private readonly IMensajeRepository goMensajeRepository;
+        private readonly IMensajeRepository repositorioMensaje;
 
         public MensajeService()
         {
-            goMensajeRepository = new MensajeRepository(new BotContext());
+            repositorioMensaje = new MensajeRepository(new BotContext());
         }
 
-        public bool Guardar(MensajeDto aoMensajeDto)
+        public bool Guardar(MensajeDto mensaje)
         {
-            if (aoMensajeDto.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (mensaje.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                MensajeEntity loMensaje = MensajeEntity.Crear(
-                    aoMensajeDto.CodigoCliente
-                    , aoMensajeDto.DescripcionActividad
-                    , aoMensajeDto.DescripcionCanal
-                    , aoMensajeDto.DescripcionLocalidad
-                    , aoMensajeDto.DescripcionServicio
-                    , aoMensajeDto.DescripcionContenido
-                    , aoMensajeDto.DescripcionTipoContenido
-                    , aoMensajeDto.DescripcionIntencion
-                    , aoMensajeDto.PorcentajeIntencion
-                    , aoMensajeDto.FechaMensaje ?? DateTime.Now);
+                MensajeEntity nuevoMensaje = MensajeEntity.Crear(
+                    mensaje.CodigoCliente
+                    , mensaje.DescripcionActividad
+                    , mensaje.DescripcionCanal
+                    , mensaje.DescripcionLocalidad
+                    , mensaje.DescripcionServicio
+                    , mensaje.DescripcionContenido
+                    , mensaje.DescripcionTipoContenido
+                    , mensaje.DescripcionIntencion
+                    , mensaje.PorcentajeIntencion
+                    , mensaje.FechaMensaje ?? DateTime.Now);
 
-                goMensajeRepository.Crear(loMensaje);
-
-                return true;
+                repositorioMensaje.Crear(nuevoMensaje);
             }
             else
             {
-                throw new ApplicationException("La opción seleccionada no es válida");
+                throw new ApplicationException(Excepcion.MetodoNoValido);
             }
+
+            return true;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             gsServicio = VariableConfiguracion.ServicioApi();
         }
 
-        protected RespuestaApi<T> Ejecutar<T>(Func<RespuestaApi<T>> aoAccion)
+        protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)
         {
             try
             {
@@ -27,11 +27,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             }
             catch (ApplicationException loExepcion)
             {
-                return new RespuestaApi<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
             }
             catch (Exception loExepcion)
             {
-                return new RespuestaApi<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
             }
         }
 

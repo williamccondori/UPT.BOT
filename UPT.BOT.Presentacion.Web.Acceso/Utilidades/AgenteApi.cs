@@ -22,7 +22,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
             gsServicioApi = asServicioApi;
         }
 
-        public RespuestaApi<T> Ejecutar<T>(
+        public RespuestaDto<T> Ejecutar<T>(
             string asResource
             , Method aoMethod = Method.GET
             , Dictionary<string, string> aoHeader = null
@@ -30,7 +30,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
             , Dictionary<string, string> aoQuery = null)
             where T : class, new()
         {
-            RespuestaApi<T> loResultado;
+            RespuestaDto<T> loResultado;
 
             try
             {
@@ -76,7 +76,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
                 {
                     string lsRespuesta = loSolicitud.Content;
 
-                    var loRespuesta = JsonConvert.DeserializeObject<RespuestaApi<T>>(lsRespuesta);
+                    var loRespuesta = JsonConvert.DeserializeObject<RespuestaDto<T>>(lsRespuesta);
 
                     loResultado = loRespuesta;
                 }
@@ -87,7 +87,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
             }
             catch (Exception loExcepcion)
             {
-                loResultado = new RespuestaApi<T>(loExcepcion.Message, loExcepcion.StackTrace);
+                loResultado = new RespuestaDto<T>(loExcepcion.Message, loExcepcion.StackTrace);
             }
 
             return loResultado;

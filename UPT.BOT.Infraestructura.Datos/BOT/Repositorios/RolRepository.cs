@@ -1,41 +1,46 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
-using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Shared;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
     public class RolRepository : BaseRepository, IRolRepository
     {
-        private readonly BotContext goBotContext;
+        private readonly BotContext contextoBot;
 
-        public RolRepository(BotContext aoBotContext)
+        public RolRepository(BotContext contextoBot)
         {
-            goBotContext = aoBotContext;
+            this.contextoBot = contextoBot;
         }
 
-        public void Crear(RolEntity aoRol)
+        public RolEntity Buscar(object id)
         {
-            Ejecutar(() =>
+            return Ejecutar(() =>
             {
-                goBotContext.Rol.Add(aoRol);
-
-                goBotContext.GuardarCambios();
+                return contextoBot.Rol.Find(id);
             });
         }
 
-        public void Eliminar(long algId)
+        public void Crear(RolEntity entidad)
         {
             Ejecutar(() =>
             {
-                RolEntity loRol = goBotContext.Rol.Find(algId);
+                contextoBot.Rol.Add(entidad);
+                contextoBot.GuardarCambios();
+            });
+        }
 
-                goBotContext.Rol.Remove(loRol);
-
-                goBotContext.GuardarCambios();
+        public void Eliminar(object id)
+        {
+            Ejecutar(() =>
+            {
+                RolEntity entidad = contextoBot.Rol.Find(id);
+                contextoBot.Rol.Remove(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
@@ -43,29 +48,15 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
         {
             return Ejecutar(() =>
             {
-                List<RolEntity> listaRol = goBotContext.Rol
-                    .Where(p => p.IndicadorEstado == EstadoEntidad.Activo)
-                    .ToList();
-
-                return listaRol;
+                return contextoBot.Rol.Where(p => p.IndicadorEstado == EstadoEntidad.Activo).OrderByDescending(p => p.FechaRegistro).ToList();
             });
         }
 
-        public void Modificar(RolEntity Rol)
+        public void Modificar()
         {
             Ejecutar(() =>
             {
-                goBotContext.GuardarCambios();
-            });
-        }
-
-        public RolEntity Buscar(long algId)
-        {
-            return Ejecutar(() =>
-            {
-                RolEntity loRol = goBotContext.Rol.Find(algId);
-
-                return loRol;
+                contextoBot.GuardarCambios();
             });
         }
     }

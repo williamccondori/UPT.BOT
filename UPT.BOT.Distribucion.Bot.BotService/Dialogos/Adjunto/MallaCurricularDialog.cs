@@ -3,7 +3,7 @@ using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Adjunto;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
@@ -12,33 +12,35 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto
     [Serializable]
     public class MallaCurricularDialog : IDialog<object>
     {
-        public async Task StartAsync(IDialogContext aoContexto)
+        private string Mensaje { get; set; }
+
+        public MallaCurricularDialog(string mensaje)
         {
-            var loMallaCurricularProxy = new MallaCurricularProxy(
-                 VariableConfiguracion.RutaApi()
-                 , VariableConfiguracion.VersionApi()
-                 , VariableConfiguracion.ServicioApi());
+            Mensaje = mensaje;
+        }
 
-            AdjuntoDto loMallaCurricular = loMallaCurricularProxy.Obtener();
+        public async Task StartAsync(IDialogContext context)
+        {
+            List<Attachment> adjuntos = new List<Attachment>();
 
-            IMessageActivity loActividad = aoContexto.MakeMessage();
-            loActividad.Recipient = loActividad.From;
-            loActividad.Type = ActivityTypes.Message;
-            loActividad.Attachments = new List<Attachment>();
-            loActividad.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            loActividad.Text = "Esta es la malla curricular que tenemos actualmente!";
+            MallaCurricularDto mallaCurricular = new MallaCurricularProxy(VariableConfiguracion.RutaApi()).Obtener();
 
-            loActividad.Attachments.Add(new Attachment()
-            {
-                ContentUrl = loMallaCurricular.UrlAdjunto,
-                ContentType = "image/png",
-                Name = loMallaCurricular.DescripcionTitulo
-            });
+            Attachment imagen = new Attachment(mallaCurricular.TipoAdjunto);
 
+            imagen.ContentUrl = mallaCurricular.DescripcionUrl;
 
-            await aoContexto.PostAsync(loActividad);
+            adjuntos.Add(imagen);
 
-            aoContexto.Done(this);
+            IMessageActivity actividad = context.MakeMessage();
+            actividad.Recipient = actividad.From;
+            actividad.Type = ActivityTypes.Message;
+            actividad.Attachments = adjuntos;
+            actividad.AttachmentLayout = AttachmentLayoutTypes.List;
+            actividad.Text = Mensaje;
+
+            await context.PostAsync(actividad);
+
+            context.Done(this);
         }
     }
 }

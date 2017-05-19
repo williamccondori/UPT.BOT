@@ -1,47 +1,48 @@
 ﻿using System;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Seguridad;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
+using UPT.BOT.Utilidades.Utilidades.Mensajes;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Seguridad
 {
     public class ClienteService : IClienteService
     {
-        private readonly IClienteRepository goClienteRepository;
+        private readonly IClienteRepository repositorioCliente;
 
         public ClienteService()
         {
-            goClienteRepository = new ClienteRepository(new BotContext());
+            repositorioCliente = new ClienteRepository(new BotContext());
         }
 
-        public bool Guardar(ClienteDto aoClienteDto)
+        public bool Guardar(ClienteDto cliente)
         {
-            if (aoClienteDto.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (cliente.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                ClienteEntity loClienteAgregado = goClienteRepository.Buscar(aoClienteDto.CodigoCliente);
+                ClienteEntity clienteExistente = repositorioCliente.Buscar(cliente.CodigoCliente);
 
-                if (loClienteAgregado == null)
+                if (clienteExistente == null)
                 {
-                    ClienteEntity loCliente = ClienteEntity.Crear(
-                                       aoClienteDto.CodigoCliente
-                                       , aoClienteDto.DescripcionCanal
-                                       , aoClienteDto.DescripcionNombre
-                                       , aoClienteDto.DescripcionConversacion
-                                       , aoClienteDto.DescripcionConversacionNombre);
+                    ClienteEntity nuevoCliente = ClienteEntity.Crear(
+                        cliente.CodigoCliente
+                        , cliente.DescripcionCanal
+                        , cliente.DescripcionNombre
+                        , cliente.DescripcionConversacion
+                        , cliente.DescripcionConversacionNombre);
 
-                    goClienteRepository.Crear(loCliente);
+                    repositorioCliente.Crear(nuevoCliente);
                 }
-
-                return true;
             }
             else
             {
-                throw new ApplicationException("La opción seleccionada no es válida");
+                throw new ApplicationException(Excepcion.MetodoNoValido);
             }
+
+            return true;
         }
     }
 }

@@ -3,9 +3,9 @@ using UPT.BOT.Dominio.Entidades.BOT;
 
 namespace UPT.BOT.Dominio.Repositorios.BOT
 {
-    public interface IMensajeRepository
+    public interface IMensajeRepository : IBaseInsercionRepository<MensajeEntity>
     {
-        void Crear(MensajeEntity Mensaje);
-        IList<MensajeEntity> Leer(string CodigoCliente);
+        IList<MensajeEntity> LeerXCliente(string cliente);
+        long TotalXCliente(string cliente);
     }
 }

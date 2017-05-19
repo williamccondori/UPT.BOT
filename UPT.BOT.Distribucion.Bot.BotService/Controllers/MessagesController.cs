@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Distribucion.Bot.Acceso.Seguridad;
 using UPT.BOT.Distribucion.Bot.BotService.Intents.Api;
@@ -16,74 +16,74 @@ namespace UPT.CMS.Servicios.Bot.Servicio
     [BotAuthentication]
     public class MessagesController : ApiController
     {
-        public async Task<HttpResponseMessage> Post([FromBody]Activity aoActividad)
+        public async Task<HttpResponseMessage> Post([FromBody]Activity actividad)
         {
-
             try
             {
-                if (aoActividad.Type == ActivityTypes.Message)
+                if (actividad.Type == ActivityTypes.Message)
                 {
-                    ConnectorClient loConector = new ConnectorClient(new Uri(aoActividad.ServiceUrl));
+                    ConnectorClient conector = new ConnectorClient(new Uri(actividad.ServiceUrl));
 
-                    Activity loActividadEscribiendo = aoActividad.CreateReply();
-                    loActividadEscribiendo.Type = ActivityTypes.Typing;
+                    Activity actividadTyping = actividad.CreateReply();
+                    actividadTyping.Type = ActivityTypes.Typing;
+                    await conector.Conversations.ReplyToActivityAsync(actividadTyping);
 
-                    await loConector.Conversations.ReplyToActivityAsync(loActividadEscribiendo);
 
-                    aoActividad.Text = string.IsNullOrEmpty(aoActividad.Text) ? "0" : aoActividad.Text;
+                    actividad.Text = string.IsNullOrEmpty(actividad.Text) ? "0" : actividad.Text;
 
-                    ClienteDto loClienteDto = new ClienteDto
+                    ClienteDto cliente = new ClienteDto
                     {
-                        CodigoCliente = aoActividad.From.Id,
-                        DescripcionNombre = aoActividad.From.Name,
-                        DescripcionConversacion = aoActividad.Conversation.Id,
-                        DescripcionConversacionNombre = aoActividad.Conversation.Name,
-                        DescripcionCanal = aoActividad.ChannelId,
+                        CodigoCliente = actividad.From.Id,
+                        DescripcionNombre = actividad.From.Name,
+                        DescripcionConversacion = actividad.Conversation.Id,
+                        DescripcionConversacionNombre = actividad.Conversation.Name,
+                        DescripcionCanal = actividad.ChannelId,
                         EstadoObjeto = EstadoObjeto.Nuevo
                     };
 
-                    ClienteProxy loClienteProxy = new ClienteProxy(
-                        VariableConfiguracion.RutaApi(),
-                        VariableConfiguracion.VersionApi(),
-                        VariableConfiguracion.ServicioApi());
+                    ClienteProxy proxyCliente = new ClienteProxy(VariableConfiguracion.RutaApi());
 
-                    loClienteProxy.Guardar(loClienteDto);
+                    proxyCliente.Guardar(cliente);
 
-                    StateClient loStateClient = aoActividad.GetStateClient();
 
-                    BotData loUserData = await loStateClient.BotState.GetUserDataAsync(aoActividad.ChannelId, aoActividad.From.Id);
+                    StateClient estadoCliente = actividad.GetStateClient();
+
+                    BotData loUserData = await estadoCliente.BotState.GetUserDataAsync(actividad.ChannelId, actividad.From.Id);
 
                     loUserData.SetProperty("Mensaje", new MensajeDto
                     {
-                        CodigoCliente = aoActividad.From.Id,
-                        DescripcionActividad = aoActividad.Id,
-                        DescripcionCanal = aoActividad.ChannelId,
-                        DescripcionContenido = aoActividad.Text,
+                        CodigoCliente = actividad.From.Id,
+                        DescripcionActividad = actividad.Id,
+                        DescripcionCanal = actividad.ChannelId,
+                        DescripcionContenido = actividad.Text,
                         DescripcionIntencion = null,
-                        DescripcionLocalidad = aoActividad.Locale,
-                        DescripcionServicio = aoActividad.ServiceUrl,
-                        DescripcionTipoContenido = aoActividad.TextFormat,
+                        DescripcionLocalidad = actividad.Locale,
+                        DescripcionServicio = actividad.ServiceUrl,
+                        DescripcionTipoContenido = actividad.TextFormat,
                         EstadoObjeto = EstadoObjeto.Nuevo,
-                        FechaMensaje = aoActividad.Timestamp,
+                        FechaMensaje = actividad.Timestamp,
                         PorcentajeIntencion = 0
                     });
 
-                    await loStateClient.BotState.SetUserDataAsync(aoActividad.ChannelId, aoActividad.From.Id, loUserData);
+                    await estadoCliente.BotState.SetUserDataAsync(actividad.ChannelId, actividad.From.Id, loUserData);
 
-                    await Conversation.SendAsync(aoActividad, () => new GestorAi());
+                    await Conversation.SendAsync(actividad, () => new GestorAi());
                 }
                 else
                 {
-                    HandleSystemMessage(aoActividad);
+                    HandleSystemMessage(actividad);
                 }
 
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
             catch (Exception aoExecpcion)
             {
-                ConnectorClient loConector = new ConnectorClient(new Uri(aoActividad.ServiceUrl));
+                ConnectorClient loConector = new ConnectorClient(new Uri(actividad.ServiceUrl));
 
-                Activity loActividadEscribiendo = aoActividad.CreateReply(aoExecpcion.Message + " EN: " + aoExecpcion.StackTrace);
+                //Activity loActividadEscribiendo = actividad.CreateReply(aoExecpcion.Message + " EN: " + aoExecpcion.StackTrace);
+
+                Activity loActividadEscribiendo = actividad.CreateReply(aoExecpcion.Message);
+
                 loActividadEscribiendo.Type = ActivityTypes.Message;
 
                 await loConector.Conversations.ReplyToActivityAsync(loActividadEscribiendo);

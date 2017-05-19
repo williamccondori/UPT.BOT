@@ -14,34 +14,39 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public string DescripcionContenido { get; set; }
         public string DescripcionTipoContenido { get; set; }
         public string DescripcionIntencion { get; set; }
-        public decimal PorcentajeIntencion { get; set; }
+        public decimal PorIntencion { get; set; }
         public DateTime? FechaMensaje { get; set; }
         public EstadoObjeto EstadoObjeto { get; set; }
 
+        public MensajeEntity()
+        {
+
+        }
+
         public static MensajeEntity Crear(
-            string asCodigoCliente,
-            string asDescripcionActividad,
-            string asDescripcionCanal,
-            string asDescripcionLocalidad,
-            string asDescripcionServicio,
-            string asDescripcionContenido,
-            string asDescripcionTipoContenido,
-            string asDescripcionIntencion,
-            decimal adcPorcentajeIntencion,
-            DateTime? adtFechaMensaje)
+            string codigoCliente
+            , string descripcionActividad
+            , string descripcionCanal
+            , string descripcionLocalidad
+            , string descripcionServicio
+            , string descripcionContenido
+            , string descripcionTipoContenido
+            , string descripcionIntencion
+            , decimal porcentajeIntencion
+            , DateTime fechaMensaje)
         {
             return new MensajeEntity
             {
-                CodigoCliente = asCodigoCliente,
-                DescripcionActividad = asDescripcionActividad,
-                DescripcionCanal = asDescripcionCanal,
-                DescripcionLocalidad = asDescripcionLocalidad,
-                DescripcionServicio = asDescripcionServicio,
-                DescripcionContenido = asDescripcionContenido,
-                DescripcionTipoContenido = asDescripcionTipoContenido,
-                DescripcionIntencion = asDescripcionIntencion,
-                PorcentajeIntencion = adcPorcentajeIntencion,
-                FechaMensaje = adtFechaMensaje,
+                CodigoCliente = codigoCliente,
+                DescripcionActividad = descripcionActividad,
+                DescripcionCanal = descripcionCanal,
+                DescripcionLocalidad = descripcionLocalidad,
+                DescripcionServicio = descripcionServicio,
+                DescripcionContenido = descripcionContenido,
+                DescripcionTipoContenido = descripcionTipoContenido,
+                DescripcionIntencion = descripcionIntencion,
+                PorIntencion = porcentajeIntencion,
+                FechaMensaje = fechaMensaje,
                 EstadoObjeto = EstadoObjeto.Nuevo
             };
         }

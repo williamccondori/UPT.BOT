@@ -9,7 +9,6 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
         {
             ToTable("BOT_TIPO_PUBLICACION");
             HasKey(m => new { m.CodigoTipoPublicacion });
-
             Property(m => m.CodigoTipoPublicacion).HasColumnName("COD_TIPO_PUBLICACION");
             Property(m => m.DescripcionTipoPublicacion).HasColumnName("DES_TIPO_PUBLICACION");
         }

@@ -9,17 +9,8 @@ namespace UPT.BOT.Distribucion.Api.WebApi
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "Administracion",
-                routeTemplate: "api/v1/administracion/{controller}/{id}",
-                defaults: new
-                {
-                    id = RouteParameter.Optional
-                }
-            );
-
-            config.Routes.MapHttpRoute(
-                name: "Asistente",
-                routeTemplate: "api/v1/asistente/{controller}/{id}",
+                name: "DefaultApi",
+                routeTemplate: "api/{controller}/{id}",
                 defaults: new
                 {
                     id = RouteParameter.Optional

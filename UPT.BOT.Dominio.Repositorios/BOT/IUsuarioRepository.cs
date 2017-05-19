@@ -1,20 +1,9 @@
-﻿using System.Collections.Generic;
-using UPT.BOT.Dominio.Entidades.BOT;
+﻿using UPT.BOT.Dominio.Entidades.BOT;
 
 namespace UPT.BOT.Dominio.Repositorios.BOT
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IBaseRepository<UsuarioEntity>
     {
-        void Crear(UsuarioEntity Usuario);
-
-        void Modificar(UsuarioEntity Usuario);
-
-        void Eliminar(long Id);
-
-        UsuarioEntity Buscar(string Usuario);
-
-        UsuarioEntity Buscar(long Id);
-
-        IList<UsuarioEntity> Leer();
+        bool Verificar(string usuario, string password);
     }
 }

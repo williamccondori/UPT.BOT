@@ -2,46 +2,52 @@
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using UPT.BOT.Aplicacion.DTOs.BOT;
+using UPT.BOT.Distribucion.Bot.Acceso.Adjunto;
+using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto
 {
     [Serializable]
     public class ReglamentoDialog : IDialog<object>
     {
-        public async Task StartAsync(IDialogContext aoContexto)
+        private string Mensaje { get; set; }
+
+        public ReglamentoDialog(string mensaje)
         {
-            IMessageActivity loActividad = aoContexto.MakeMessage();
-            loActividad.Recipient = loActividad.From;
-            loActividad.Type = ActivityTypes.Message;
-            loActividad.Attachments = new List<Attachment>();
+            Mensaje = mensaje;
+        }
 
-            List<CardAction> listaBotones = new List<CardAction>();
+        public async Task StartAsync(IDialogContext context)
+        {
+            List<Attachment> adjuntos = new List<Attachment>();
 
-            listaBotones.Add(new CardAction()
+            HeroCard tarjeta = new HeroCard("Formatos", Mensaje);
+
+            List<ReglamentoDto> listaReglamentos = new ReglamentoProxy(VariableConfiguracion.RutaApi()).Obtener();
+
+            List<CardAction> botones = listaReglamentos.Select(p => new CardAction
             {
-                Title = "📜 Reglamento de grados y titulos",
-                Value = "http://epis.upt.edu.pe/acreditacion/docs/docentes/Reglamento_de_grados_y_titulos.pdf",
+                Title = p.DescripcionTitulo,
+                Value = p.DescripcionUrl,
                 Type = ActionTypes.DownloadFile
-            });
+            }).ToList();
 
-            listaBotones.Add(new CardAction()
-            {
-                Title = "📜 Reglamento de Prácticas",
-                Value = "http://epis.upt.edu.pe/acreditacion/docs/docentes/Reglamento_de_grados_y_titulos.pdf",
-                Type = ActionTypes.DownloadFile
-            });
+            tarjeta.Buttons = botones;
 
-            HeroCard loTarjeta = new HeroCard();
-            loTarjeta.Text = "¿Cuál de estos reglamentos deseas ver?";
-            loTarjeta.Buttons = listaBotones;
+            adjuntos.Add(tarjeta.ToAttachment());
 
+            IMessageActivity actividad = context.MakeMessage();
+            actividad.Recipient = actividad.From;
+            actividad.Type = ActivityTypes.Message;
+            actividad.Attachments = adjuntos;
+            actividad.AttachmentLayout = AttachmentLayoutTypes.List;
 
-            loActividad.Attachments.Add(loTarjeta.ToAttachment());
+            await context.PostAsync(actividad);
 
-            await aoContexto.PostAsync(loActividad);
-
-            aoContexto.Done(this);
+            context.Done(this);
         }
     }
 }

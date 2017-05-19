@@ -9,42 +9,43 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
     public class ClienteRepository : BaseRepository, IClienteRepository
     {
-        private readonly BotContext goBotContext;
+        private readonly BotContext contextoBot;
 
-        public ClienteRepository(BotContext aoBotContext)
+        public ClienteRepository(BotContext contextoBot)
         {
-            goBotContext = aoBotContext;
+            this.contextoBot = contextoBot;
         }
 
-        public ClienteEntity Buscar(string CodigoCliente)
+        public ClienteEntity Buscar(object id)
         {
             return Ejecutar(() =>
             {
-                ClienteEntity loCliente = goBotContext.Cliente.Find(CodigoCliente);
-
-                return loCliente;
+                return contextoBot.Cliente.Find(id);
             });
         }
 
-        public void Crear(ClienteEntity aoCliente)
+        public void Crear(ClienteEntity entidad)
         {
             Ejecutar(() =>
             {
-                goBotContext.Cliente.Add(aoCliente);
-
-                goBotContext.GuardarCambios();
+                contextoBot.Cliente.Add(entidad);
+                contextoBot.GuardarCambios();
             });
         }
 
-        public IList<ClienteEntity> Leer(string asCanal)
+        public IList<ClienteEntity> Leer()
         {
             return Ejecutar(() =>
             {
-                List<ClienteEntity> listaCliente = goBotContext.Cliente
-                    .Where(p => p.DescripcionCanal == asCanal)
-                    .ToList();
+                return contextoBot.Cliente.OrderByDescending(p => p.FechaRegistro).ToList();
+            });
+        }
 
-                return listaCliente;
+        public IList<ClienteEntity> LeerXCanal(string canal)
+        {
+            return Ejecutar(() =>
+            {
+                return contextoBot.Cliente.Where(p => p.DescripcionCanal == canal).OrderByDescending(p => p.FechaRegistro).ToList();
             });
         }
     }

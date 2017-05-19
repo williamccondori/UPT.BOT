@@ -4,7 +4,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
 {
     public class BaseProxy
     {
-        protected AgenteApi goAgente;
+        protected AgenteApi agenteApi;
 
         private readonly string Ruta;
         private readonly string Version;
@@ -16,7 +16,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
             this.Version = asVersion;
             this.Servicio = asServicio;
 
-            goAgente = new AgenteApi(asRuta, asVersion, asServicio);
+            agenteApi = new AgenteApi(asRuta, asVersion, asServicio);
         }
     }
 }

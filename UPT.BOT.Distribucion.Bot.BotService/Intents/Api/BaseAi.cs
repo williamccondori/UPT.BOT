@@ -2,7 +2,7 @@
 using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Threading.Tasks;
-using UPT.BOT.Aplicacion.DTOs.BOT.Asistente.Seguridad;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Seguridad;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Ai;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs;
@@ -31,40 +31,40 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
             });
         }
 
-        protected async Task EmpezarDialogo(Action aoFuncion)
+        protected async Task EmpezarDialogo(Action funcion)
         {
-            await Task.Run(aoFuncion);
+            await Task.Run(funcion);
         }
 
         protected void EmpezarConversacion(
             IDialogContext aoContexto
             , AIResponse aoResultado
-            , string asIntencion
             , IDialog<object> aoDialogo
             , ResumeAfter<object> aoContinuacion)
         {
-            GuardarMensaje(aoContexto, aoResultado, asIntencion);
-
+            GuardarMensaje(aoContexto, aoResultado);
             aoContexto.Call(aoDialogo, aoContinuacion);
         }
 
-        private bool GuardarMensaje(IDialogContext aoContexto, AIResponse aoResultado, string asIntencion)
+        private bool GuardarMensaje(IDialogContext contexto, AIResponse resultado)
         {
-            MensajeDto loMensajeDto = aoContexto.UserData.Get<MensajeDto>("Mensaje");
-
-            if (loMensajeDto != null)
+            try
             {
-                loMensajeDto.DescripcionIntencion = aoResultado.Result.Metadata.IntentName;
-                loMensajeDto.PorcentajeIntencion = Convert.ToDecimal(aoResultado.Result.Score);
+                MensajeDto mensaje = contexto.UserData.GetValue<MensajeDto>("Mensaje");
+
+                if (mensaje != null)
+                {
+                    mensaje.DescripcionIntencion = resultado.Result.Metadata.IntentName;
+                    mensaje.PorcentajeIntencion = Convert.ToDecimal(resultado.Result.Score);
+
+                    MensajeProxy proxyMensaje = new MensajeProxy(VariableConfiguracion.RutaApi());
+                    proxyMensaje.Guardar(mensaje);
+                }
             }
-
-            MensajeProxy loMensajeProxy = new MensajeProxy(
-             VariableConfiguracion.RutaApi(),
-             VariableConfiguracion.VersionApi(),
-             VariableConfiguracion.ServicioApi());
-
-            loMensajeProxy.Registrar(loMensajeDto);
-
+            catch (Exception)
+            {
+                contexto.SayAsync("Vas muy rápido 😓");
+            }
             return true;
         }
     }

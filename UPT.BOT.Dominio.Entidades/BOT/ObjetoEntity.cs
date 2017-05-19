@@ -1,4 +1,6 @@
-﻿namespace UPT.BOT.Dominio.Entidades.BOT
+﻿using UPT.BOT.Dominio.Entidades.Shared;
+
+namespace UPT.BOT.Dominio.Entidades.BOT
 {
     public class ObjetoEntity : BaseEntity
     {

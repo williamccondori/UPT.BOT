@@ -13,48 +13,37 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
     public class GestorAi : BaseAi
     {
         [AiIntent("Predeterminado")]
-        public async Task Predeterminado(IDialogContext aoContexto, AIResponse aoResultado)
-        {
-            await EmpezarDialogo(() =>
-            {
-                EmpezarConversacion(aoContexto, aoResultado, "Predeterminado", new PredeterminadoDialog(aoResultado.Result.Fulfillment.Speech), Terminar);
-            });
-        }
+        public async Task Predeterminado(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new PredeterminadoDialog(resultado.Result.Fulfillment.Speech), Terminar));
 
-        [AiIntent("Saludar")]
-        public async Task Saludar(IDialogContext aoContexto, AIResponse aoResultado)
-        {
-            await EmpezarDialogo(() =>
-            {
-                EmpezarConversacion(aoContexto, aoResultado, "Saludar", new SaludarDialog(aoResultado.Result.Fulfillment.Speech), Empezar);
-            });
-        }
 
-        [AiIntent("Noticia")]
-        public async Task Noticia(IDialogContext aoContexto, AIResponse aoResultado)
-        {
-            await EmpezarDialogo(() =>
-            {
-                EmpezarConversacion(aoContexto, aoResultado, "Noticia", new NoticiaDialog(), Empezar);
-            });
-        }
+        [AiIntent("extras.saludo")]
+        public async Task Saludar(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new SaludarDialog(resultado.Result.Fulfillment.Speech), Empezar));
 
-        [AiIntent("MallaCurricular")]
-        public async Task MallaCurricular(IDialogContext aoContexto, AIResponse aoResultado)
-        {
-            await EmpezarDialogo(() =>
-            {
-                EmpezarConversacion(aoContexto, aoResultado, "MallaCurricular", new MallaCurricularDialog(), Empezar);
-            });
-        }
 
-        [AiIntent("Reglamento")]
-        public async Task Reglamento(IDialogContext aoContexto, AIResponse aoResultado)
-        {
-            await EmpezarDialogo(() =>
-            {
-                EmpezarConversacion(aoContexto, aoResultado, "Reglamento", new ReglamentoDialog(), Empezar);
-            });
-        }
+        [AiIntent("publicacion.noticia")]
+        public async Task Noticia(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new NoticiaDialog(resultado.Result.Fulfillment.Speech), Terminar));
+
+        [AiIntent("planestudio.mallacurricular")]
+        public async Task MallaCurricular(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new MallaCurricularDialog(resultado.Result.Fulfillment.Speech), Terminar));
+
+
+        [AiIntent("documento.boletin")]
+        public async Task Boletin(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new BoletinDialog(resultado.Result.Fulfillment.Speech), Terminar));
+
+
+        [AiIntent("documento.formato")]
+        public async Task Formato(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new FormatoDialog(resultado.Result.Fulfillment.Speech), Terminar));
+
+
+        [AiIntent("documento.reglamento")]
+        public async Task Reglamento(IDialogContext contexto, AIResponse resultado)
+            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new ReglamentoDialog(resultado.Result.Fulfillment.Speech), Terminar));
+
     }
 }

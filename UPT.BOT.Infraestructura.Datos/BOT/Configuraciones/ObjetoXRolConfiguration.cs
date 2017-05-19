@@ -9,7 +9,6 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
         {
             ToTable("BOT_OBJETO_X_ROL");
             HasKey(m => new { m.CodigoObjetoXRol });
-
             Property(m => m.CodigoObjetoXRol).HasColumnName("COD_OBJETO_X_ROL");
             Property(m => m.CodigoObjeto).HasColumnName("COD_OBJETO");
             Property(m => m.CodigoRol).HasColumnName("COD_ROL");

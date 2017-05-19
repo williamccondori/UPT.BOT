@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Gestión;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Publicacion;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
@@ -11,26 +11,22 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion
 {
     public class NoticiaService : INoticiaService
     {
-        private readonly IPublicacionRepository goPublicacionRepository;
+        private readonly IPublicacionRepository repositorioPublicacion;
 
         public NoticiaService()
         {
-            goPublicacionRepository = new PublicacionRepository(new BotContext());
+            repositorioPublicacion = new PublicacionRepository(new BotContext());
         }
 
-        public IList<NoticiaConsultaBotDto> Consultar()
+        public IList<NoticiaDto> Obtener()
         {
-            List<PublicacionEntity> listaPublicacion = goPublicacionRepository.Consultar()
-                .Where(p => p.CodigoTipoPublicacion == 1)
-                .OrderByDescending(p => p.FechaRegistro)
-                .Take(5)
-                .ToList();
+            IEnumerable<PublicacionEntity> listaPublicacion = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Noticia).Take(5);
 
-            return listaPublicacion.Select(p => new NoticiaConsultaBotDto
+            return listaPublicacion.Select(p => new NoticiaDto
             {
                 CodigoPublicacion = p.CodigoPublicacion,
                 CodigoTipoPublicacion = p.CodigoTipoPublicacion,
-                DescripcionContenido = p.DescripcionContenido,
+                DescripcionResena = p.DescripcionResena,
                 DescripcionImagen = p.DescripcionImagen,
                 DescripcionResumen = p.DescripcionResumen,
                 DescripcionTitulo = p.DescripcionTitulo,
