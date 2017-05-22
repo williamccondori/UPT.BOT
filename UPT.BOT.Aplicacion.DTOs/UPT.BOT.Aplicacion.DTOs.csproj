@@ -42,13 +42,6 @@
   <ItemGroup>
     <Compile Include="BOT\ActualidadDto.cs" />
     <Compile Include="BOT\AdjuntoDto.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\RolDto.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\TipoPublicacionDto.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\UsuarioDto.cs" />
-    <Compile Include="BOT\Administracion\Gestión\ActualidadDto.cs" />
-    <Compile Include="BOT\Administracion\Gestión\NoticiaDto.cs" />
-    <Compile Include="BOT\Administracion\MensajeDto.cs" />
-    <Compile Include="BOT\Administracion\Seguridad\SesionDto.cs" />
     <Compile Include="BOT\BoletinDto.cs" />
     <Compile Include="BOT\BuzonDto.cs" />
     <Compile Include="BOT\ClienteDto.cs" />
@@ -64,6 +57,7 @@
     <Compile Include="BOT\PublicacionDto.cs" />
     <Compile Include="BOT\ReglamentoDto.cs" />
     <Compile Include="BOT\TipoBuzonDto.cs" />
+    <Compile Include="BOT\UsuarioDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BaseDto.cs" />
     <Compile Include="Shared\EstadoObjeto.cs" />

@@ -6,17 +6,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Utilidades
     {
         public static string RutaApi()
         {
-            return ConfigurationManager.AppSettings["ApiRuta"].ToString();
-        }
+            string ruta = ConfigurationManager.AppSettings["ApiRuta"].ToString();
+            string version = ConfigurationManager.AppSettings["ApiVersion"].ToString();
+            string servicio = ConfigurationManager.AppSettings["ApiServicio"].ToString();
 
-        public static string VersionApi()
-        {
-            return ConfigurationManager.AppSettings["ApiVersion"].ToString();
-        }
-
-        public static string ServicioApi()
-        {
-            return ConfigurationManager.AppSettings["ApiServicio"].ToString();
+            return string.Format("{0}/api/{1}/{2}/", ruta, version, servicio);
         }
     }
 }

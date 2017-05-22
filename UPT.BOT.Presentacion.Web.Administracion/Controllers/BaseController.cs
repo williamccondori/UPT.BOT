@@ -8,15 +8,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class BaseController : Controller
     {
-        protected readonly string gsRuta;
-        protected readonly string gsVersion;
-        protected readonly string gsServicio;
+        protected readonly string rutaApi;
 
         public BaseController()
         {
-            gsRuta = VariableConfiguracion.RutaApi();
-            gsVersion = VariableConfiguracion.VersionApi();
-            gsServicio = VariableConfiguracion.ServicioApi();
+            rutaApi = VariableConfiguracion.RutaApi();
         }
 
         protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)
@@ -37,8 +33,8 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         protected override void OnActionExecuting(ActionExecutingContext aoContexto)
         {
-            string lsControlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
-            string lsAccion = aoContexto.ActionDescriptor.ActionName;
+            string controlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
+            string accion = aoContexto.ActionDescriptor.ActionName;
 
             if (!Sesion.ValidarSesion())
             {

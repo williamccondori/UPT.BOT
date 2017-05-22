@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
@@ -62,7 +63,18 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 
         public bool Verificar(string usuario, string password)
         {
-            return contextoBot.Usuario.Any(p => p.IndicadorEstado == EstadoEntidad.Activo && p.DescripcionUsuario == usuario && p.DescripcionPassword == password);
+            UsuarioEntity usuarioEncontrado = contextoBot.Usuario.FirstOrDefault(p => p.DescripcionUsuario == usuario && p.DescripcionPassword == password);
+
+            if (usuarioEncontrado == null)
+                return false;
+
+            if (usuarioEncontrado.IndicadorEstado == EstadoEntidad.Inactivo)
+                throw new ApplicationException("El usuario se encuentra incactivo");
+
+            if (usuarioEncontrado.IndicadorHabilitado == "N")
+                throw new ApplicationException("El usuario se encuentra desabilitado");
+
+            return true;
         }
     }
 }

@@ -1,5 +1,6 @@
-﻿using System.Web.Mvc;
-using UPT.BOT.Aplicacion.DTOs.BOT.Administracion.Seguridad;
+﻿using System;
+using System.Web.Mvc;
+using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Presentacion.Web.Acceso.Configuracion;
 using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
@@ -13,46 +14,41 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         public SeguridadController()
         {
-            proxyUsuario = new UsuarioProxy(
-                VariableConfiguracion.RutaApi()
-                , VariableConfiguracion.VersionApi()
-                , VariableConfiguracion.ServicioApi());
+            proxyUsuario = new UsuarioProxy(VariableConfiguracion.RutaApi());
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
+        public ActionResult Login() => View();
 
-        public ActionResult Validar(DtoUsuarioSesion aoDtoUsuarioSesion)
+        public ActionResult Validar(UsuarioDto usuario)
         {
 
-            RespuestaDto<object> loResultado = proxyUsuario.Verificar(new SesionDto
+            try
             {
-                Usuario = aoDtoUsuarioSesion.Usuario,
-                Password = aoDtoUsuarioSesion.Password
-            });
+                RespuestaDto<bool> resultado = proxyUsuario.Validar(usuario);
 
-            bool lbIndicadorPermiso = (bool)loResultado.Datos;
+                bool permiso = resultado.Datos;
 
-            if (lbIndicadorPermiso)
-            {
-                Sesion.IniciarSesion(aoDtoUsuarioSesion.Usuario, aoDtoUsuarioSesion.Password);
+                if (permiso)
+                {
+                    Sesion.IniciarSesion(usuario.DescripcionUsuario, usuario.DescripcionPassword);
 
-                return RedirectToAction("Inicio", "Principal");
+                    return RedirectToAction("Inicio", "Principal");
+                }
+                else
+                {
+                    MensajeError(resultado.Mensaje);
+
+                    return RedirectToAction("Login", "Seguridad");
+                }
             }
-            else
+            catch (Exception excepcion)
             {
-                TempData["MensajeError"] = loResultado.Mensaje;
+                MensajeError(excepcion.Message);
 
                 return RedirectToAction("Login", "Seguridad");
             }
         }
-    }
 
-    public class DtoUsuarioSesion
-    {
-        public string Usuario { get; set; }
-        public string Password { get; set; }
+        private void MensajeError(string mensaje) => TempData["MensajeError"] = mensaje;
     }
 }

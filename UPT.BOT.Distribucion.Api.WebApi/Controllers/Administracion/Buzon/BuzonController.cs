@@ -7,7 +7,7 @@ using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Buzon;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Administracion.Buzon
 {
-    [RoutePrefix("api/v1/administrador/buzon")]
+    [RoutePrefix("api/v1/administracion/buzon")]
     public class BuzonController : BaseApiController
     {
         private readonly IBuzonService servicioBuzon;
@@ -17,13 +17,8 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Administracion.Buzon
             servicioBuzon = new BuzonService();
         }
 
+
         [HttpPost, Route(Predeterminado)]
-        public RespuestaDto<IList<BuzonDto>> Obtener()
-        {
-            return Ejecutar(() =>
-            {
-                return new RespuestaDto<IList<BuzonDto>>(servicioBuzon.Obtener());
-            });
-        }
+        public RespuestaDto<IList<BuzonDto>> Obtener() => Ejecutar(() => new RespuestaDto<IList<BuzonDto>>(servicioBuzon.Obtener()));
     }
 }

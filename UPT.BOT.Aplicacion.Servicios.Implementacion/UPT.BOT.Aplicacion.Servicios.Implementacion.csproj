@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOT\Administracion\Buzon\BuzonService.cs" />
+    <Compile Include="BOT\Administracion\Configuracion\UsuarioService.cs" />
     <Compile Include="BOT\Asistente\Buzon\BuzonService.cs" />
     <Compile Include="BOT\Asistente\Documento\BoletinService.cs" />
     <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />
@@ -57,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
-    <Folder Include="BOT\Administracion\Configuracion\" />
     <Folder Include="BOT\Administracion\Gestion\" />
   </ItemGroup>
   <ItemGroup>

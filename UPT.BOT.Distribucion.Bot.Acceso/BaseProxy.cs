@@ -46,7 +46,6 @@ namespace UPT.BOT.Distribucion.Bot.Acceso
                     default:
                         {
                             resultadoApi = cliente.GetAsync(rutaApi + recurso).Result;
-
                             break;
                         }
                 }

@@ -46,14 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Analisis\ClienteProxy.cs" />
-    <Compile Include="Analisis\MensajeProxy.cs" />
     <Compile Include="BaseProxy.cs" />
-    <Compile Include="Configuracion\RolProxy.cs" />
-    <Compile Include="Gestion\NoticiaProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuracion\UsuarioProxy.cs" />
-    <Compile Include="Utilidades\AgenteApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -63,6 +58,10 @@
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>
       <Name>UPT.BOT.Aplicacion.DTOs</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Analisis\" />
+    <Folder Include="Gestion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

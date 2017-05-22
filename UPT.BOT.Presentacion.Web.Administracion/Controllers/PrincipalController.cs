@@ -4,9 +4,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class PrincipalController : BaseController
     {
-        public ActionResult Inicio()
-        {
-            return View();
-        }
+        public ActionResult Inicio() => View();
     }
 }

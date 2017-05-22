@@ -1,22 +1,81 @@
-﻿using UPT.BOT.Presentacion.Web.Administracion.Utilidades;
+﻿using Newtonsoft.Json;
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using UPT.BOT.Aplicacion.DTOs.Shared;
 
 namespace UPT.BOT.Presentacion.Web.Acceso
 {
     public class BaseProxy
     {
-        protected AgenteApi agenteApi;
+        public string rutaApi;
 
-        private readonly string Ruta;
-        private readonly string Version;
-        private readonly string Servicio;
-
-        public BaseProxy(string asRuta, string asVersion, string asServicio)
+        public BaseProxy(string rutaApi)
         {
-            this.Ruta = asRuta;
-            this.Version = asVersion;
-            this.Servicio = asServicio;
-
-            agenteApi = new AgenteApi(asRuta, asVersion, asServicio);
+            this.rutaApi = rutaApi;
         }
+
+        protected RespuestaDto<T> Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
+        {
+            string resultado = string.Empty;
+
+            using (var cliente = new HttpClient())
+            {
+                cliente.BaseAddress = new Uri(rutaApi);
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage resultadoApi;
+
+                switch (metodo)
+                {
+                    case Metodo.Post:
+                        {
+                            string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
+                            resultadoApi = cliente.PostAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+                            break;
+                        }
+                    case Metodo.Put:
+                        {
+                            string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
+                            resultadoApi = cliente.PutAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+                            break;
+                        }
+                    default:
+                        {
+                            resultadoApi = cliente.GetAsync(rutaApi + recurso).Result;
+
+                            break;
+                        }
+                }
+
+                if (resultadoApi.IsSuccessStatusCode)
+                {
+                    resultado = resultadoApi.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    resultado = string.Empty;
+                }
+            }
+
+            if (string.IsNullOrEmpty(resultado))
+            {
+                return default(RespuestaDto<T>);
+            }
+            else
+            {
+                return JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
+            }
+        }
+    }
+
+    public enum Metodo
+    {
+        Get,
+        Post,
+        Put,
+        Delete
     }
 }

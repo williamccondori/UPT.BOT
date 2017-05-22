@@ -129,7 +129,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Administracion\Analisis\" />
-    <Folder Include="Controllers\Administracion\Configuracion\" />
     <Folder Include="Controllers\Administracion\Encuesta\" />
     <Folder Include="Controllers\Administracion\Gestion\" />
     <Folder Include="Controllers\Asistente\Estudio\" />
@@ -145,6 +144,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Administracion\Buzon\BuzonController.cs" />
+    <Compile Include="Controllers\Administracion\Configuracion\UsuarioController.cs" />
     <Compile Include="Controllers\Asistente\Buzon\BotBuzonController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotBoletinController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotFormatoController.cs" />
