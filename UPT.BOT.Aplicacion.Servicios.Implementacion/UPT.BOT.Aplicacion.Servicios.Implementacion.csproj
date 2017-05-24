@@ -59,6 +59,8 @@
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
     <Folder Include="BOT\Administracion\Gestion\" />
+    <Folder Include="BOT\Asistente\Informacion\" />
+    <Folder Include="BOT\Asistente\Planestudio\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">

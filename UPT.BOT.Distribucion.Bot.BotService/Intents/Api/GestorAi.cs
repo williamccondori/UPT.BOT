@@ -3,8 +3,10 @@ using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Threading.Tasks;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs;
-using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto;
-using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Bot;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Planestudio;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
@@ -22,9 +24,23 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
             => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new SaludarDialog(resultado.Result.Fulfillment.Speech), Empezar));
 
 
+        [AiIntent("informacion.direccion")]
+        public async Task Direccion(IDialogContext contexto, AIResponse resultado)
+        {
+            await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new DireccionDialog(resultado.Result.Fulfillment.Speech), Terminar));
+        }
+
+        [AiIntent("informacion.telefono")]
+        public async Task Telefono(IDialogContext contexto, AIResponse resultado)
+        {
+            await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new TelefonoDialog(resultado.Result.Fulfillment.Speech), Terminar));
+        }
+
         [AiIntent("publicacion.noticia")]
         public async Task Noticia(IDialogContext contexto, AIResponse resultado)
-            => await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new NoticiaDialog(resultado.Result.Fulfillment.Speech), Terminar));
+        {
+            await EmpezarDialogo(() => EmpezarConversacion(contexto, resultado, new NoticiaDialog(resultado.Result.Fulfillment.Speech), Terminar));
+        }
 
         [AiIntent("planestudio.mallacurricular")]
         public async Task MallaCurricular(IDialogContext contexto, AIResponse resultado)

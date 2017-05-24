@@ -7,26 +7,24 @@ using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Adjunto;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
-namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto
+namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento
 {
-    public class FormatoDialog : IDialog<object>
+    public class BoletinDialog : IDialog<object>
     {
         private string Mensaje { get; set; }
 
-        public FormatoDialog(string mensaje)
+        public BoletinDialog(string mensaje)
         {
             Mensaje = mensaje;
         }
 
         public async Task StartAsync(IDialogContext context)
         {
-            List<Attachment> adjuntos = new List<Attachment>();
+            HeroCard tarjeta = new HeroCard("Boletines", Mensaje);
 
-            HeroCard tarjeta = new HeroCard("Formatos", Mensaje);
+            List<BoletinDto> listaBoletines = new BoletinProxy(VariableConfiguracion.RutaApi()).Obtener();
 
-            List<FormatoDto> listaFormatos = new FormatoProxy(VariableConfiguracion.RutaApi()).Obtener();
-
-            List<CardAction> botones = listaFormatos.Select(p => new CardAction
+            List<CardAction> botones = listaBoletines.Select(p => new CardAction
             {
                 Title = p.DescripcionTitulo,
                 Value = p.DescripcionUrl,
@@ -34,6 +32,8 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Adjunto
             }).ToList();
 
             tarjeta.Buttons = botones;
+
+            List<Attachment> adjuntos = new List<Attachment>();
 
             adjuntos.Add(tarjeta.ToAttachment());
 

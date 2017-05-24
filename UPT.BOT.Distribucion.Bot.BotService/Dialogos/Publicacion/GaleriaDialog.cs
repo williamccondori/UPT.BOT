@@ -1,6 +1,6 @@
 ﻿namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 {
-    public class EventoDialog
+    public class GaleriaDialog
     {
     }
 }

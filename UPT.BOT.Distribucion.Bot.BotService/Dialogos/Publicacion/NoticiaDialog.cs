@@ -7,7 +7,7 @@ using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Publicacion;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
-namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Bot
+namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 {
     [Serializable]
     public class NoticiaDialog : IDialog<object>
