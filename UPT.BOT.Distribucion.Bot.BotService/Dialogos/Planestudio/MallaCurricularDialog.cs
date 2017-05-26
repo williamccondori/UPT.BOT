@@ -3,9 +3,6 @@ using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UPT.BOT.Aplicacion.DTOs.BOT;
-using UPT.BOT.Distribucion.Bot.Acceso.Adjunto;
-using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Planestudio
 {
@@ -23,13 +20,13 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Planestudio
         {
             List<Attachment> adjuntos = new List<Attachment>();
 
-            MallaCurricularDto mallaCurricular = new MallaCurricularProxy(VariableConfiguracion.RutaApi()).Obtener();
+            // MallaCurricularDto mallaCurricular = new MallaCurricularProxy(VariableConfiguracion.RutaApi()).Obtener();
 
-            Attachment imagen = new Attachment(mallaCurricular.TipoAdjunto);
+            // Attachment imagen = new Attachment(mallaCurricular.TipoAdjunto);
 
-            imagen.ContentUrl = mallaCurricular.DescripcionUrl;
+            //            imagen.ContentUrl = mallaCurricular.DescripcionUrl;
 
-            adjuntos.Add(imagen);
+            //          adjuntos.Add(imagen);
 
             IMessageActivity actividad = context.MakeMessage();
             actividad.Recipient = actividad.From;

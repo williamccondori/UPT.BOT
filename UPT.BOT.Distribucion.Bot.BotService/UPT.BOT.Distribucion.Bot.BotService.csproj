@@ -128,7 +128,15 @@
     <Compile Include="Dialogos\BaseDialog.cs" />
     <Compile Include="Dialogos\Buzon\BuzonDialog.cs" />
     <Compile Include="Dialogos\Encuesta\EncuestaDialog.cs" />
+    <Compile Include="Dialogos\Extras\MenuDialog.cs" />
+    <Compile Include="Dialogos\Informacion\AcreditacionDialog.cs" />
+    <Compile Include="Dialogos\Informacion\AdmisionDialog.cs" />
+    <Compile Include="Dialogos\Informacion\ConvenioDialog.cs" />
     <Compile Include="Dialogos\Informacion\DireccionDialog.cs" />
+    <Compile Include="Dialogos\Informacion\EnlaceDialog.cs" />
+    <Compile Include="Dialogos\Informacion\NosotrosDialog.cs" />
+    <Compile Include="Dialogos\Informacion\ServicioDialog.cs" />
+    <Compile Include="Dialogos\Informacion\SocialDialog.cs" />
     <Compile Include="Dialogos\Informacion\TelefonoDialog.cs" />
     <Compile Include="Dialogos\Planestudio\PlanEstudioDialog.cs" />
     <Compile Include="Dialogos\Publicacion\ActualidadDialog.cs" />
@@ -162,10 +170,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modelos\" />
-    <Folder Include="Plantillas\BotFramework\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>

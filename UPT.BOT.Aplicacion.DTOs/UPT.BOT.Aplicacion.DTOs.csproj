@@ -40,22 +40,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\AcreditacionDto.cs" />
     <Compile Include="BOT\ActualidadDto.cs" />
     <Compile Include="BOT\AdjuntoDto.cs" />
+    <Compile Include="BOT\AdmisionDto.cs" />
     <Compile Include="BOT\BoletinDto.cs" />
     <Compile Include="BOT\BuzonDto.cs" />
     <Compile Include="BOT\ClienteDto.cs" />
+    <Compile Include="BOT\ConvenioDto.cs" />
     <Compile Include="BOT\DetalleGaleriaDto.cs" />
+    <Compile Include="BOT\DireccionDto.cs" />
     <Compile Include="BOT\DocumentoDto.cs" />
     <Compile Include="BOT\EncuestaDto.cs" />
+    <Compile Include="BOT\EnlaceDto.cs" />
     <Compile Include="BOT\EventoDto.cs" />
     <Compile Include="BOT\FormatoDto.cs" />
     <Compile Include="BOT\GaleriaDto.cs" />
     <Compile Include="BOT\MallaCurricularDto.cs" />
     <Compile Include="BOT\MensajeDto.cs" />
+    <Compile Include="BOT\NosotrosDto.cs" />
     <Compile Include="BOT\NoticiaDto.cs" />
     <Compile Include="BOT\PublicacionDto.cs" />
     <Compile Include="BOT\ReglamentoDto.cs" />
+    <Compile Include="BOT\ServicioDto.cs" />
+    <Compile Include="BOT\SocialDto.cs" />
+    <Compile Include="BOT\TelefonoDto.cs" />
     <Compile Include="BOT\TipoBuzonDto.cs" />
     <Compile Include="BOT\UsuarioDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

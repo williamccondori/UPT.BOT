@@ -10,11 +10,11 @@ namespace UPT.BOT.Distribucion.Bot.Acceso
     [Serializable]
     public class BaseProxy
     {
-        public string rutaApi;
+        private string ruta;
 
-        public BaseProxy(string rutaApi)
+        public BaseProxy(string ruta)
         {
-            this.rutaApi = rutaApi;
+            this.ruta = ruta;
         }
 
         protected T Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
@@ -23,7 +23,7 @@ namespace UPT.BOT.Distribucion.Bot.Acceso
 
             using (var cliente = new HttpClient())
             {
-                cliente.BaseAddress = new Uri(rutaApi);
+                cliente.BaseAddress = new Uri(ruta);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -45,7 +45,7 @@ namespace UPT.BOT.Distribucion.Bot.Acceso
                         }
                     default:
                         {
-                            resultadoApi = cliente.GetAsync(rutaApi + recurso).Result;
+                            resultadoApi = cliente.GetAsync(ruta + recurso).Result;
                             break;
                         }
                 }

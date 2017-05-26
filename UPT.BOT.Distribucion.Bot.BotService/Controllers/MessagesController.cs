@@ -28,7 +28,6 @@ namespace UPT.CMS.Servicios.Bot.Servicio
                     actividadTyping.Type = ActivityTypes.Typing;
                     await conector.Conversations.ReplyToActivityAsync(actividadTyping);
 
-
                     actividad.Text = string.IsNullOrEmpty(actividad.Text) ? "0" : actividad.Text;
 
                     ClienteDto cliente = new ClienteDto
@@ -45,28 +44,6 @@ namespace UPT.CMS.Servicios.Bot.Servicio
 
                     proxyCliente.Guardar(cliente);
 
-
-                    StateClient estadoCliente = actividad.GetStateClient();
-
-                    BotData loUserData = await estadoCliente.BotState.GetUserDataAsync(actividad.ChannelId, actividad.From.Id);
-
-                    loUserData.SetProperty("Mensaje", new MensajeDto
-                    {
-                        CodigoCliente = actividad.From.Id,
-                        DescripcionActividad = actividad.Id,
-                        DescripcionCanal = actividad.ChannelId,
-                        DescripcionContenido = actividad.Text,
-                        DescripcionIntencion = null,
-                        DescripcionLocalidad = actividad.Locale,
-                        DescripcionServicio = actividad.ServiceUrl,
-                        DescripcionTipoContenido = actividad.TextFormat,
-                        EstadoObjeto = EstadoObjeto.Nuevo,
-                        FechaMensaje = actividad.Timestamp,
-                        PorcentajeIntencion = 0
-                    });
-
-                    await estadoCliente.BotState.SetUserDataAsync(actividad.ChannelId, actividad.From.Id, loUserData);
-
                     await Conversation.SendAsync(actividad, () => new GestorAi());
                 }
                 else
@@ -76,23 +53,19 @@ namespace UPT.CMS.Servicios.Bot.Servicio
 
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
-            catch (Exception aoExecpcion)
+            catch (Exception excepcion)
             {
-                ConnectorClient loConector = new ConnectorClient(new Uri(actividad.ServiceUrl));
+                ConnectorClient conector = new ConnectorClient(new Uri(actividad.ServiceUrl));
 
-                //Activity loActividadEscribiendo = actividad.CreateReply(aoExecpcion.Message + " EN: " + aoExecpcion.StackTrace);
+                Activity nuevaActividad = actividad.CreateReply(excepcion.Message);
 
-                Activity loActividadEscribiendo = actividad.CreateReply(aoExecpcion.Message);
+                nuevaActividad.Type = ActivityTypes.Message;
 
-                loActividadEscribiendo.Type = ActivityTypes.Message;
-
-                await loConector.Conversations.ReplyToActivityAsync(loActividadEscribiendo);
+                await conector.Conversations.ReplyToActivityAsync(nuevaActividad);
 
                 return Request.CreateResponse(HttpStatusCode.OK);
             }
         }
-
-        //Acciones para otro tipo de eventos.
 
         private Activity HandleSystemMessage(Activity message)
         {

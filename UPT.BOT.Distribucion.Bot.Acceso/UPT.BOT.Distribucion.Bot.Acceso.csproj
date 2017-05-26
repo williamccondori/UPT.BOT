@@ -43,12 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adjunto\BoletinProxy.cs" />
-    <Compile Include="Adjunto\FormatoProxy.cs" />
-    <Compile Include="Adjunto\MallaCurricularProxy.cs" />
-    <Compile Include="Adjunto\ReglamentoProxy.cs" />
     <Compile Include="BaseProxy.cs" />
+    <Compile Include="Documento\BoletinProxy.cs" />
+    <Compile Include="Documento\FormatoProxy.cs" />
+    <Compile Include="Documento\ReglamentoProxy.cs" />
     <Compile Include="Encuesta\EncuestaProxy.cs" />
+    <Compile Include="Informacion\AcreditacionProxy.cs" />
+    <Compile Include="Informacion\AdmisionProxy.cs" />
+    <Compile Include="Informacion\ConvenioProxy.cs" />
+    <Compile Include="Informacion\DireccionProxy.cs" />
+    <Compile Include="Informacion\EnlaceProxy.cs" />
+    <Compile Include="Informacion\NosotrosProxy.cs" />
+    <Compile Include="Informacion\ServicioProxy.cs" />
+    <Compile Include="Informacion\SocialProxy.cs" />
+    <Compile Include="Informacion\TelefonoProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicacion\ActualidadProxy.cs" />
     <Compile Include="Publicacion\EventoProxy.cs" />

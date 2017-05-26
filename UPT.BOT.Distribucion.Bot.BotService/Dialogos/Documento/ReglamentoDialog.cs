@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UPT.BOT.Aplicacion.DTOs.BOT;
-using UPT.BOT.Distribucion.Bot.Acceso.Adjunto;
+using UPT.BOT.Distribucion.Bot.Acceso.Documento;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento

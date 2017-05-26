@@ -13,7 +13,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
             this.speech = speech;
         }
 
-        public Task StartAsync(IDialogContext context)
+        public async Task StartAsync(IDialogContext context)
         {
             throw new NotImplementedException();
         }

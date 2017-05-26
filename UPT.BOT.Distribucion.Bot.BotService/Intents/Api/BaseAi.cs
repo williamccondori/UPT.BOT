@@ -1,12 +1,14 @@
 ﻿using ApiAiSDK.Model;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Connector;
 using System;
 using System.Threading.Tasks;
 using UPT.BOT.Aplicacion.DTOs.BOT;
+using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Distribucion.Bot.Acceso.Seguridad;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Ai;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs;
-using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
@@ -15,57 +17,49 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
     [Serializable]
     public class BaseAi : AiDialog<object>
     {
-        protected async Task Empezar(IDialogContext context, IAwaitable<object> aoResultado)
+        protected async Task MostrarMenu(IDialogContext context, IAwaitable<object> result) => await Empezar(() => context.Call(new MenuDialog(), Terminar));
+
+        protected async Task Terminar(IDialogContext context, IAwaitable<object> result) => await Task.Run(() => context.Done(this));
+
+        protected async Task Empezar(Action funcion) => await Task.Run(funcion);
+
+        protected void Dialogo(IDialogContext context, AIResponse response, IDialog<object> dialogo, ResumeAfter<object> dialogoSiguiente)
         {
-            await EmpezarDialogo(() =>
-            {
-                context.Call(new EmpezarDialog(), Terminar);
-            });
+            // se almacena el mensaje con la intención detectada por el servicio
+
+            RegisterMessage(context, response);
+
+            // se empieza el dialogo
+
+            context.Call(dialogo, dialogoSiguiente);
         }
 
-        protected async Task Terminar(IDialogContext aoContexto, IAwaitable<object> aoResultado)
+        private void RegisterMessage(IDialogContext context, AIResponse response)
         {
-            await Task.Run(() =>
+            // se recupera elobjeto mensaje creado en el controlador
+
+            Activity actividad = (Activity)context.Activity;
+
+            // se procede al registro del mensaje
+
+            MensajeDto message = new MensajeDto
             {
-                aoContexto.Done(this);
-            });
-        }
+                CodigoCliente = actividad.From.Id,
+                DescripcionActividad = actividad.Id,
+                DescripcionCanal = actividad.ChannelId,
+                DescripcionContenido = actividad.Text,
+                DescripcionIntencion = response.Result.Metadata.IntentName,
+                DescripcionLocalidad = actividad.Locale,
+                DescripcionServicio = actividad.ServiceUrl,
+                DescripcionTipoContenido = actividad.TextFormat,
+                EstadoObjeto = EstadoObjeto.Nuevo,
+                FechaMensaje = actividad.Timestamp,
+                PorcentajeIntencion = (decimal)response.Result.Score
+            };
 
-        protected async Task EmpezarDialogo(Action funcion)
-        {
-            await Task.Run(funcion);
-        }
 
-        protected void EmpezarConversacion(
-            IDialogContext aoContexto
-            , AIResponse aoResultado
-            , IDialog<object> aoDialogo
-            , ResumeAfter<object> aoContinuacion)
-        {
-            GuardarMensaje(aoContexto, aoResultado);
-            aoContexto.Call(aoDialogo, aoContinuacion);
-        }
-
-        private bool GuardarMensaje(IDialogContext contexto, AIResponse resultado)
-        {
-            try
-            {
-                MensajeDto mensaje = contexto.UserData.GetValue<MensajeDto>("Mensaje");
-
-                if (mensaje != null)
-                {
-                    mensaje.DescripcionIntencion = resultado.Result.Metadata.IntentName;
-                    mensaje.PorcentajeIntencion = Convert.ToDecimal(resultado.Result.Score);
-
-                    MensajeProxy proxyMensaje = new MensajeProxy(VariableConfiguracion.RutaApi());
-                    proxyMensaje.Guardar(mensaje);
-                }
-            }
-            catch (Exception)
-            {
-                contexto.SayAsync("Vas muy rápido 😓");
-            }
-            return true;
+            MensajeProxy proxyMensaje = new MensajeProxy(VariableConfiguracion.RutaApi());
+            proxyMensaje.Guardar(message);
         }
     }
 }

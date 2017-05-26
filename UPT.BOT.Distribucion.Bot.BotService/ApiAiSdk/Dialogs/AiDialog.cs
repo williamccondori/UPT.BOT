@@ -17,35 +17,27 @@ namespace UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs
     [Serializable]
     public class AiIntentAttribute : AttributeString
     {
-        public readonly string gsIntencion;
+        public readonly string intencion;
 
-        public AiIntentAttribute(string asIntencion)
+        public AiIntentAttribute(string intencion)
         {
-            gsIntencion = asIntencion;
+            this.intencion = intencion;
         }
 
-        protected override string Text
-        {
-            get
-            {
-                return gsIntencion;
-            }
-        }
+        protected override string Text => intencion;
 
-        public delegate Task AiIntencion(IDialogContext aoContext, AIResponse aoRespuesta);
+        public delegate Task AiIntencion(IDialogContext context, AIResponse response);
 
-        public delegate Task AiMetodoIntencion(IDialogContext aoContext, IAwaitable<IMessageActivity> aoMensaje, AIResponse aoRespuesta);
+        public delegate Task AiMetodoIntencion(IDialogContext context, IAwaitable<IMessageActivity> result, AIResponse response);
     }
 
     [Serializable]
     public class AiDialog<TResult> : IDialog<TResult>
     {
-
         protected readonly IAiService goServicio;
 
         [NonSerialized]
         protected Dictionary<string, AiMetodoIntencion> goMetodosIntencion;
-
 
         public IAiService BuscarServicio()
         {
@@ -161,7 +153,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs
                 }
                 else
                 {
-                    IEnumerable<string> listaIntenciones = listaAtributos.Select(i => i.gsIntencion).DefaultIfEmpty(loMetodo.Name);
+                    IEnumerable<string> listaIntenciones = listaAtributos.Select(i => i.intencion).DefaultIfEmpty(loMetodo.Name);
 
                     foreach (var loIntencion in listaIntenciones)
                     {

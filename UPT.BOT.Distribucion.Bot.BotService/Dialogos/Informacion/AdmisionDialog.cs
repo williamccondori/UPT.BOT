@@ -4,11 +4,11 @@ using System.Threading.Tasks;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
 {
-    public class DireccionDialog : BaseDialog, IDialog<object>
+    public class AdmisionDialog : BaseDialog, IDialog<object>
     {
         private string speech;
 
-        public DireccionDialog(string speech)
+        public AdmisionDialog(string speech)
         {
             this.speech = speech;
         }
