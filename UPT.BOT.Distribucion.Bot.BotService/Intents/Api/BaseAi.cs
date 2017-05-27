@@ -17,21 +17,26 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
     [Serializable]
     public class BaseAi : AiDialog<object>
     {
-        protected async Task MostrarMenu(IDialogContext context, IAwaitable<object> result) => await Empezar(() => context.Call(new MenuDialog(), Terminar));
+        protected async Task Empezar(Action funcion)
+            => await Task.Run(funcion);
 
-        protected async Task Terminar(IDialogContext context, IAwaitable<object> result) => await Task.Run(() => context.Done(this));
+        protected async Task Terminar(IDialogContext context, IAwaitable<object> result)
+            => await Task.Run(() => context.EndConversation(ActivityTypes.EndOfConversation));
 
-        protected async Task Empezar(Action funcion) => await Task.Run(funcion);
+        protected async Task Menu(IDialogContext context, IAwaitable<object> result)
+            => await Empezar(() => context.Call(new MenuDialog(), Terminar));
 
-        protected void Dialogo(IDialogContext context, AIResponse response, IDialog<object> dialogo, ResumeAfter<object> dialogoSiguiente)
+        protected void Dialogo(IDialogContext context, AIResponse response, IDialog<object> dialogo, ResumeAfter<object> siguiente = null)
         {
+            ResumeAfter<object> resumen = siguiente ?? Terminar;
+
             // se almacena el mensaje con la intención detectada por el servicio
 
             RegisterMessage(context, response);
 
             // se empieza el dialogo
 
-            context.Call(dialogo, dialogoSiguiente);
+            context.Call(dialogo, resumen);
         }
 
         private void RegisterMessage(IDialogContext context, AIResponse response)

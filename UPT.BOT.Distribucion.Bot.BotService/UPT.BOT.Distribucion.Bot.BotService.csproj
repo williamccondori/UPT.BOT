@@ -151,7 +151,7 @@
     <Compile Include="Dialogos\Publicacion\NoticiaDialog.cs" />
     <Compile Include="Dialogos\Shared\EmpezarDialog.cs" />
     <Compile Include="Dialogos\Shared\PredeterminadoDialog.cs" />
-    <Compile Include="Dialogos\Shared\SaludarDialog.cs" />
+    <Compile Include="Dialogos\Extras\SaludarDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

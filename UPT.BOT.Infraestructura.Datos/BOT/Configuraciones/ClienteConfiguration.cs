@@ -13,7 +13,7 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
             Property(m => m.DescripcionNombre).HasColumnName("DES_NOMBRE");
             Property(m => m.DescripcionCanal).HasColumnName("DES_CANAL");
             Property(m => m.DescripcionConversacion).HasColumnName("DES_CONVERSACION");
-            Property(m => m.DescripcionConversacionNombre).HasColumnName("DES_CONVERSACION_NOMBRE");
+            Property(m => m.DescripcionMetadata).HasColumnName("DES_CONVERSACION_NOMBRE");
             Property(m => m.FechaRegistro).HasColumnName("FEC_REGISTRO");
             Ignore(g => g.EstadoObjeto);
         }

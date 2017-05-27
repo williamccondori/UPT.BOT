@@ -9,7 +9,7 @@ namespace UPT.BOT.Aplicacion.DTOs.BOT
         public string DescripcionNombre { get; set; }
         public string DescripcionCanal { get; set; }
         public string DescripcionConversacion { get; set; }
-        public string DescripcionConversacionNombre { get; set; }
+        public string DescripcionMetadata { get; set; }
         public DateTime FechaRegistro { get; set; }
     }
 }

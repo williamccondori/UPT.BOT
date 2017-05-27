@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
+using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -35,7 +36,7 @@ namespace UPT.CMS.Servicios.Bot.Servicio
                         CodigoCliente = actividad.From.Id,
                         DescripcionNombre = actividad.From.Name,
                         DescripcionConversacion = actividad.Conversation.Id,
-                        DescripcionConversacionNombre = actividad.Conversation.Name,
+                        DescripcionMetadata = JsonConvert.SerializeObject(actividad),
                         DescripcionCanal = actividad.ChannelId,
                         EstadoObjeto = EstadoObjeto.Nuevo
                     };

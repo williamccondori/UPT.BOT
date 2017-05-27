@@ -11,7 +11,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public string DescripcionNombre { get; set; }
         public string DescripcionCanal { get; set; }
         public string DescripcionConversacion { get; set; }
-        public string DescripcionConversacionNombre { get; set; }
+        public string DescripcionMetadata { get; set; }
         public DateTime FechaRegistro { get; set; }
         public EstadoObjeto EstadoObjeto { get; set; }
 
@@ -33,7 +33,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
                 DescripcionCanal = descripcionCanal,
                 DescripcionNombre = descripcionNombre,
                 DescripcionConversacion = descripcionConversacion,
-                DescripcionConversacionNombre = descripcionConversacionNombre,
+                DescripcionMetadata = descripcionConversacionNombre,
                 EstadoObjeto = EstadoObjeto.Nuevo,
                 FechaRegistro = DateTime.Now,
             };

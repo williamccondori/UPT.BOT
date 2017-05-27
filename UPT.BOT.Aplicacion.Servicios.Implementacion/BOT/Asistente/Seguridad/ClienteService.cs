@@ -32,7 +32,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Seguridad
                         , cliente.DescripcionCanal
                         , cliente.DescripcionNombre
                         , cliente.DescripcionConversacion
-                        , cliente.DescripcionConversacionNombre);
+                        , cliente.DescripcionMetadata);
 
                     repositorioCliente.Crear(nuevoCliente);
                 }

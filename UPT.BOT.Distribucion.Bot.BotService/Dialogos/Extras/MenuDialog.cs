@@ -59,37 +59,28 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
             context.Done(this);
         }
 
-        private IList<CardAction> ContactoAccion()
+        private IList<CardAction> ContactoAccion() => new List<CardAction>
         {
-            return new List<CardAction>
-            {
-                new CardAction { Title = "Contáctanos", Value = "Contáctanos" },
-                new CardAction { Title = "Sugerencias", Value = "Sugerencias" },
-                new CardAction { Title = "Califícanos", Value = "Califícanos" },
+            new CardAction { Title = "Contáctanos", Value = "Contáctanos" },
+            new CardAction { Title = "Sugerencias", Value = "Sugerencias" },
+            new CardAction { Title = "Califícanos", Value = "Califícanos" },
+            new CardAction { Title = "Módulo de encuestas", Value = "Encuestas" },
+            new CardAction { Title = "Módulo de notas", Value = "Notas" },
+            new CardAction { Title = "Módulo de horarios", Value = "Horarios" }
+        };
 
-                new CardAction { Title = "Módulo de encuestas", Value = "Encuestas" },
-                new CardAction { Title = "Módulo de notas", Value = "Notas" },
-                new CardAction { Title = "Módulo de horarios", Value = "Horarios" }
-            };
-        }
-
-        private IList<CardImage> ContactoImagen()
+        private IList<CardImage> ContactoImagen() => new List<CardImage>
         {
-            return new List<CardImage>
-            {
-                new CardImage{ Url = "http://uptbotadministracion.azurewebsites.net/images/05.png" }
-            };
-        }
+            new CardImage{ Url = "http://uptbotadministracion.azurewebsites.net/images/05.png" }
+        };
 
-        private IList<CardAction> DocumentoAccion()
+        private IList<CardAction> DocumentoAccion() => new List<CardAction>
         {
-            return new List<CardAction>
-            {
-                new CardAction { Title = "Formatos", Value = "Formatos" },
-                new CardAction { Title = "Reglamentos", Value = "Reglamentos" },
-                new CardAction { Title = "Boletines", Value = "Boletines" }
-            };
-        }
+            new CardAction { Title = "Formatos", Value = "Formatos" },
+            new CardAction { Title = "Reglamentos", Value = "Reglamentos" },
+            new CardAction { Title = "Boletines", Value = "Boletines" }
+        };
+
 
         private IList<CardImage> DocumentoImagen()
         {
@@ -139,30 +130,22 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
             };
         }
 
-        private IList<CardImage> InformacionImagen()
+        private IList<CardImage> InformacionImagen() => new List<CardImage>
         {
-            return new List<CardImage>
-            {
-                new CardImage{ Url = "http://uptbotadministracion.azurewebsites.net/images/01.png" }
-            };
-        }
+            new CardImage{ Url = "http://uptbotadministracion.azurewebsites.net/images/01.png" }
+        };
 
-        private IList<CardAction> InformacionAccion()
+        private IList<CardAction> InformacionAccion() => new List<CardAction>
         {
-            return new List<CardAction>
-            {
-                new CardAction { Title = "Nosotros", Value = "Nosotros" },
-                new CardAction { Title = "Dirección", Value = "Dirección" },
-                new CardAction { Title = "Teléfono", Value = "Teléfono" },
-
-                new CardAction { Title = "Convenios", Value = "Convenios" },
-                new CardAction { Title = "Servicios", Value = "Servicios" },
-                new CardAction { Title = "Enlaces importantes", Value = "Enlaces importantes" },
-
-                new CardAction { Title = "Admisión", Value = "Admisión" },
-                new CardAction { Title = "Acreditación", Value = "Acreditación" },
-                new CardAction { Title = "Redes sociales", Value = "Redes sociales" }
-            };
-        }
+            new CardAction { Title = "Nosotros", Value = "Nosotros" },
+            new CardAction { Title = "Dirección", Value = "Dirección" },
+            new CardAction { Title = "Teléfono", Value = "Teléfono" },
+            new CardAction { Title = "Convenios", Value = "Convenios" },
+            new CardAction { Title = "Servicios", Value = "Servicios" },
+            new CardAction { Title = "Enlaces importantes", Value = "Enlaces importantes" },
+            new CardAction { Title = "Admisión", Value = "Admisión" },
+            new CardAction { Title = "Acreditación", Value = "Acreditación" },
+            new CardAction { Title = "Redes sociales", Value = "Redes sociales" }
+        };
     }
 }
