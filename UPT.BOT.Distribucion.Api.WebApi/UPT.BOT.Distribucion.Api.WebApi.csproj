@@ -132,7 +132,6 @@
     <Folder Include="Controllers\Administracion\Encuesta\" />
     <Folder Include="Controllers\Administracion\Gestion\" />
     <Folder Include="Controllers\Asistente\Estudio\" />
-    <Folder Include="Controllers\Asistente\Informacion\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Boticia\" />
     <Folder Include="Views\Sesion\" />
@@ -150,6 +149,9 @@
     <Compile Include="Controllers\Asistente\Documento\BotFormatoController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotReglamentoController.cs" />
     <Compile Include="Controllers\Asistente\Encuesta\BotEncuestaController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotConvenioController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotNosotrosController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotServicioController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotActualidadController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotEventoController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotGaleriaController.cs" />

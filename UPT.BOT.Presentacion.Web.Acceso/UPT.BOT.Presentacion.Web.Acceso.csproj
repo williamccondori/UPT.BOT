@@ -47,6 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseProxy.cs" />
+    <Compile Include="Gestion\Informacion\AcreditacionProxy.cs" />
+    <Compile Include="Gestion\Informacion\AdmisionProxy.cs" />
+    <Compile Include="Gestion\Informacion\ConvenioProxy.cs" />
+    <Compile Include="Gestion\Informacion\DireccionProxy.cs" />
+    <Compile Include="Gestion\Informacion\EnlaceProxy.cs" />
+    <Compile Include="Gestion\Informacion\NosotrosProxy.cs" />
+    <Compile Include="Gestion\Informacion\ServicioProxy.cs" />
+    <Compile Include="Gestion\Informacion\SocialProxy.cs" />
+    <Compile Include="Gestion\Informacion\TelefonoProxy.cs" />
+    <Compile Include="Gestion\Publicacion\ActualidadProxy.cs" />
+    <Compile Include="Gestion\Publicacion\EventoProxy.cs" />
+    <Compile Include="Gestion\Publicacion\NoticiaProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Configuracion\UsuarioProxy.cs" />
   </ItemGroup>
@@ -61,7 +73,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Analisis\" />
-    <Folder Include="Gestion\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

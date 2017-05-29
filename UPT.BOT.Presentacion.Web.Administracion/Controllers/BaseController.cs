@@ -8,11 +8,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class BaseController : Controller
     {
-        protected readonly string rutaApi;
+        protected readonly string ruta;
 
         public BaseController()
         {
-            rutaApi = VariableConfiguracion.RutaApi();
+            ruta = VariableConfiguracion.RutaApi();
         }
 
         protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)

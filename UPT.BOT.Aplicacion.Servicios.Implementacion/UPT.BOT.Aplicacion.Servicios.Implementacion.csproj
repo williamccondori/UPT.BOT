@@ -47,6 +47,9 @@
     <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />
     <Compile Include="BOT\Asistente\Documento\ReglamentoService.cs" />
     <Compile Include="BOT\Asistente\Encuesta\EncuestaService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\ConvenioService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\NosotrosService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\ServicioService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\ActualidadService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\EventoService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\GaleriaService.cs" />
@@ -59,7 +62,6 @@
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
     <Folder Include="BOT\Administracion\Gestion\" />
-    <Folder Include="BOT\Asistente\Informacion\" />
     <Folder Include="BOT\Asistente\Planestudio\" />
   </ItemGroup>
   <ItemGroup>

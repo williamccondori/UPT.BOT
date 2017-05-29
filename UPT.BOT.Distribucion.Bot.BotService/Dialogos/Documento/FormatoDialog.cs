@@ -1,51 +1,54 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using ApiAiSDK.Model;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Documento;
-using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento
 {
-    public class FormatoDialog : IDialog<object>
+    public class FormatoDialog : BaseDialog, IDialog<object>
     {
-        private string Mensaje { get; set; }
+        private AIResponse response;
 
-        public FormatoDialog(string mensaje)
+        public FormatoDialog(AIResponse response)
         {
-            Mensaje = mensaje;
+            this.response = response;
         }
 
         public async Task StartAsync(IDialogContext context)
         {
-            List<Attachment> adjuntos = new List<Attachment>();
+            IMessageActivity actividaMensaje = context.MakeMessage();
+            actividaMensaje.Text = response.Result.Fulfillment.Speech ?? string.Empty;
+            actividaMensaje.Recipient = actividaMensaje.From;
+            actividaMensaje.Type = ActivityTypes.Message;
 
-            HeroCard tarjeta = new HeroCard("Formatos", Mensaje);
+            await context.PostAsync(actividaMensaje);
 
-            List<FormatoDto> listaFormatos = new FormatoProxy(VariableConfiguracion.RutaApi()).Obtener();
+            List<FormatoDto> entidades = new FormatoProxy(ruta).Obtener();
 
-            List<CardAction> botones = listaFormatos.Select(p => new CardAction
+            List<Attachment> listaAdjuntos = new List<Attachment>();
+
+            foreach (var entidad in entidades)
             {
-                Title = p.DescripcionTitulo,
-                Value = p.DescripcionUrl,
-                Type = ActionTypes.DownloadFile
-            }).ToList();
+                HeroCard tarjetaFormato = new HeroCard("Formatos");
+                tarjetaFormato.Buttons = FormatoAccion(entidad.DescripcionUrl, entidad.DescripcionTitulo);
+                listaAdjuntos.Add(tarjetaFormato.ToAttachment());
+            }
 
-            tarjeta.Buttons = botones;
+            IMessageActivity actividadTarjeta = context.MakeMessage();
+            actividadTarjeta.Recipient = actividadTarjeta.From;
+            actividadTarjeta.Type = ActivityTypes.Message;
 
-            adjuntos.Add(tarjeta.ToAttachment());
-
-            IMessageActivity actividad = context.MakeMessage();
-            actividad.Recipient = actividad.From;
-            actividad.Type = ActivityTypes.Message;
-            actividad.Attachments = adjuntos;
-            actividad.AttachmentLayout = AttachmentLayoutTypes.List;
-
-            await context.PostAsync(actividad);
+            await context.PostAsync(actividadTarjeta);
 
             context.Done(this);
         }
+
+        private IList<CardAction> FormatoAccion(string url, string titulo) => new List<CardAction>
+        {
+            new CardAction { Title = titulo, Type = ActionTypes.DownloadFile, Value = url}
+        };
     }
 }

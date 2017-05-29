@@ -1,6 +1,8 @@
-﻿namespace UPT.BOT.Aplicacion.DTOs.BOT
+﻿using UPT.BOT.Aplicacion.DTOs.Shared;
+
+namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
-    public class AdjuntoDto
+    public class AdjuntoDto : BaseDto
     {
         public long CodigoAdjunto { get; set; }
         public string CodigoTipoAdjunto { get; set; }

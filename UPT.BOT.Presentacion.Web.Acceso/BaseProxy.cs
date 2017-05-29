@@ -9,11 +9,13 @@ namespace UPT.BOT.Presentacion.Web.Acceso
 {
     public class BaseProxy
     {
-        public string rutaApi;
+        protected readonly string ruta;
+        protected readonly string usuario;
 
-        public BaseProxy(string rutaApi)
+        protected BaseProxy(string ruta, string usuario)
         {
-            this.rutaApi = rutaApi;
+            this.usuario = ruta;
+            this.ruta = ruta;
         }
 
         protected RespuestaDto<T> Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
@@ -22,9 +24,10 @@ namespace UPT.BOT.Presentacion.Web.Acceso
 
             using (var cliente = new HttpClient())
             {
-                cliente.BaseAddress = new Uri(rutaApi);
+                cliente.BaseAddress = new Uri(ruta);
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                cliente.DefaultRequestHeaders.Add("usuario", usuario);
 
                 HttpResponseMessage resultadoApi;
 
@@ -42,32 +45,22 @@ namespace UPT.BOT.Presentacion.Web.Acceso
                             resultadoApi = cliente.PutAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
                             break;
                         }
-                    default:
+                    case Metodo.Delete:
                         {
-                            resultadoApi = cliente.GetAsync(rutaApi + recurso).Result;
-
+                            resultadoApi = cliente.DeleteAsync(ruta + recurso).Result;
+                            break;
+                        }
+                    default: // Metodo.Get
+                        {
+                            resultadoApi = cliente.GetAsync(ruta + recurso).Result;
                             break;
                         }
                 }
 
-                if (resultadoApi.IsSuccessStatusCode)
-                {
-                    resultado = resultadoApi.Content.ReadAsStringAsync().Result;
-                }
-                else
-                {
-                    resultado = string.Empty;
-                }
+                resultado = resultadoApi.IsSuccessStatusCode ? resultadoApi.Content.ReadAsStringAsync().Result : string.Empty;
             }
 
-            if (string.IsNullOrEmpty(resultado))
-            {
-                return default(RespuestaDto<T>);
-            }
-            else
-            {
-                return JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
-            }
+            return string.IsNullOrEmpty(resultado) ? default(RespuestaDto<T>) : JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
         }
     }
 

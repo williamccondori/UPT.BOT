@@ -11,5 +11,6 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         {
 
         }
+        public const string Nosotros = "N";
     }
 }

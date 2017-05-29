@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\IAdjuntoRepository.cs" />
     <Compile Include="BOT\IBuzonRepository.cs" />
     <Compile Include="BOT\IDetalleGaleriaRepository.cs" />
     <Compile Include="BOT\IDocumentoRepository.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
-    public class EnlaceDto
+    public class EnlaceDto : AdjuntoDto
     {
     }
 }

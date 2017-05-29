@@ -5,12 +5,19 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Configuracion
 {
     public class UsuarioProxy : BaseProxy
     {
-        public UsuarioProxy(string rutaApi) : base(rutaApi)
+        public UsuarioProxy(string ruta, string usuario) : base(ruta, usuario)
         {
 
         }
 
-        public RespuestaDto<bool> Agregar(UsuarioDto usuario) => Ejecutar<bool>("usuario", Metodo.Post, usuario);
-        public RespuestaDto<bool> Validar(UsuarioDto usuario) => Ejecutar<bool>("usuario/validar", Metodo.Post, usuario);
+        public RespuestaDto<bool> Agregar(UsuarioDto usuario)
+        {
+            return Ejecutar<bool>("usuario", Metodo.Post, usuario);
+        }
+
+        public RespuestaDto<bool> Validar(UsuarioDto usuario)
+        {
+            return Ejecutar<bool>("usuario/validar", Metodo.Post, usuario);
+        }
     }
 }

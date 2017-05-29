@@ -29,18 +29,21 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
 
             NosotrosDto entidad = new NosotrosProxy(ruta).Obtener();
 
-            HeroCard tarjetaNosotros = new HeroCard(entidad.DescripcionTitulo);
-            tarjetaNosotros.Text = entidad.DescripcionResumen;
-            tarjetaNosotros.Images = NosotrosImagen(entidad.DescripcionImagen);
-            tarjetaNosotros.Buttons = NosotrosAccion(entidad.DescripcionUrl);
+            List<Attachment> listaAdjuntos = new List<Attachment>();
+
+            if (entidad != null)
+            {
+                HeroCard tarjetaNosotros = new HeroCard(entidad.DescripcionTitulo);
+                tarjetaNosotros.Text = entidad.DescripcionResumen;
+                tarjetaNosotros.Images = NosotrosImagen(entidad.DescripcionImagen);
+                tarjetaNosotros.Buttons = NosotrosAccion(entidad.DescripcionUrl);
+                listaAdjuntos.Add(tarjetaNosotros.ToAttachment());
+            }
 
             IMessageActivity actividadTarjeta = context.MakeMessage();
             actividadTarjeta.Recipient = actividadTarjeta.From;
             actividadTarjeta.Type = ActivityTypes.Message;
-            actividadTarjeta.Attachments = new List<Attachment>
-            {
-                tarjetaNosotros.ToAttachment()
-            };
+            actividadTarjeta.Attachments = listaAdjuntos;
 
             await context.PostAsync(actividadTarjeta);
 

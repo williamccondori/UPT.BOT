@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Collections\GestionCollection.cs" />
     <Compile Include="Controllers\AnalisisController.cs" />
     <Compile Include="Controllers\BuzonController.cs" />
     <Compile Include="Controllers\ConfiguracionController.cs" />
@@ -143,6 +144,7 @@
     <Content Include="Angular\Controllers\Configuracion\RolController.js" />
     <Content Include="Angular\Controllers\Configuracion\UsuarioController.js" />
     <Content Include="Angular\Controllers\Gestion\ActualidadController.js" />
+    <Content Include="Angular\Controllers\Gestion\InicioController.js" />
     <Content Include="Angular\Controllers\Gestion\NoticiaController.js" />
     <Content Include="Angular\Controllers\Principal\InicioController.js" />
     <Content Include="Angular\Factories\Analisis\AnalisisFactory.js" />

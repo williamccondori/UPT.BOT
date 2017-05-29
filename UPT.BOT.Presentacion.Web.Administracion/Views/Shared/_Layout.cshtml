@@ -4,74 +4,129 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - UPT BOT</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
     <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    <style>
+
+        body {
+            font-family: 'segoe ui';
+        }
+
+        .fd-menu-0 {
+            background-color: #ECEFF1;
+        }
+
+        .fd-menu-1 {
+            background-color: #f2f4f5;
+        }
+        
+        .fd-menu {
+            padding: 20px;
+            display: block;
+            height: 900px;
+        }
+
+        .fd-menu-0 > h1 {
+            color: #000;
+            text-transform: uppercase;
+            font-size: 1.3em;
+            font-weight: bold;
+            font-family: 'segoe ui';
+            margin-bottom: 50px;
+        }
+
+
+        .fd-menu-1 > h1 {
+            color: #000;
+            font-size: 1.3em;
+            font-weight: bold;
+            font-family: 'segoe ui';
+            margin-bottom: 20px;
+        }
+
+        .fd-menu-1 blockquote {
+            padding: 10px;
+            font-size: 0.9em;
+            border-left: 5px solid #673ab7 !important;
+        }
+
+            .fd-menu > ul {
+                list-style: none;
+                padding: 0;
+            }
+
+                .fd-menu > ul > li {
+                    display: block;
+                    margin-bottom: 2px;
+                }
+
+                    .fd-menu > ul > li > a {
+                        text-decoration: none;
+                        color: #000;
+                        font-family: 'segoe ui';
+                        display: block;
+                        padding: 10px 15px 10px 15px;
+                        transition: all 0.3s ease-in-out;
+                        cursor: pointer;
+                    }
+
+                        .fd-menu > ul > li > a > i {
+                            margin-right: 10px;
+                        }
+
+                        .fd-menu > ul > li > a:hover {
+                            background-color: #CFD8DC;
+                        }
+
+        .fd-portada {
+        }
+
+            .fd-portada > h1 {
+                color: #000;
+                font-size: 1.6em;
+                font-weight: bold;
+                font-family: 'segoe ui';
+                margin-bottom: 50px;
+            }
+
+            .fd-portada h2 {
+                color: #000;
+                font-size: 1.5em;
+                font-weight: bold;
+                font-family: 'segoe ui';
+                margin-bottom: 50px;
+            }
+
+            .fd-portada blockquote {
+                border-left: 5px solid #673ab7 !important;
+            }
+
+    </style>
 </head>
 <body ng-app="uptAdministracion">
-    <div class="navbar navbar-inverse navbar-static-top">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("UPT BOT", "Inicio", "Principal", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Gestión de contenido", "Inicio", "Gestion")</li>
-                    <li>@Html.ActionLink("Análisis de datos", "Inicio", "Analisis")</li>
-                    <li>@Html.ActionLink("Buzón de sugerencias", "Inicio", "Buzon")</li>
-                    <li>@Html.ActionLink("Encuestas", "Inicio", "Encuesta")</li>
-                    <li>@Html.ActionLink("Configuración", "Inicio", "Configuracion")</li>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-3 fd-menu animated fadeInLeft fd-menu-0">
+                <h1>ADMINISTRACIÓN</h1>
+                <ul>
+                    <li><a href="@Url.Action("Inicio","Principal")"><i class="fa fa-home" aria-hidden="true"></i>Inicio</a></li>
+                    <li><a href="@Url.Action("Inicio","Gestion")"><i class="fa fa-folder-open" aria-hidden="true"></i>Gestión</a></li>
+                    <li><a href="@Url.Action("Inicio","Analisis")"><i class="fa fa-folder-open" aria-hidden="true"></i>Análisis</a></li>
+                    <li><a href="@Url.Action("Inicio","Configuracion")"><i class="fa fa-folder-open" aria-hidden="true"></i>Configuración</a></li>
+                    <li><a href="@Url.Action("Inicio","Buzon")"><i class="fa fa-folder-open" aria-hidden="true"></i>Buzón</a></li>
+                    <li><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i>Módulos</a></li>
                 </ul>
             </div>
-        </div>
-    </div>
-    <div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-24 col-sm-6">
-                    <div ng-controller="InicioController" ng-init="Iniciar()">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Información del usuario
-                            </div>
-                            <div class="panel-body">
-                                <div class="text-center">
-                                    <img src="{{ Usuario.DescripcionImagen }}" alt="Perfil" class="img-circle img-thumbnail" width="100" height="100" />
-                                    <h4 ng-bind="Usuario.DescripcionNombre + ' ' +  Usuario.DescripcionApellido"></h4>
-                                    <small ng-bind="Usuario.DescripcionCargo"></small>
-                                </div>
-                            </div>
-                            <div class="panel-footer">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <button class="btn btn-success btn-sm btn-block">Mi perfil</button>
-                                    </div>
-                                    <div class="col-xs-12">
-                                        <button class="btn btn-danger btn-sm btn-block">Configuración</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Tareas comunes
-                            </div>
-                            <div class="panel-body">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-24 col-sm-18">
-                    @RenderBody()
-                </div>
+            <div class="col-xs-9">
+                @RenderBody()
             </div>
         </div>
     </div>
+
+    
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>

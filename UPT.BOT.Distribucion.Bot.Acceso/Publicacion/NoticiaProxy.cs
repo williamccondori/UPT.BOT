@@ -7,7 +7,7 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Publicacion
     [Serializable]
     public class NoticiaProxy : BaseProxy
     {
-        public NoticiaProxy(string rutaApi) : base(rutaApi)
+        public NoticiaProxy(string ruta) : base(ruta)
         {
 
         }

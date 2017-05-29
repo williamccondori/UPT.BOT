@@ -14,7 +14,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         public SeguridadController()
         {
-            proxyUsuario = new UsuarioProxy(VariableConfiguracion.RutaApi());
+            proxyUsuario = new UsuarioProxy(VariableConfiguracion.RutaApi(), string.Empty);
         }
 
         public ActionResult Login() => View();

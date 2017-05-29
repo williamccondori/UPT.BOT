@@ -39,11 +39,11 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
 
         [AiIntent("informacion.convenio")]
         public async Task Convenio(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new ConvenioDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new ConvenioDialog(response)));
 
         [AiIntent("informacion.servicio")]
         public async Task Servicio(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new ServicioDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new ServicioDialog(response)));
 
         [AiIntent("informacion.admision")]
         public async Task Admision(IDialogContext context, AIResponse response)
@@ -51,11 +51,11 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
 
         [AiIntent("informacion.acreditacion")]
         public async Task Acreditacion(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new AcreditacionDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new AcreditacionDialog(response)));
 
         [AiIntent("informacion.social")]
         public async Task Social(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new SocialDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new SocialDialog(response)));
 
         // intenciones para mostrar información de publicaciones
 
@@ -70,14 +70,12 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
         // intenciones para mostrar información de documentos
 
         [AiIntent("documento.formato")]
-        public async Task Formato(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new FormatoDialog(response.Result.Fulfillment.Speech)));
+        public async Task Formato(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new FormatoDialog(response)));
 
         [AiIntent("documento.reglamento")]
-        public async Task Reglamento(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new ReglamentoDialog(response.Result.Fulfillment.Speech)));
+        public async Task Reglamento(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new ReglamentoDialog(response)));
 
         [AiIntent("documento.boletin")]
-        public async Task Boletin(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new BoletinDialog(response.Result.Fulfillment.Speech)));
-
-
+        public async Task Boletin(IDialogContext context, AIResponse response) => await Empezar(() => Dialogo(context, response, new BoletinDialog(response)));
     }
 }
