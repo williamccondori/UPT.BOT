@@ -3,7 +3,6 @@ using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Distribucion.Bot.Acceso.Publicacion;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
@@ -21,19 +20,21 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 
         public async Task StartAsync(IDialogContext contexto)
         {
+            List<Elemento> listaNoticias = new RssProxy("http://rpp.pe/feed/tecnologia").Obtener();
+
             List<Attachment> adjuntos = new List<Attachment>();
 
-            List<NoticiaDto> listaNoticias = new NoticiaProxy(VariableConfiguracion.RutaApi()).Obtener();
+            //List<NoticiaDto> listaNoticias = new NoticiaProxy(VariableConfiguracion.RutaApi()).Obtener();
 
             foreach (var noticia in listaNoticias)
             {
-                HeroCard tarjeta = new HeroCard(noticia.DescripcionTitulo);
+                HeroCard tarjeta = new HeroCard(noticia.Titulo);
 
                 List<CardImage> listaImagenes = new List<CardImage>
                 {
                     new CardImage
                     {
-                        Url = noticia.DescripcionImagen
+                        Url = noticia.Imagen
                     }
                 };
 
@@ -41,13 +42,13 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
                 {
                     new CardAction
                     {
-                        Value = noticia.DescripcionUrl,
+                        Value = noticia.Enlace,
                         Type = ActionTypes.OpenUrl,
                         Title = ActionTitleTypes.ShowMore
                     }
                 };
 
-                tarjeta.Text = noticia.DescripcionResumen;
+                tarjeta.Text = noticia.Descripcion;
 
                 tarjeta.Images = listaImagenes;
 
