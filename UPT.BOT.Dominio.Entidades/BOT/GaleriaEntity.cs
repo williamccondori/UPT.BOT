@@ -1,4 +1,5 @@
-﻿using UPT.BOT.Dominio.Entidades.Shared;
+﻿using System.Collections.Generic;
+using UPT.BOT.Dominio.Entidades.Shared;
 
 namespace UPT.BOT.Dominio.Entidades.BOT
 {
@@ -9,6 +10,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public string DescripcionImagen { get; set; }
         public string DescripcionResena { get; set; }
         public string DescripcionUrl { get; set; }
+        public List<DetalleGaleriaEntity> Detalles { get; set; }
 
         public GaleriaEntity()
         {

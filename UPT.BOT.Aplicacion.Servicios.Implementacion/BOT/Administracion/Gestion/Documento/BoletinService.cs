@@ -33,15 +33,15 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
             if (boletin.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.boletin, boletin.DescripcionTitulo
-                    , boletin.DescripcionResena, boletin.Descripcionboletin, boletin.DescripcionUrl, boletin.UsuarioRegistro, null);
+                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.Boletin, boletin.DescripcionTitulo
+                    , boletin.DescripcionResena, boletin.DescripcionFormato, boletin.DescripcionUrl, boletin.UsuarioRegistro, null);
                 repositorioDocumento.Crear(documento);
             }
             else if (boletin.EstadoObjeto == EstadoObjeto.Modificado)
             {
                 DocumentoEntity documento = repositorioDocumento.Buscar(boletin.CodigoDocumento);
                 documento.Modificar(boletin.DescripcionTitulo, boletin.DescripcionResena
-                    , boletin.Descripcionboletin, boletin.DescripcionUrl, boletin.UsuarioRegistro, Boletin.IndicadorEstado, null);
+                    , boletin.DescripcionFormato, boletin.DescripcionUrl, boletin.UsuarioRegistro, boletin.IndicadorEstado, null);
                 repositorioDocumento.Modificar();
             }
             else
@@ -60,7 +60,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 CodigoDocumento = p.CodigoDocumento,
                 CodigoTipoDocumento = p.CodigoTipoDocumento,
                 DescripcionContenido = p.DescripcionContenido,
-                DescripcionBoletin = p.DescripcionBoletin,
+                DescripcionFormato = p.DescripcionFormato,
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
@@ -81,7 +81,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             else
             {
                 string mensajeValidacion = DocumentoEntity.Validar(boletin.DescripcionTitulo, boletin.DescripcionResena
-                    , boletin.Descripcionboletin, boletin.DescripcionUrl);
+                    , boletin.DescripcionFormato, boletin.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }

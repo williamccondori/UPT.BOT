@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
-    <Folder Include="BOT\Administracion\Documento\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">

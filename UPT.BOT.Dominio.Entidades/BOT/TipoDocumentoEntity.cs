@@ -15,5 +15,6 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public const string Boletin = "B";
         public const string Formato = "F";
         public const string Reglamento = "R";
+        public const string Requisito = "Q";
     }
 }

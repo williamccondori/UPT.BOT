@@ -1,4 +1,5 @@
-﻿using UPT.BOT.Aplicacion.DTOs.Shared;
+﻿using System.Collections.Generic;
+using UPT.BOT.Aplicacion.DTOs.Shared;
 
 namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
@@ -9,5 +10,6 @@ namespace UPT.BOT.Aplicacion.DTOs.BOT
         public string DescripcionImagen { get; set; }
         public string DescripcionResena { get; set; }
         public string DescripcionUrl { get; set; }
+        public List<DetalleGaleriaDto> Detalles { get; set; }
     }
 }

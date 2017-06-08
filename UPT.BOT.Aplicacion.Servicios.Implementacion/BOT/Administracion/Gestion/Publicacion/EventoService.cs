@@ -5,6 +5,7 @@ using System.Text;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Administracion.Gestion.Publicacion;
+using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
@@ -12,37 +13,37 @@ using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion.Publicacion
 {
-    public class EventoService : IEventoService
+    public class EventoService : BaseService, IEventoService
     {
-        private readonly IPublicacionRepository repositorioPublicacion;
+        private readonly IEventoRepository repositorioEvento;
 
         public EventoService()
         {
-            repositorioPublicacion = new PublicacionRepository(new BotContext());
+            repositorioEvento = new EventoRepository(contexto);
         }
 
         public bool Eliminar(object id)
         {
-            repositorioPublicacion.Eliminar(id);
+            repositorioEvento.Eliminar(id);
             return true;
         }
 
-        public bool Guardar(EventoDto Evento)
+        public bool Guardar(EventoDto evento)
         {
-            Validar(Evento);
+            Validar(evento);
 
-            if (Evento.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (evento.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                PublicacionEntity Publicacion = PublicacionEntity.Crear(TipoPublicacionEntity.Evento, Evento.DescripcionTitulo
-                    , Evento.DescripcionResena, Evento.DescripcionEvento, Evento.DescripcionUrl, Evento.UsuarioRegistro, null);
-                repositorioPublicacion.Crear(Publicacion);
+                EventoEntity evento_ = EventoEntity.Crear(evento.DescripcionTitulo, evento.DescripcionImagen, evento.DescripcionResena, evento.DescripcionUrl
+                    , evento.FechaEvento, evento.DescripcionLugar, evento.DescripcionMapa, evento.IndicadorConcluido, evento.UsuarioRegistro);
+                repositorioEvento.Crear(evento_);
             }
-            else if (Evento.EstadoObjeto == EstadoObjeto.Modificado)
+            else if (evento.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                PublicacionEntity Publicacion = repositorioPublicacion.Buscar(Evento.CodigoPublicacion);
-                Publicacion.Modificar(Evento.DescripcionTitulo, Evento.DescripcionResena
-                    , Evento.DescripcionEvento, Evento.DescripcionUrl, Evento.UsuarioRegistro, Evento.IndicadorEstado, null);
-                repositorioPublicacion.Modificar();
+                EventoEntity evento_ = repositorioEvento.Buscar(evento.CodigoEvento);
+                evento_.Modificar(evento.DescripcionTitulo, evento.DescripcionImagen, evento.DescripcionResena, evento.DescripcionUrl
+                    , evento.FechaEvento, evento.DescripcionLugar, evento.DescripcionMapa, evento.IndicadorConcluido, evento.IndicadorEstado, evento.UsuarioRegistro);
+                repositorioEvento.Modificar();
             }
             else
                 throw new Exception("Acción inválida");
@@ -53,35 +54,37 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
         public IList<EventoDto> Obtener()
         {
-            List<PublicacionEntity> Publicacions = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Evento).ToList();
+            List<EventoEntity> eventos = repositorioEvento.Leer().ToList();
 
-            List<EventoDto> Eventoes = Publicacions.Select(p => new EventoDto
+            List<EventoDto> eventos_ = eventos.Select(p => new EventoDto
             {
-                CodigoPublicacion = p.CodigoPublicacion,
-                CodigoTipoPublicacion = p.CodigoTipoPublicacion,
-                DescripcionContenido = p.DescripcionContenido,
-                DescripcionEvento = p.DescripcionEvento,
+                CodigoEvento = p.CodigoEvento,
+                DescripcionImagen = p.DescripcionLugar,
+                DescripcionLugar = p.DescripcionLugar,
+                DescripcionMapa = p.DescripcionMapa,
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
+                FechaEvento = p.FechaEvento,
+                IndicadorConcluido = p.IndicadorConcluido,
                 DescripcionUrl = p.DescripcionUrl,
                 IndicadorEstado = p.IndicadorEstado,
                 FechaRegistro = p.FechaRegistro,
                 UsuarioRegistro = p.UsuarioRegistro
             }).ToList();
 
-            return Eventoes;
+            return eventos_;
         }
 
-        private void Validar(EventoDto Evento)
+        private void Validar(EventoDto evento)
         {
             StringBuilder mensaje = new StringBuilder();
 
-            if (Evento == null)
+            if (evento == null)
                 mensaje.Append("No se encuentan los datos necesarios para el proceso.");
             else
             {
-                string mensajeValidacion = PublicacionEntity.Validar(Evento.DescripcionTitulo, Evento.DescripcionResena
-                    , Evento.DescripcionEvento, Evento.DescripcionUrl);
+                string mensajeValidacion = PublicacionEntity.Validar(evento.DescripcionTitulo, evento.DescripcionResena, evento.DescripcionImagen
+                    , evento.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }

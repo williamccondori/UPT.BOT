@@ -11,9 +11,9 @@
                 CodigoDocumento: 0,
                 DescripcionTitulo: '',
                 DescripcionResena: '',
-                DescripcionReglamento: '',
+                DescripcionFormato: '',
                 DescripcionUrl: '',
-                IndicadorEstado: true,
+                IndicadorEstado: 'A',
                 EstadoObjeto: EstadoObjeto.SinCambios
             };
         };
@@ -32,16 +32,17 @@
             });
         };
         $scope.Crear = function () {
+            $scope.Reset();
             $scope.Modelo.EstadoObjeto = EstadoObjeto.Nuevo;
             Bootstrap.AbrirModal('#modalReglamento');
         };
         $scope.Modificar = function (modelo) {
+            $scope.Reset();
             $scope.Modelo = modelo;
             $scope.Modelo.EstadoObjeto = EstadoObjeto.Modificado;
             Bootstrap.AbrirModal('#modalReglamento');
         };
         $scope.Cancelar = function () {
-            $scope.Reset();
             Bootstrap.CerrarModal('#modalReglamento');
         };
         $scope.Guardar = function () {

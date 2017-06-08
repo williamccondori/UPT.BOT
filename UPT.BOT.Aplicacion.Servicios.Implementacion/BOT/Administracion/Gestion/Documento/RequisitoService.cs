@@ -34,14 +34,14 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             if (Requisito.EstadoObjeto == EstadoObjeto.Nuevo)
             {
                 DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.Requisito, Requisito.DescripcionTitulo
-                    , Requisito.DescripcionResena, Requisito.DescripcionRequisito, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, null);
+                    , Requisito.DescripcionResena, Requisito.DescripcionFormato, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, null);
                 repositorioDocumento.Crear(documento);
             }
             else if (Requisito.EstadoObjeto == EstadoObjeto.Modificado)
             {
                 DocumentoEntity documento = repositorioDocumento.Buscar(Requisito.CodigoDocumento);
                 documento.Modificar(Requisito.DescripcionTitulo, Requisito.DescripcionResena
-                    , Requisito.DescripcionRequisito, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, Requisito.IndicadorEstado, null);
+                    , Requisito.DescripcionFormato, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, Requisito.IndicadorEstado, null);
                 repositorioDocumento.Modificar();
             }
             else
@@ -60,7 +60,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 CodigoDocumento = p.CodigoDocumento,
                 CodigoTipoDocumento = p.CodigoTipoDocumento,
                 DescripcionContenido = p.DescripcionContenido,
-                DescripcionRequisito = p.DescripcionRequisito,
+                DescripcionFormato = p.DescripcionFormato,
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
@@ -81,7 +81,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             else
             {
                 string mensajeValidacion = DocumentoEntity.Validar(Requisito.DescripcionTitulo, Requisito.DescripcionResena
-                    , Requisito.DescripcionRequisito, Requisito.DescripcionUrl);
+                    , Requisito.DescripcionFormato, Requisito.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }

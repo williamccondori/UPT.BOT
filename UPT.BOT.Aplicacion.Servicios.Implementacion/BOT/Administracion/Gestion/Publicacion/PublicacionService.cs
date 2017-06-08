@@ -5,6 +5,7 @@ using System.Text;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Administracion.Gestion.Publicacion;
+using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
@@ -12,13 +13,13 @@ using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion.Publicacion
 {
-    public class PublicacionService : IPublicacionService
+    public class PublicacionService : BaseService, IPublicacionService
     {
         private readonly IPublicacionRepository repositorioPublicacion;
 
         public PublicacionService()
         {
-            repositorioPublicacion = new PublicacionRepository(new BotContext());
+            repositorioPublicacion = new PublicacionRepository(contexto);
         }
 
         public bool Eliminar(object id)
@@ -27,21 +28,21 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return true;
         }
 
-        public bool Guardar(PublicacionDto Publicacion)
+        public bool Guardar(PublicacionDto publicacion)
         {
-            Validar(Publicacion);
+            Validar(publicacion);
 
-            if (Publicacion.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (publicacion.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                PublicacionEntity Publicacion = PublicacionEntity.Crear(TipoPublicacionEntity.Publicacion, Publicacion.DescripcionTitulo
-                    , Publicacion.DescripcionResena, Publicacion.DescripcionPublicacion, Publicacion.DescripcionUrl, Publicacion.UsuarioRegistro, null);
-                repositorioPublicacion.Crear(Publicacion);
+                PublicacionEntity publicacion_ = PublicacionEntity.Crear(TipoPublicacionEntity.Publicacion, publicacion.DescripcionTitulo, publicacion.DescripcionImagen
+                    , publicacion.DescripcionResumen, publicacion.DescripcionResena, publicacion.DescripcionUrl, publicacion.UsuarioRegistro);
+                repositorioPublicacion.Crear(publicacion_);
             }
-            else if (Publicacion.EstadoObjeto == EstadoObjeto.Modificado)
+            else if (publicacion.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                PublicacionEntity Publicacion = repositorioPublicacion.Buscar(Publicacion.CodigoPublicacion);
-                Publicacion.Modificar(Publicacion.DescripcionTitulo, Publicacion.DescripcionResena
-                    , Publicacion.DescripcionPublicacion, Publicacion.DescripcionUrl, Publicacion.UsuarioRegistro, Publicacion.IndicadorEstado, null);
+                PublicacionEntity publicacion_ = repositorioPublicacion.Buscar(publicacion.CodigoPublicacion);
+                publicacion_.Modificar(publicacion.DescripcionTitulo, publicacion.DescripcionImagen, publicacion.DescripcionResumen
+                    , publicacion.DescripcionResena, publicacion.DescripcionUrl, publicacion.IndicadorEstado, publicacion.UsuarioRegistro);
                 repositorioPublicacion.Modificar();
             }
             else
@@ -53,15 +54,15 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
         public IList<PublicacionDto> Obtener()
         {
-            List<PublicacionEntity> Publicacions = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Publicacion).ToList();
+            List<PublicacionEntity> publicaciones = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Publicacion).ToList();
 
-            List<PublicacionDto> Publicaciones = Publicacions.Select(p => new PublicacionDto
+            List<PublicacionDto> publicaciones_ = publicaciones.Select(p => new PublicacionDto
             {
                 CodigoPublicacion = p.CodigoPublicacion,
-                CodigoTipoPublicacion = p.CodigoTipoPublicacion,
-                DescripcionContenido = p.DescripcionContenido,
-                DescripcionPublicacion = p.DescripcionPublicacion,
                 DescripcionResena = p.DescripcionResena,
+                DescripcionResumen = p.DescripcionResumen,
+                DescripcionImagen = p.DescripcionImagen,
+                CodigoTipoPublicacion = p.CodigoTipoPublicacion,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
                 IndicadorEstado = p.IndicadorEstado,
@@ -69,7 +70,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 UsuarioRegistro = p.UsuarioRegistro
             }).ToList();
 
-            return Publicaciones;
+            return publicaciones_;
         }
 
         private void Validar(PublicacionDto Publicacion)
@@ -81,7 +82,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             else
             {
                 string mensajeValidacion = PublicacionEntity.Validar(Publicacion.DescripcionTitulo, Publicacion.DescripcionResena
-                    , Publicacion.DescripcionPublicacion, Publicacion.DescripcionUrl);
+                    , Publicacion.DescripcionImagen, Publicacion.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }

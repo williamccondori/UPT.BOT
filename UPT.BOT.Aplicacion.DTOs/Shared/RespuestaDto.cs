@@ -5,8 +5,6 @@ namespace UPT.BOT.Aplicacion.DTOs.Shared
 {
     public class RespuestaDto<TDatos>
     {
-        private IList<EventoDto> list;
-
         public bool Estado { get; set; }
         public string Mensaje { get; set; }
         public string Traza { get; set; }

@@ -14,5 +14,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
 
         public const string Actualidad = "A";
         public const string Noticia = "N";
+        public const string Comunicado = "C";
+        public const string Publicacion = "P";
     }
 }

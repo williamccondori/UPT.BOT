@@ -45,6 +45,12 @@
     <Compile Include="BOT\Administracion\Gestion\Documento\BoletinService.cs" />
     <Compile Include="BOT\Administracion\Gestion\Documento\FormatoService.cs" />
     <Compile Include="BOT\Administracion\Gestion\Documento\ReglamentoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\RequisitoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\ActualidadService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\ComunicadoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\EventoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\GaleriaService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\PublicacionService.cs" />
     <Compile Include="BOT\Asistente\Buzon\BuzonService.cs" />
     <Compile Include="BOT\Asistente\Documento\BoletinService.cs" />
     <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />

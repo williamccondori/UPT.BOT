@@ -27,21 +27,21 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return true;
         }
 
-        public bool Guardar(ReglamentoDto Reglamento)
+        public bool Guardar(ReglamentoDto reglamento)
         {
-            Validar(Reglamento);
+            Validar(reglamento);
 
-            if (Reglamento.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (reglamento.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.Reglamento, Reglamento.DescripcionTitulo
-                    , Reglamento.DescripcionResena, Reglamento.DescripcionReglamento, Reglamento.DescripcionUrl, Reglamento.UsuarioRegistro, null);
+                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.Reglamento, reglamento.DescripcionTitulo
+                    , reglamento.DescripcionResena, reglamento.DescripcionFormato, reglamento.DescripcionUrl, reglamento.UsuarioRegistro, null);
                 repositorioDocumento.Crear(documento);
             }
-            else if (Reglamento.EstadoObjeto == EstadoObjeto.Modificado)
+            else if (reglamento.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                DocumentoEntity documento = repositorioDocumento.Buscar(Reglamento.CodigoDocumento);
-                documento.Modificar(Reglamento.DescripcionTitulo, Reglamento.DescripcionResena
-                    , Reglamento.DescripcionReglamento, Reglamento.DescripcionUrl, Reglamento.UsuarioRegistro, Reglamento.IndicadorEstado, null);
+                DocumentoEntity documento = repositorioDocumento.Buscar(reglamento.CodigoDocumento);
+                documento.Modificar(reglamento.DescripcionTitulo, reglamento.DescripcionResena
+                    , reglamento.DescripcionFormato, reglamento.DescripcionUrl, reglamento.UsuarioRegistro, reglamento.IndicadorEstado, null);
                 repositorioDocumento.Modificar();
             }
             else
@@ -60,7 +60,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 CodigoDocumento = p.CodigoDocumento,
                 CodigoTipoDocumento = p.CodigoTipoDocumento,
                 DescripcionContenido = p.DescripcionContenido,
-                DescripcionReglamento = p.DescripcionReglamento,
+                DescripcionFormato = p.DescripcionFormato,
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
@@ -72,16 +72,16 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return Reglamentoes;
         }
 
-        private void Validar(ReglamentoDto Reglamento)
+        private void Validar(ReglamentoDto reglamento)
         {
             StringBuilder mensaje = new StringBuilder();
 
-            if (Reglamento == null)
+            if (reglamento == null)
                 mensaje.Append("No se encuentan los datos necesarios para el proceso.");
             else
             {
-                string mensajeValidacion = DocumentoEntity.Validar(Reglamento.DescripcionTitulo, Reglamento.DescripcionResena
-                    , Reglamento.DescripcionReglamento, Reglamento.DescripcionUrl);
+                string mensajeValidacion = DocumentoEntity.Validar(reglamento.DescripcionTitulo, reglamento.DescripcionResena
+                    , reglamento.DescripcionFormato, reglamento.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }

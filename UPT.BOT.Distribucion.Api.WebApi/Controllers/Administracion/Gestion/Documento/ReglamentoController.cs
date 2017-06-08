@@ -27,11 +27,11 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Administracion.Gestion.Doc
         }
 
         [HttpPost, Route(Predeterminado)]
-        public RespuestaDto<bool> Guardar(ReglamentoDto Reglamento)
+        public RespuestaDto<bool> Guardar(ReglamentoDto reglamento)
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<bool>(servicio.Guardar(Reglamento));
+                return new RespuestaDto<bool>(servicio.Guardar(reglamento));
             });
         }
 

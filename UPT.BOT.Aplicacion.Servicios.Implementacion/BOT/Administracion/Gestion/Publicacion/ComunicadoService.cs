@@ -5,6 +5,7 @@ using System.Text;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Aplicacion.Servicios.BOT.Administracion.Gestion.Publicacion;
+using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
@@ -12,13 +13,13 @@ using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion.Publicacion
 {
-    public class ComunicadoService : IComunicadoService
+    public class ComunicadoService : BaseService, IComunicadoService
     {
         private readonly IPublicacionRepository repositorioPublicacion;
 
         public ComunicadoService()
         {
-            repositorioPublicacion = new PublicacionRepository(new BotContext());
+            repositorioPublicacion = new PublicacionRepository(contexto);
         }
 
         public bool Eliminar(object id)
@@ -27,21 +28,21 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return true;
         }
 
-        public bool Guardar(ComunicadoDto Comunicado)
+        public bool Guardar(ComunicadoDto comunicado)
         {
-            Validar(Comunicado);
+            Validar(comunicado);
 
-            if (Comunicado.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (comunicado.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                PublicacionEntity Publicacion = PublicacionEntity.Crear(TipoPublicacionEntity.Comunicado, Comunicado.DescripcionTitulo
-                    , Comunicado.DescripcionResena, Comunicado.DescripcionComunicado, Comunicado.DescripcionUrl, Comunicado.UsuarioRegistro, null);
-                repositorioPublicacion.Crear(Publicacion);
+                PublicacionEntity publicacion = PublicacionEntity.Crear(TipoPublicacionEntity.Comunicado, comunicado.DescripcionTitulo, comunicado.DescripcionImagen
+                    , comunicado.DescripcionResumen, comunicado.DescripcionResena, comunicado.DescripcionUrl, comunicado.UsuarioRegistro);
+                repositorioPublicacion.Crear(publicacion);
             }
-            else if (Comunicado.EstadoObjeto == EstadoObjeto.Modificado)
+            else if (comunicado.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                PublicacionEntity Publicacion = repositorioPublicacion.Buscar(Comunicado.CodigoPublicacion);
-                Publicacion.Modificar(Comunicado.DescripcionTitulo, Comunicado.DescripcionResena
-                    , Comunicado.DescripcionComunicado, Comunicado.DescripcionUrl, Comunicado.UsuarioRegistro, Comunicado.IndicadorEstado, null);
+                PublicacionEntity publicacion = repositorioPublicacion.Buscar(comunicado.CodigoPublicacion);
+                publicacion.Modificar(comunicado.DescripcionTitulo, comunicado.DescripcionImagen, comunicado.DescripcionResumen
+                    , comunicado.DescripcionResena, comunicado.DescripcionUrl, comunicado.IndicadorEstado, comunicado.UsuarioRegistro);
                 repositorioPublicacion.Modificar();
             }
             else
@@ -53,15 +54,15 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
         public IList<ComunicadoDto> Obtener()
         {
-            List<PublicacionEntity> Publicacions = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Comunicado).ToList();
+            List<PublicacionEntity> Publicaciones = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Comunicado).ToList();
 
-            List<ComunicadoDto> Comunicadoes = Publicacions.Select(p => new ComunicadoDto
+            List<ComunicadoDto> Comunicadoes = Publicaciones.Select(p => new ComunicadoDto
             {
                 CodigoPublicacion = p.CodigoPublicacion,
-                CodigoTipoPublicacion = p.CodigoTipoPublicacion,
-                DescripcionContenido = p.DescripcionContenido,
-                DescripcionComunicado = p.DescripcionComunicado,
                 DescripcionResena = p.DescripcionResena,
+                DescripcionResumen = p.DescripcionResumen,
+                DescripcionImagen = p.DescripcionImagen,
+                CodigoTipoPublicacion = p.CodigoTipoPublicacion,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
                 IndicadorEstado = p.IndicadorEstado,
@@ -72,16 +73,16 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return Comunicadoes;
         }
 
-        private void Validar(ComunicadoDto Comunicado)
+        private void Validar(ComunicadoDto comunicado)
         {
             StringBuilder mensaje = new StringBuilder();
 
-            if (Comunicado == null)
+            if (comunicado == null)
                 mensaje.Append("No se encuentan los datos necesarios para el proceso.");
             else
             {
-                string mensajeValidacion = PublicacionEntity.Validar(Comunicado.DescripcionTitulo, Comunicado.DescripcionResena
-                    , Comunicado.DescripcionComunicado, Comunicado.DescripcionUrl);
+                string mensajeValidacion = PublicacionEntity.Validar(comunicado.DescripcionTitulo, comunicado.DescripcionResena
+                    , comunicado.DescripcionImagen, comunicado.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }
