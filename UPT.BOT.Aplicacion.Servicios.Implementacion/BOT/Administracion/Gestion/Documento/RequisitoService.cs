@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +12,11 @@ using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion.Documento
 {
-    public class BoletinService : IBoletinService
+    public class RequisitoService : IRequisitoService
     {
         private readonly IDocumentoRepository repositorioDocumento;
 
-        public BoletinService()
+        public RequisitoService()
         {
             repositorioDocumento = new DocumentoRepository(new BotContext());
         }
@@ -27,21 +27,21 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             return true;
         }
 
-        public bool Guardar(BoletinDto boletin)
+        public bool Guardar(RequisitoDto Requisito)
         {
-            Validar(boletin);
+            Validar(Requisito);
 
-            if (boletin.EstadoObjeto == EstadoObjeto.Nuevo)
+            if (Requisito.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.boletin, boletin.DescripcionTitulo
-                    , boletin.DescripcionResena, boletin.Descripcionboletin, boletin.DescripcionUrl, boletin.UsuarioRegistro, null);
+                DocumentoEntity documento = DocumentoEntity.Crear(TipoDocumentoEntity.Requisito, Requisito.DescripcionTitulo
+                    , Requisito.DescripcionResena, Requisito.DescripcionRequisito, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, null);
                 repositorioDocumento.Crear(documento);
             }
-            else if (boletin.EstadoObjeto == EstadoObjeto.Modificado)
+            else if (Requisito.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                DocumentoEntity documento = repositorioDocumento.Buscar(boletin.CodigoDocumento);
-                documento.Modificar(boletin.DescripcionTitulo, boletin.DescripcionResena
-                    , boletin.Descripcionboletin, boletin.DescripcionUrl, boletin.UsuarioRegistro, Boletin.IndicadorEstado, null);
+                DocumentoEntity documento = repositorioDocumento.Buscar(Requisito.CodigoDocumento);
+                documento.Modificar(Requisito.DescripcionTitulo, Requisito.DescripcionResena
+                    , Requisito.DescripcionRequisito, Requisito.DescripcionUrl, Requisito.UsuarioRegistro, Requisito.IndicadorEstado, null);
                 repositorioDocumento.Modificar();
             }
             else
@@ -51,16 +51,16 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
         }
 
-        public IList<BoletinDto> Obtener()
+        public IList<RequisitoDto> Obtener()
         {
-            List<DocumentoEntity> documentos = repositorioDocumento.LeerXTipo(TipoDocumentoEntity.Boletin).ToList();
+            List<DocumentoEntity> documentos = repositorioDocumento.LeerXTipo(TipoDocumentoEntity.Requisito).ToList();
 
-            List<BoletinDto> Boletines = documentos.Select(p => new BoletinDto
+            List<RequisitoDto> Requisitoes = documentos.Select(p => new RequisitoDto
             {
                 CodigoDocumento = p.CodigoDocumento,
                 CodigoTipoDocumento = p.CodigoTipoDocumento,
                 DescripcionContenido = p.DescripcionContenido,
-                DescripcionBoletin = p.DescripcionBoletin,
+                DescripcionRequisito = p.DescripcionRequisito,
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
@@ -69,19 +69,19 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 UsuarioRegistro = p.UsuarioRegistro
             }).ToList();
 
-            return Boletines;
+            return Requisitoes;
         }
 
-        private void Validar(BoletinDto boletin)
+        private void Validar(RequisitoDto Requisito)
         {
             StringBuilder mensaje = new StringBuilder();
 
-            if (boletin == null)
+            if (Requisito == null)
                 mensaje.Append("No se encuentan los datos necesarios para el proceso.");
             else
             {
-                string mensajeValidacion = DocumentoEntity.Validar(boletin.DescripcionTitulo, boletin.DescripcionResena
-                    , boletin.Descripcionboletin, boletin.DescripcionUrl);
+                string mensajeValidacion = DocumentoEntity.Validar(Requisito.DescripcionTitulo, Requisito.DescripcionResena
+                    , Requisito.DescripcionRequisito, Requisito.DescripcionUrl);
 
                 mensaje.Append(mensajeValidacion);
             }
