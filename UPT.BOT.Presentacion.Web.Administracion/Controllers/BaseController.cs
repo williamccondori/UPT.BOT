@@ -31,23 +31,48 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             }
         }
 
+        protected void Ejecutar(Action accion)
+        {
+            try
+            {
+                accion();
+            }
+            catch (Exception exepcion)
+            {
+                TempData["MensajeError"] = exepcion.Message;
+
+                RedirectToRoute("~/Seguridad/Login");
+            }
+        }
+
         protected override void OnActionExecuting(ActionExecutingContext aoContexto)
         {
-            string controlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
-            string accion = aoContexto.ActionDescriptor.ActionName;
-
-            if (!Sesion.ValidarSesion())
+            try
             {
-                TempData["MensajeError"] = "Su sesión ha expirado, por favor, vuelva a validar sus credenciales.";
+                string controlador = aoContexto.ActionDescriptor.ControllerDescriptor.ControllerName;
+                string accion = aoContexto.ActionDescriptor.ActionName;
+
+                if (!Sesion.ValidarSesion())
+                {
+                    TempData["MensajeError"] = "Su sesión ha expirado, por favor, vuelva a validar sus credenciales.";
+
+                    aoContexto.Result = new RedirectResult("~/Seguridad/Login");
+
+                    return;
+                }
+
+                if (aoContexto.HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
+                {
+
+                }
+            }
+            catch (Exception excepcion)
+            {
+                TempData["MensajeError"] = excepcion.Message;
 
                 aoContexto.Result = new RedirectResult("~/Seguridad/Login");
 
                 return;
-            }
-
-            if (aoContexto.HttpContext.Request.Headers["X-Requested-With"] != "XMLHttpRequest")
-            {
-
             }
         }
     }

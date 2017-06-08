@@ -20,49 +20,61 @@ namespace UPT.BOT.Presentacion.Web.Acceso
 
         protected RespuestaDto<T> Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
         {
-            string resultado = string.Empty;
-
-            using (var cliente = new HttpClient())
+            try
             {
-                cliente.BaseAddress = new Uri(ruta);
-                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                cliente.DefaultRequestHeaders.Add("usuario", usuario);
-
-                HttpResponseMessage resultadoApi;
-
-                switch (metodo)
+                using (var cliente = new HttpClient())
                 {
-                    case Metodo.Post:
-                        {
-                            string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
-                            resultadoApi = cliente.PostAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
-                            break;
-                        }
-                    case Metodo.Put:
-                        {
-                            string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
-                            resultadoApi = cliente.PutAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
-                            break;
-                        }
-                    case Metodo.Delete:
-                        {
-                            resultadoApi = cliente.DeleteAsync(ruta + recurso).Result;
-                            break;
-                        }
-                    default: // Metodo.Get
-                        {
-                            resultadoApi = cliente.GetAsync(ruta + recurso).Result;
-                            break;
-                        }
+                    cliente.BaseAddress = new Uri(ruta);
+                    cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    cliente.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                    HttpResponseMessage resultadoApi;
+
+                    switch (metodo)
+                    {
+                        case Metodo.Post:
+                            {
+                                string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
+                                resultadoApi = cliente.PostAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+                                break;
+                            }
+                        case Metodo.Put:
+                            {
+                                string json = parametro == null ? string.Empty : JsonConvert.SerializeObject(parametro);
+                                resultadoApi = cliente.PutAsync(recurso, new StringContent(json, Encoding.UTF8, "application/json")).Result;
+                                break;
+                            }
+                        default:
+                            {
+                                resultadoApi = cliente.GetAsync(ruta + recurso).Result;
+                                break;
+                            }
+                    }
+
+                    if (resultadoApi.IsSuccessStatusCode)
+                    {
+                        string resultado = resultadoApi.IsSuccessStatusCode ? resultadoApi.Content.ReadAsStringAsync().Result : string.Empty;
+
+                        if (string.IsNullOrEmpty(resultado))
+                            throw new Exception("No se obtuvo resultados de la consulta.");
+
+                        return JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
+                    }
+                    else
+                    {
+                        string error = resultadoApi.ReasonPhrase;
+
+                        throw new Exception(error);
+                    }
                 }
-
-                resultado = resultadoApi.IsSuccessStatusCode ? resultadoApi.Content.ReadAsStringAsync().Result : string.Empty;
             }
-
-            return string.IsNullOrEmpty(resultado) ? default(RespuestaDto<T>) : JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
+            catch (Exception excepcion)
+            {
+                return new RespuestaDto<T>(excepcion.Message, excepcion.StackTrace);
+            }
         }
     }
+
 
     public enum Metodo
     {

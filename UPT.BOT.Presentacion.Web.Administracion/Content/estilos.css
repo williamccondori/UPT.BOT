@@ -1,0 +1,40 @@
+.upt-logo{
+    margin-bottom: 20px;
+}
+
+.upt-usuario h1{
+    font-weight: bold;
+    font-size: 16px !important;
+}
+
+.jumbotron h1{
+    font-weight: bold;
+    font-size: 18px !important;
+}
+
+.jumbotron p{
+    font-size: 14px !important;
+}
+
+.panel>.upt-table{
+    height: 400px !important;
+    overflow-y: scroll !important;
+}
+
+.control-label{
+    font-weight: bold !important;
+}
+
+.form-control-checkbox {
+    display: block !important;
+}
+
+blockquote {
+    border-left: 5px solid #286090;
+}
+
+.input-group a{
+    text-decoration: none !important;
+    color: #666 !important;
+    font-weight: bold;
+}

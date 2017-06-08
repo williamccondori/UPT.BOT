@@ -42,6 +42,15 @@
   <ItemGroup>
     <Compile Include="BOT\Administracion\Buzon\IBuzonService.cs" />
     <Compile Include="BOT\Administracion\Configuracion\IUsuarioService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\IBoletinService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\IFormatoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\IReglamentoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\IRequisitoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\IActualidadService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\IComunicadoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\IEventoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\IPublicacionService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Publicacion\IGaleriaService.cs" />
     <Compile Include="BOT\Asistente\Buzon\IBuzonService.cs" />
     <Compile Include="BOT\Asistente\Documento\IBoletinService.cs" />
     <Compile Include="BOT\Asistente\Documento\IFormatoService.cs" />
@@ -60,7 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
-    <Folder Include="BOT\Administracion\Gestion\" />
+    <Folder Include="BOT\Administracion\Documento\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">

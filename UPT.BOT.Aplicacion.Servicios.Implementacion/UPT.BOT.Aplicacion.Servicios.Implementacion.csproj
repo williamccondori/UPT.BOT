@@ -42,6 +42,9 @@
   <ItemGroup>
     <Compile Include="BOT\Administracion\Buzon\BuzonService.cs" />
     <Compile Include="BOT\Administracion\Configuracion\UsuarioService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\BoletinService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\FormatoService.cs" />
+    <Compile Include="BOT\Administracion\Gestion\Documento\ReglamentoService.cs" />
     <Compile Include="BOT\Asistente\Buzon\BuzonService.cs" />
     <Compile Include="BOT\Asistente\Documento\BoletinService.cs" />
     <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />
@@ -61,7 +64,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BOT\Administracion\Analisis\" />
-    <Folder Include="BOT\Administracion\Gestion\" />
     <Folder Include="BOT\Asistente\Planestudio\" />
   </ItemGroup>
   <ItemGroup>

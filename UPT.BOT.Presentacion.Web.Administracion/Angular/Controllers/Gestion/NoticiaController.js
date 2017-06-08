@@ -85,11 +85,11 @@ var Modal = {
 
 var Mensaje = {
     Correcto: {
-        Titulo: "CORRECTO !",
+        Titulo: "Correcto !",
         Descripcion: "Se han guardado los cambios."
     },
     Error: {
-        Titulo: "ERROR !",
+        Titulo: "Error !",
         Descripcion: "Se ha presentado un problema en la aplicación."
     }
 }

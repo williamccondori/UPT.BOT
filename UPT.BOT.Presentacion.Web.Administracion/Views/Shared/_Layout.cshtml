@@ -1,148 +1,119 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - UPT BOT</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
-    <style>
-
-        body {
-            font-family: 'segoe ui';
-        }
-
-        .fd-menu-0 {
-            background-color: #ECEFF1;
-        }
-
-        .fd-menu-1 {
-            background-color: #f2f4f5;
-        }
-        
-        .fd-menu {
-            padding: 20px;
-            display: block;
-            height: 900px;
-        }
-
-        .fd-menu-0 > h1 {
-            color: #000;
-            text-transform: uppercase;
-            font-size: 1.3em;
-            font-weight: bold;
-            font-family: 'segoe ui';
-            margin-bottom: 50px;
-        }
-
-
-        .fd-menu-1 > h1 {
-            color: #000;
-            font-size: 1.3em;
-            font-weight: bold;
-            font-family: 'segoe ui';
-            margin-bottom: 20px;
-        }
-
-        .fd-menu-1 blockquote {
-            padding: 10px;
-            font-size: 0.9em;
-            border-left: 5px solid #673ab7 !important;
-        }
-
-            .fd-menu > ul {
-                list-style: none;
-                padding: 0;
-            }
-
-                .fd-menu > ul > li {
-                    display: block;
-                    margin-bottom: 2px;
-                }
-
-                    .fd-menu > ul > li > a {
-                        text-decoration: none;
-                        color: #000;
-                        font-family: 'segoe ui';
-                        display: block;
-                        padding: 10px 15px 10px 15px;
-                        transition: all 0.3s ease-in-out;
-                        cursor: pointer;
-                    }
-
-                        .fd-menu > ul > li > a > i {
-                            margin-right: 10px;
-                        }
-
-                        .fd-menu > ul > li > a:hover {
-                            background-color: #CFD8DC;
-                        }
-
-        .fd-portada {
-        }
-
-            .fd-portada > h1 {
-                color: #000;
-                font-size: 1.6em;
-                font-weight: bold;
-                font-family: 'segoe ui';
-                margin-bottom: 50px;
-            }
-
-            .fd-portada h2 {
-                color: #000;
-                font-size: 1.5em;
-                font-weight: bold;
-                font-family: 'segoe ui';
-                margin-bottom: 50px;
-            }
-
-            .fd-portada blockquote {
-                border-left: 5px solid #673ab7 !important;
-            }
-
-    </style>
+    <link rel="stylesheet" href="~/Content/estilos.css">
 </head>
-<body ng-app="uptAdministracion">
-    
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-3 fd-menu animated fadeInLeft fd-menu-0">
-                <h1>ADMINISTRACIÓN</h1>
-                <ul>
-                    <li><a href="@Url.Action("Inicio","Principal")"><i class="fa fa-home" aria-hidden="true"></i>Inicio</a></li>
-                    <li><a href="@Url.Action("Inicio","Gestion")"><i class="fa fa-folder-open" aria-hidden="true"></i>Gestión</a></li>
-                    <li><a href="@Url.Action("Inicio","Analisis")"><i class="fa fa-folder-open" aria-hidden="true"></i>Análisis</a></li>
-                    <li><a href="@Url.Action("Inicio","Configuracion")"><i class="fa fa-folder-open" aria-hidden="true"></i>Configuración</a></li>
-                    <li><a href="@Url.Action("Inicio","Buzon")"><i class="fa fa-folder-open" aria-hidden="true"></i>Buzón</a></li>
-                    <li><a href="#"><i class="fa fa-folder-open" aria-hidden="true"></i>Módulos</a></li>
+<body ng-app="uptbot">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Menú</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Administración</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestión <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Informacion","Gestion")">Información</a></li>
+                            <li><a href="@Url.Action("Publicacion", "Gestion")">Publicaciones</a></li>
+                            <li><a href="@Url.Action("Planestudio", "Gestion")">Plan de estudios</a></li>
+                            <li><a href="@Url.Action("Documento", "Gestion")">Documentos</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Análisis</a></li>
+                    <li><a href="#">Configuración</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Módulos <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Buzón de sugerencias</a></li>
+                            <li><a href="#">Encuestas</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">WCONDORI <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Configuración</a></li>
+                            <li><a href="#">Cerrar sesión</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
-            <div class="col-xs-9">
-                @RenderBody()
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="col-sm-6">
+            <div class="panel panel-default upt-usuario">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Información del Usuario
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="text-center">
+                        <img src="~/Images/user.png" height="100" width="100" class="img-circle img-thumbnail" />
+                    </div>
+                    <div class="text-center">
+                        <h1>William Condori Quispe</h1>
+                        <small>WCONDORI</small>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-sm btn-success">Mi perfil <span class="glyphicon glyphicon-ok-circle"></span></button>
+                    <button type="button" class="btn btn-sm btn-danger">Configuración <span class="glyphicon glyphicon-ok-circle"></span></button>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        Todas las tareas
+                    </div>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item active">Inicio</a>
+                    <a href="#" class="list-group-item">Gestión</a>
+                    <a href="#" class="list-group-item">Análisis</a>
+                    <a href="#" class="list-group-item">Módulos</a>
+                    <a href="#" class="list-group-item">Configuración</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-18">
+            <div class="row">
+                <div class="col-xs-24">
+                    @RenderBody()
+                </div>
             </div>
         </div>
     </div>
-
-    
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesBootstrap.js"></script>
+    <script src="~/Angular/Utilidades/UtilidadesDefiniciones.js"></script>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-resource.js"></script>
     <script src="~/Scripts/angular-chart.js"></script>
     <script src="https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
-
-    <script src="~/Angular/Utilidades/UtilidadesBootstrap.js"></script>
-    <script src="~/Angular/Utilidades/UtilidadesDefiniciones.js"></script>
-
     <script src="~/Angular/app.js"></script>
-    <script src="~/Angular/Controllers/Principal/InicioController.js"></script>
-   
+    <script src="~/Angular/config.js"></script>
+    <script src="~/Angular/filter.js"></script>
+    <script src="~/Angular/Factories/BaseFactory.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

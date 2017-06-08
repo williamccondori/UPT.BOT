@@ -10,19 +10,19 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion
         {
         }
 
-        public RespuestaDto<List<ActualidadDto>> Obtener()
+        public RespuestaDto<bool> Eliminar(long codigoPublicacion)
         {
-            return Ejecutar<List<ActualidadDto>>("actualidad");
+            return Ejecutar<bool>(string.Format("actualidad/{0}", codigoPublicacion), Metodo.Delete);
         }
 
         public RespuestaDto<bool> Guardar(ActualidadDto actualidad)
         {
-            return Ejecutar<bool>("actualidad", Metodo.Post, new object[] { actualidad });
+            return Ejecutar<bool>("actualidad", Metodo.Post, actualidad);
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public RespuestaDto<List<ActualidadDto>> Obtener()
         {
-            return Ejecutar<bool>(string.Format("actualidad/{0}", id), Metodo.Delete);
+            return Ejecutar<List<ActualidadDto>>("actualidad");
         }
     }
 }

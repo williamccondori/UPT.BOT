@@ -17,7 +17,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion
 
         public RespuestaDto<bool> Guardar(EventoDto evento)
         {
-            return Ejecutar<bool>("evento", Metodo.Post, new object[] { evento });
+            return Ejecutar<bool>("evento", Metodo.Post, evento);
         }
 
         public RespuestaDto<bool> Eliminar(object id)

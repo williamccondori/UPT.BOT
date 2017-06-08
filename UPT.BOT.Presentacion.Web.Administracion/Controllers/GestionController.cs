@@ -1,22 +1,27 @@
 ﻿using System.Web.Mvc;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Presentacion.Web.Administracion.Collections;
+using UPT.BOT.Presentacion.Web.Administracion.Seguridad;
 
 namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 {
     public class GestionController : BaseController
     {
-        GestionCollection coleccion;
+        private GestionCollection coleccion;
 
         public GestionController()
         {
-            coleccion = new GestionCollection(ruta);
+            Ejecutar(() =>
+            {
+                coleccion = new GestionCollection(ruta);
+            });
         }
 
-        // página de inicio
-
         [HttpGet]
-        public ActionResult Inicio() => View();
+        public ActionResult Inicio()
+        {
+            return View();
+        }
 
         // acreditacion
 
@@ -32,13 +37,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         [HttpPost]
         public JsonResult EliminarAcreditacion(AcreditacionDto entidad) => Json(Ejecutar(() => coleccion.proxyAcreditacion.Eliminar(entidad.CodigoAdjunto)), JsonRequestBehavior.AllowGet);
 
-        // noticia
-
-        [HttpGet]
-        public ActionResult Noticia() => View();
-
-        [HttpGet]
-        public JsonResult ObtenerNoticia() => Json(Ejecutar(() => coleccion.proxyNoticia.Obtener()), JsonRequestBehavior.AllowGet);
 
         // actualidad
 
@@ -57,18 +55,140 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         public JsonResult ObtenerEvento() => Json(Ejecutar(() => coleccion.proxyEvento.Obtener()), JsonRequestBehavior.AllowGet);
 
 
-
-
-
-
-        [HttpGet]
-        public ActionResult Comunicado() => View();
-
+        public ActionResult Formato() => View();
+        public ActionResult Reglamento() => View();
+        public ActionResult Boletin() => View();
 
         [HttpGet]
-        public JsonResult ObtenerConvenio() => Json(Ejecutar(() => coleccion.proxyConvenio.Obtener()), JsonRequestBehavior.AllowGet);
+        public ActionResult Comunicado()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult ObtenerConvenio()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyConvenio.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
 
 
 
+        // gestion de documentos
+
+        [HttpGet]
+        public ActionResult Documento()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerFormato()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyFormato.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarFormato(FormatoDto formato)
+        {
+            return Json(Ejecutar(() =>
+            {
+                formato.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyFormato.Guardar(formato);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarFormato(FormatoDto formato)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyFormato.Eliminar(formato.CodigoDocumento))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerReglamento()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyReglamento.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarReglamento(ReglamentoDto reglamento)
+        {
+            return Json(Ejecutar(() =>
+            {
+                reglamento.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyReglamento.Guardar(reglamento);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarReglamento(ReglamentoDto reglamento)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyReglamento.Eliminar(reglamento.CodigoDocumento))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerRequisito()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyRequisito.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarRequisito(RequisitoDto requisito)
+        {
+            return Json(Ejecutar(() =>
+            {
+                requisito.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyRequisito.Guardar(requisito);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarRequisito(RequisitoDto requisito)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyRequisito.Eliminar(requisito.CodigoDocumento))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerBoletin()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyBoletin.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarBoletin(BoletinDto boletin)
+        {
+            return Json(Ejecutar(() =>
+            {
+                boletin.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyBoletin.Guardar(boletin);
+            })
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarBoletin(BoletinDto boletin)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyBoletin.Eliminar(boletin.CodigoDocumento))
+            , JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -1,95 +1,77 @@
 ﻿@{ Layout = null; }
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión - UPT BOT</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="~/Content/estilos.css">
 </head>
-
 <body>
-    <div class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Menú</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button> @Html.ActionLink("UPT BOT", "Inicio", "Principal", new { area = "" }, new { @class
-                = "navbar-brand" })
+                </button>
+                <a class="navbar-brand" href="#">Administración</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-offset-8 col-sm-8">
+                <div class="text-center upt-logo">
+                    <img src="~/Images/logo.png" height="130" width="100" />
+                </div>
+                <div>
+                    @{
+                        string lsMensaje = (string)TempData["MensajeError"];
+
+                        if (!string.IsNullOrEmpty(lsMensaje))
+                        {
+                            <div class="alert alert-warning">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <strong>Advertencia!</strong> @lsMensaje
+                            </div>
+                        }
+                    }
+                </div>
+                <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Iniciar Sesión
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form">
+                                <div class="form-group">
+                                    <label class="control-label">Usuario:</label>
+                                    <input class="form-control" type="text" name="DescripcionUsuario">
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Contraseña:</label>
+                                    <input class="form-control" type="password" name="DescripcionPassword">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-sm btn-primary">Ingresar <span class="glyphicon glyphicon-ok-circle"></span></button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
-                    <br /> 
-                    <div class="text-center">
-                        <img src="http://www.upt.edu.pe/contents/espg/web/public/images/logo_upt.png" width="120" alt="logo" />
-                    </div>
-                    <br />
-                </div>
-                    <div class="col-xs-24 col-sm-offset-8 col-sm-8 col-md-8 col-lg-8">
-
-                        @{
-                            string lsMensaje = (string)TempData["MensajeError"];
-
-                            if (!string.IsNullOrEmpty(lsMensaje))
-                            {
-                                <div class="alert alert-danger">
-                                    @lsMensaje
-                                </div>
-                            }
-                        }
-
-
-                        <form action="@Url.Action("Validar","Seguridad")" method="post" enctype="application/x-www-form-urlencoded">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    Información del usuario
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-horizontal">
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-5">Usuario:</label>
-                                            <div class="col-xs-19">
-                                                <input type="text" name="DescripcionUsuario" class="form-control" ng-model="Usuario.DescripcionUsuario">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-xs-5">Contraseña:</label>
-                                            <div class="col-xs-19">
-                                                <input type="password" name="DescripcionPassword" class="form-control" ng-model="Usuario.DescripcionPassword">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel-footer">
-                                    <div class="text-right">
-                                        <button type="submit" class="btn btn-primary btn-sm">Iniciar sesión <span class="glyphicon glyphicon-ok-sign"></span></button>
-                                        <button type="reset" class="btn btn-default btn-sm">Cancelar <span class="glyphicon glyphicon-remove-sign"></span></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-        </div>
-    </div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/respond.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-resource.js"></script>
-    <script src="~/Angular/app.js"></script>
-    <script src="~/Angular/config.js"></script>
-    <script src="~/Angular/Controllers/Seguridad/InicioController.js"></script>
 </body>
-
 </html>

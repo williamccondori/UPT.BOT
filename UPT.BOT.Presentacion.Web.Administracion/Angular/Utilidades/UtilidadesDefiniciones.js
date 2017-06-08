@@ -28,8 +28,8 @@ var MensajeConfirmacion = {
 }
 
 var MensajeRespuesta = {
-    Exito: "Los datos se guardaron correctamente.",
-    Error: "Se ha generado un error."
+    Exito: 'El proceso se ha completado correctamente',
+    Error: 'Se ha encontrado un error al realizar el proceso.'
 }
 
 var Mensaje = {
