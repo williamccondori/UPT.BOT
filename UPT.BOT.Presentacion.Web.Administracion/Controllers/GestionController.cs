@@ -38,14 +38,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         public JsonResult EliminarAcreditacion(AcreditacionDto entidad) => Json(Ejecutar(() => coleccion.proxyAcreditacion.Eliminar(entidad.CodigoAdjunto)), JsonRequestBehavior.AllowGet);
 
 
-        // actualidad
-
-        [HttpGet]
-        public ActionResult Actualidad() => View();
-
-        [HttpGet]
-        public JsonResult ObtenerActualidad() => Json(Ejecutar(() => coleccion.proxyActualidad.Obtener()), JsonRequestBehavior.AllowGet);
-
         // evento
 
         [HttpGet]
@@ -53,17 +45,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         [HttpGet]
         public JsonResult ObtenerEvento() => Json(Ejecutar(() => coleccion.proxyEvento.Obtener()), JsonRequestBehavior.AllowGet);
-
-
-        public ActionResult Formato() => View();
-        public ActionResult Reglamento() => View();
-        public ActionResult Boletin() => View();
-
-        [HttpGet]
-        public ActionResult Comunicado()
-        {
-            return View();
-        }
 
         [HttpGet]
         public JsonResult ObtenerConvenio()
@@ -74,6 +55,122 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         }
 
 
+
+        // gestion de publicaciones
+
+        [HttpGet]
+        public ActionResult Publicacion()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerActualidad()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyActualidad.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarActualidad(ActualidadDto actualidad)
+        {
+            return Json(Ejecutar(() =>
+            {
+                actualidad.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyActualidad.Guardar(actualidad);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarActualidad(ActualidadDto actualidad)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyActualidad.Eliminar(actualidad.CodigoPublicacion))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerComunicado()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyComunicado.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarComunicado(ComunicadoDto comunicado)
+        {
+            return Json(Ejecutar(() =>
+            {
+                comunicado.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyComunicado.Guardar(comunicado);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarComunicado(ComunicadoDto comunicado)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyComunicado.Eliminar(comunicado.CodigoPublicacion))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerGaleria()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyGaleria.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarGaleria(GaleriaDto galeria)
+        {
+            return Json(Ejecutar(() =>
+            {
+                galeria.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyGaleria.Guardar(galeria);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarGaleria(GaleriaDto galeria)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyGaleria.Eliminar(galeria.CodigoGaleria))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerPublicacion()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyPublicacion.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarPublicacion(PublicacionDto publicacion)
+        {
+            return Json(Ejecutar(() =>
+            {
+                publicacion.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyPublicacion.Guardar(publicacion);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarPublicacion(PublicacionDto publicacion)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyPublicacion.Eliminar(publicacion.CodigoPublicacion))
+            , JsonRequestBehavior.AllowGet);
+        }
 
         // gestion de documentos
 
