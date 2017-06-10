@@ -10,5 +10,6 @@ namespace UPT.BOT.Aplicacion.DTOs.BOT
         public string DescripcionImagen { get; set; }
         public string DescripcionResena { get; set; }
         public string IndicadorHabilitado { get; set; }
+        public bool IndicadorMostrar { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
+using UPT.BOT.Dominio.Entidades.Shared;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Shared;
@@ -39,6 +40,8 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
             Ejecutar(() =>
             {
                 DetalleGaleriaEntity entidad = contextoBot.DetalleGaleria.Find(id);
+                if (entidad == null) return;
+                entidad.Eliminar();
                 contextoBot.DetalleGaleria.Remove(entidad);
                 contextoBot.GuardarCambios();
             });

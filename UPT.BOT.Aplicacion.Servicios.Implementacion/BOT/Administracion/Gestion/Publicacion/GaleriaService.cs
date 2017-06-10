@@ -16,10 +16,12 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
     public class GaleriaService : BaseService, IGaleriaService
     {
         private readonly IGaleriaRepository repositorioGaleria;
+        private readonly IDetalleGaleriaRepository repositorioDetalleGaleria;
 
         public GaleriaService()
         {
             repositorioGaleria = new GaleriaRepository(contexto);
+            repositorioDetalleGaleria = new DetalleGaleriaRepository(contexto);
         }
 
         public bool Eliminar(object id)
@@ -34,18 +36,33 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
 
             if (galeria.EstadoObjeto == EstadoObjeto.Nuevo)
             {
-                /**
-                GaleriaEntity galeria_ = GaleriaEntity.Crear();
+                List<DetalleGaleriaEntity> detalles = galeria.Detalles.Where(p => p.IndicadorEstado == "A" && p.EstadoObjeto == EstadoObjeto.Nuevo)
+                    .Select(p => DetalleGaleriaEntity.Crear(galeria.CodigoGaleria, p.DescripcionTitulo, p.DescripcionImagen, p.DescripcionResena
+                    , galeria.UsuarioRegistro)).ToList();
+
+                GaleriaEntity galeria_ = GaleriaEntity.Crear(galeria.DescripcionTitulo, galeria.DescripcionImagen
+                    , galeria.DescripcionResena, galeria.DescripcionUrl, detalles, galeria.UsuarioRegistro);
+
                 repositorioGaleria.Crear(galeria_);
-                **/
             }
             else if (galeria.EstadoObjeto == EstadoObjeto.Modificado)
             {
-                /**
                 GaleriaEntity galeria_ = repositorioGaleria.Buscar(galeria.CodigoGaleria);
-                galeria_.Modificar();
+                galeria_.Modificar(galeria.DescripcionTitulo, galeria.DescripcionImagen
+                    , galeria.DescripcionResena, galeria.DescripcionUrl, galeria.IndicadorEstado, galeria.UsuarioRegistro);
                 repositorioGaleria.Modificar();
-                **/
+
+                foreach (var detalle in galeria.Detalles)
+                    if(detalle.EstadoObjeto == EstadoObjeto.Nuevo)
+                    {
+                        DetalleGaleriaEntity detalleGaleriaEntidad = DetalleGaleriaEntity.Crear(galeria.CodigoGaleria, detalle.DescripcionTitulo, detalle.DescripcionImagen
+                            , detalle.DescripcionResena, galeria.UsuarioRegistro);
+
+                        repositorioDetalleGaleria.Crear(detalleGaleriaEntidad);
+                    }
+                    else if(detalle.EstadoObjeto == EstadoObjeto.Borrado)
+                        repositorioDetalleGaleria.Eliminar(detalle.CodigoDetalleGaleria);
+                         
             }
             else
                 throw new Exception("Acción inválida");
@@ -65,7 +82,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 DescripcionResena = p.DescripcionResena,
                 DescripcionTitulo = p.DescripcionTitulo,
                 DescripcionUrl = p.DescripcionUrl,
-                Detalles = p.Detalles.Select(g => new DetalleGaleriaDto
+                Detalles = p.DetalleGaleriaS.Where(g =>g.IndicadorEstado == "A").Select(g => new DetalleGaleriaDto
                 {
                     DescripcionTitulo = g.DescripcionTitulo,
                     DescripcionResena = g.DescripcionResena,
@@ -75,7 +92,8 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                     FechaRegistro = g.FechaRegistro,
                     IndicadorEstado = g.IndicadorEstado,
                     IndicadorHabilitado = g.IndicadorHabilitado,
-                    UsuarioRegistro = g.UsuarioRegistro
+                    UsuarioRegistro = g.UsuarioRegistro,
+                    IndicadorMostrar = true
                 }).ToList(),
                 IndicadorEstado = p.IndicadorEstado,
                 FechaRegistro = p.FechaRegistro,
@@ -93,8 +111,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
                 mensaje.Append("No se encuentan los datos necesarios para el proceso.");
             else
             {
-                string mensajeValidacion = null; /** PublicacionEntity.Validar(Galeria.DescripcionTitulo, Galeria.DescripcionResena
-                    , Galeria.DescripcionGaleria, Galeria.DescripcionUrl); **/
+                string mensajeValidacion = GaleriaEntity.Validar(galeria.DescripcionImagen); 
 
                 mensaje.Append(mensajeValidacion);
             }

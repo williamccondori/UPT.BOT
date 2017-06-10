@@ -23,7 +23,7 @@ namespace UPT.BOT.Infraestructura.Datos.Utilidades
                     }
                 case EstadoObjeto.Borrado:
                     {
-                        return EntityState.Modified;
+                        return EntityState.Deleted;
                     }
                 default:
                     {

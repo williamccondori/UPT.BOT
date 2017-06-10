@@ -1,7 +1,4 @@
-﻿
-@{
-    ViewBag.Title = "Gestión de publicaciones";
-}
+﻿ @{ ViewBag.Title = "Gestión de publicaciones"; }
 
 <div>
     <div class="panel panel-default">
@@ -19,6 +16,9 @@
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#actualidad">Actualidades</a></li>
         <li><a data-toggle="tab" href="#comunicados">Comunicados</a></li>
+        <li><a data-toggle="tab" href="#eventos">Eventos</a></li>
+        <li><a data-toggle="tab" href="#galerias">Galerias</a></li>
+        <li><a data-toggle="tab" href="#publicaciones">Publicaciones</a></li>
     </ul>
     <div class="tab-content">
         <div id="actualidad" class="tab-pane fade in active">
@@ -26,21 +26,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <div class="panel-title">
-                            Actualidades <span class="badge" ng-bind="ListaActualidad.length"></span>
+                            Actualidads <span class="badge" ng-bind="ListaActualidad.length"></span>
                         </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-condensed">
                             <tr>
                                 <th>Título</th>
-                                <th>Fecha</th>
                                 <th>Estado</th>
+                                <th>Fecha</th>
                                 <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus"></span></button></th>
                             </tr>
                             <tr ng-repeat="elemento in ListaActualidad">
                                 <td ng-bind="elemento.DescripcionTitulo"></td>
                                 <td ng-bind="elemento.IndicadorEstado"></td>
-                                <td ng-bind="elemento.FechaRegistro"></td>
+                                <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
                                 <th>
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
@@ -102,23 +102,83 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="modalImagen">
-                    <div class="modal-dialog modal-sm">
+            </div>
+        </div>
+        <div id="comunicados" class="tab-pane fade">
+            <div ng-controller="ComunicadoController" ng-init="Iniciar()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Comunicados <span class="badge" ng-bind="ListaComunicado.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <th>Título</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            <tr ng-repeat="elemento in ListaComunicado">
+                                <td ng-bind="elemento.DescripcionTitulo"></td>
+                                <td ng-bind="elemento.IndicadorEstado"></td>
+                                <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                <th>
+                                    <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                </th>
+                                <tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalComunicado">
+                    <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-body">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <div class="panel-title">
-                                            Imagen
+                                            Ingrese los datos necesarios
                                         </div>
                                     </div>
                                     <div class="panel-body">
-                                        <div>
-                                            <img id="imagen" alt="Imagen" class="img-responsive img-thumbnail">
+                                        <div class="form">
+                                            <div class="form-group">
+                                                <label class="control-label">Título:</label>
+                                                <input class="form-control" type="text" ng-model="Modelo.DescripcionTitulo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Resumen:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResumen" cols="2" rows="2"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Reseña:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResena" cols="2" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Imágen:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionImagen">
+                                                    <span class="input-group-addon" ng-click="Imagen()"><span class="glyphicon glyphicon-link"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Url:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionUrl">
+                                                    <a class="input-group-addon" href="" ng-href="{{ Modelo.DescripcionUrl }}" target="_blank">Ver</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Estado:</label>
+                                                <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer">
-                                        <button class="btn btn-sm btn-default" data-dismiss="modal">Cerrar <span class="glyphicon glyphicon-remove-circle"></span></button>
+                                        <button class="btn btn-sm btn-success" ng-click="Guardar()">Guardar <span class="glyphicon glyphicon-ok-circle"></span></button>
+                                        <button class="btn btn-sm btn-default" ng-click="Cancelar()">Cancelar <span class="glyphicon glyphicon-remove-circle"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -127,13 +187,317 @@
                 </div>
             </div>
         </div>
-        <div id="comunicados" class="tab-pane fade">
-
+        <div id="eventos" class="tab-pane fade">
+            <div ng-controller="EventoController" ng-init="Iniciar()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Eventos <span class="badge" ng-bind="ListaEvento.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <th>Título</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            <tr ng-repeat="elemento in ListaEvento">
+                                <td ng-bind="elemento.DescripcionTitulo"></td>
+                                <td ng-bind="elemento.IndicadorEstado"></td>
+                                <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                <th>
+                                    <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                </th>
+                                <tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalEvento">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Ingrese los datos necesarios
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form">
+                                            <div class="form-group">
+                                                <label class="control-label">Título:</label>
+                                                <input class="form-control" type="text" ng-model="Modelo.DescripcionTitulo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Resumen:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResumen" cols="2" rows="2"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Reseña:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResena" cols="2" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Imágen:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionImagen">
+                                                    <span class="input-group-addon" ng-click="Imagen()"><span class="glyphicon glyphicon-link"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Url:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionUrl">
+                                                    <a class="input-group-addon" href="" ng-href="{{ Modelo.DescripcionUrl }}" target="_blank">Ver</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Estado:</label>
+                                                <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <button class="btn btn-sm btn-success" ng-click="Guardar()">Guardar <span class="glyphicon glyphicon-ok-circle"></span></button>
+                                        <button class="btn btn-sm btn-default" ng-click="Cancelar()">Cancelar <span class="glyphicon glyphicon-remove-circle"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="galerias" class="tab-pane fade">
+            <div ng-controller="GaleriaController" ng-init="Iniciar()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Galerias <span class="badge" ng-bind="ListaGaleria.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <th>Título</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            <tr ng-repeat="elemento in ListaGaleria">
+                                <td ng-bind="elemento.DescripcionTitulo"></td>
+                                <td ng-bind="elemento.IndicadorEstado"></td>
+                                <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                <th>
+                                    <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                </th>
+                                <tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalGaleria">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Ingrese los datos necesarios
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-xs-24 col-sm-12">
+                                                <div class="form">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Título:</label>
+                                                        <input class="form-control" type="text" ng-model="Modelo.DescripcionTitulo">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Reseña:</label>
+                                                        <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResena" cols="2" rows="3"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Imágen:</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control" type="text" ng-model="Modelo.DescripcionImagen">
+                                                            <span class="input-group-addon" ng-click="Imagen()"><span class="glyphicon glyphicon-link"></span></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Url:</label>
+                                                        <div class="input-group">
+                                                            <input class="form-control" type="text" ng-model="Modelo.DescripcionUrl">
+                                                            <a class="input-group-addon" href="" ng-href="{{ Modelo.DescripcionUrl }}" target="_blank">Ver</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Estado:</label>
+                                                        <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-24 col-sm-12">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <div class="panel-title">
+                                                            Detalles <span class="badge" ng-bind="Modelo.Detalles | NumeroElementosDetalle"></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-condensed table-bordered table-hover">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="col-xs-18">Detalle</th>
+                                                                    <th class="col-xs-6"><button class="btn btn-success btn-xs" ng-click="AgregarDetalle()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr ng-repeat="DetalleGaleria in Modelo.Detalles" ng-show="DetalleGaleria.IndicadorMostrar">
+                                                                    <td><input type="text" class="form-control" ng-model="DetalleGaleria.DescripcionImagen"/></td>
+                                                                    <td>
+                                                                        <button class="btn btn-danger btn-xs" ng-click="EliminarDetalle(DetalleGaleria)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <button class="btn btn-sm btn-success" ng-click="Guardar()">Guardar <span class="glyphicon glyphicon-ok-circle"></span></button>
+                                        <button class="btn btn-sm btn-default" ng-click="Cancelar()">Cancelar <span class="glyphicon glyphicon-remove-circle"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="publicaciones" class="tab-pane fade">
+            <div ng-controller="PublicacionController" ng-init="Iniciar()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Publicaciones <span class="badge" ng-bind="ListaPublicacion.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed">
+                            <tr>
+                                <th>Título</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                                <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus"></span></button></th>
+                            </tr>
+                            <tr ng-repeat="elemento in ListaPublicacion">
+                                <td ng-bind="elemento.DescripcionTitulo"></td>
+                                <td ng-bind="elemento.IndicadorEstado"></td>
+                                <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                <th>
+                                    <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
+                                </th>
+                                <tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalPublicacion">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            Ingrese los datos necesarios
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="form">
+                                            <div class="form-group">
+                                                <label class="control-label">Título:</label>
+                                                <input class="form-control" type="text" ng-model="Modelo.DescripcionTitulo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Resumen:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResumen" cols="2" rows="2"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Reseña:</label>
+                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResena" cols="2" rows="3"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Imágen:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionImagen">
+                                                    <span class="input-group-addon" ng-click="Imagen()"><span class="glyphicon glyphicon-link"></span></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Url:</label>
+                                                <div class="input-group">
+                                                    <input class="form-control" type="text" ng-model="Modelo.DescripcionUrl">
+                                                    <a class="input-group-addon" href="" ng-href="{{ Modelo.DescripcionUrl }}" target="_blank">Ver</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label">Estado:</label>
+                                                <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-footer">
+                                        <button class="btn btn-sm btn-success" ng-click="Guardar()">Guardar <span class="glyphicon glyphicon-ok-circle"></span></button>
+                                        <button class="btn btn-sm btn-default" ng-click="Cancelar()">Cancelar <span class="glyphicon glyphicon-remove-circle"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalImagen">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="panel-title">
+                                Imagen
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <img id="imagen" alt="Imagen" class="img-responsive img-thumbnail">
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-sm btn-default" data-dismiss="modal">Cerrar <span class="glyphicon glyphicon-remove-circle"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 @section scripts{
-    <script src="~/Angular/Factories/Gestion/Publicacion/ActualidadFactory.js"></script>
-    <script src="~/Angular/Controllers/Gestion/Publicacion/ActualidadController.js"></script>
+<script src="~/Angular/Factories/Gestion/Publicacion/ActualidadFactory.js"></script>
+<script src="~/Angular/Controllers/Gestion/Publicacion/ActualidadController.js"></script>
+<script src="~/Angular/Factories/Gestion/Publicacion/ComunicadoFactory.js"></script>
+<script src="~/Angular/Controllers/Gestion/Publicacion/ComunicadoController.js"></script>
+<script src="~/Angular/Factories/Gestion/Publicacion/EventoFactory.js"></script>
+<script src="~/Angular/Controllers/Gestion/Publicacion/EventoController.js"></script>
+<script src="~/Angular/Factories/Gestion/Publicacion/PublicacionFactory.js"></script>
+<script src="~/Angular/Controllers/Gestion/Publicacion/PublicacionController.js"></script>
+<script src="~/Angular/Factories/Gestion/Publicacion/GaleriaFactory.js"></script>
+<script src="~/Angular/Controllers/Gestion/Publicacion/GaleriaController.js"></script>
 }

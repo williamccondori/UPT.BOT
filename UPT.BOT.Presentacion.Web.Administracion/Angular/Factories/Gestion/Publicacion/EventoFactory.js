@@ -1,19 +1,19 @@
 (function (module) {
-    ComunicadoFactory.$inject = [
+    EventoFactory.$inject = [
         'BaseFactory'
     ];
-    function ComunicadoFactory(BaseFactory) {
-        var Comunicado = [];
-        Comunicado.ObtenerComunicado = function () {
-            return BaseFactory.Obtener('/Gestion/ObtenerComunicado');
+    function EventoFactory(BaseFactory) {
+        var Evento = [];
+        Evento.ObtenerEvento = function () {
+            return BaseFactory.Obtener('/Gestion/ObtenerEvento');
         };
-        Comunicado.GuardarComunicado = function (modelo) {
-            return BaseFactory.Guardar('/Gestion/GuardarComunicado', modelo);
+        Evento.GuardarEvento = function (modelo) {
+            return BaseFactory.Guardar('/Gestion/GuardarEvento', modelo);
         };
-        Comunicado.EliminarComunicado = function (modelo) {
-            return BaseFactory.Eliminar('/Gestion/EliminarComunicado', modelo);
+        Evento.EliminarEvento = function (modelo) {
+            return BaseFactory.Eliminar('/Gestion/EliminarEvento', modelo);
         };
-        return Comunicado;
+        return Evento;
     }
-    module.factory('ComunicadoFactory', ComunicadoFactory);
+    module.factory('EventoFactory', EventoFactory);
 })(angular.module("uptbot"));

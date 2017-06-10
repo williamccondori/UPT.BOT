@@ -23,29 +23,15 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             return View();
         }
 
-        // acreditacion
+        // gestión de información
 
         [HttpGet]
-        public ActionResult Acreditacion() => View();
+        public ActionResult Informacion()
+        {
+            return View();
+        }
 
-        [HttpGet]
-        public JsonResult ObtenerAcreditacion() => Json(Ejecutar(() => coleccion.proxyAcreditacion.Obtener()), JsonRequestBehavior.AllowGet);
-
-        [HttpPost]
-        public JsonResult GuardarAcreditacion(AcreditacionDto entidad) => Json(Ejecutar(() => coleccion.proxyAcreditacion.Guardar(entidad)), JsonRequestBehavior.AllowGet);
-
-        [HttpPost]
-        public JsonResult EliminarAcreditacion(AcreditacionDto entidad) => Json(Ejecutar(() => coleccion.proxyAcreditacion.Eliminar(entidad.CodigoAdjunto)), JsonRequestBehavior.AllowGet);
-
-
-        // evento
-
-        [HttpGet]
-        public ActionResult Evento() => View();
-
-        [HttpGet]
-        public JsonResult ObtenerEvento() => Json(Ejecutar(() => coleccion.proxyEvento.Obtener()), JsonRequestBehavior.AllowGet);
-
+        
         [HttpGet]
         public JsonResult ObtenerConvenio()
         {
@@ -53,7 +39,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             coleccion.proxyConvenio.Obtener())
             , JsonRequestBehavior.AllowGet);
         }
-
 
 
         // gestion de publicaciones
@@ -169,6 +154,33 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             coleccion.proxyPublicacion.Eliminar(publicacion.CodigoPublicacion))
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult ObtenerEvento()
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyEvento.Obtener())
+            , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GuardarEvento(EventoDto evento)
+        {
+            return Json(Ejecutar(() =>
+            {
+                evento.UsuarioRegistro = Sesion.Usuario();
+                return coleccion.proxyEvento.Guardar(evento);
+            })
+           , JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        public JsonResult EliminarEvento(EventoDto evento)
+        {
+            return Json(Ejecutar(() =>
+            coleccion.proxyEvento.Eliminar(evento.CodigoEvento))
             , JsonRequestBehavior.AllowGet);
         }
 

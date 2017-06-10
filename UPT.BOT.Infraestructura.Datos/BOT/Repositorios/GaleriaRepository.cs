@@ -48,7 +48,9 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
         {
             return Ejecutar(() =>
             {
-                return contextoBot.Galeria.Where(p => p.IndicadorEstado == EstadoEntidad.Activo).OrderByDescending(p => p.FechaRegistro).ToList();
+                return contextoBot.Galeria.Include("DetalleGaleriaS")
+                .Where(p => p.IndicadorEstado == EstadoEntidad.Activo)
+                .OrderByDescending(p => p.FechaRegistro).ToList();
             });
         }
 

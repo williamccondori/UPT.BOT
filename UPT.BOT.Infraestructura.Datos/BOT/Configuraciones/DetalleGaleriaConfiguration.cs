@@ -15,6 +15,8 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
             Property(m => m.DescripcionImagen).HasColumnName("DES_IMAGEN");
             Property(m => m.DescripcionResena).HasColumnName("DES_RESENA");
             Property(m => m.IndicadorHabilitado).HasColumnName("IND_HABILITADO");
+
+            HasRequired(m => m.GaleriaX).WithMany().HasForeignKey(m => m.CodigoGaleria);
         }
     }
 }

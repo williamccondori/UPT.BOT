@@ -140,6 +140,7 @@
     <Content Include="Angular\app.js" />
     <Content Include="Angular\config.js" />
     <Content Include="Angular\Controllers\Analisis\AnalisisController.js" />
+    <Content Include="Angular\Controllers\Buzon\BuzonController.js" />
     <Content Include="Angular\Controllers\Configuracion\ObjetoController.js" />
     <Content Include="Angular\Controllers\Configuracion\RolController.js" />
     <Content Include="Angular\Controllers\Configuracion\UsuarioController.js" />
@@ -149,19 +150,23 @@
     <Content Include="Angular\Controllers\Gestion\Documento\ReglamentoController.js" />
     <Content Include="Angular\Controllers\Gestion\Documento\RequisitoController.js" />
     <Content Include="Angular\Controllers\Gestion\InicioController.js" />
+    <Content Include="Angular\Controllers\Gestion\Publicacion\ComunicadoController.js" />
+    <Content Include="Angular\Controllers\Gestion\Publicacion\EventoController.js" />
+    <Content Include="Angular\Controllers\Gestion\Publicacion\GaleriaController.js" />
+    <Content Include="Angular\Controllers\Gestion\Publicacion\PublicacionController.js" />
     <Content Include="Angular\Controllers\Principal\InicioController.js" />
     <Content Include="Angular\Factories\Analisis\AnalisisFactory.js" />
     <Content Include="Angular\Factories\BaseFactory.js" />
+    <Content Include="Angular\Factories\Buzon\BuzonFactory.js" />
     <Content Include="Angular\Factories\Configuracion\RolFactory.js" />
     <Content Include="Angular\Factories\Configuracion\UsuarioFactory.js" />
     <Content Include="Angular\Factories\Gestion\Documento\BoletinFactory.js" />
     <Content Include="Angular\Factories\Gestion\Documento\FormatoFactory.js" />
     <Content Include="Angular\Factories\Gestion\Documento\ReglamentoFactory.js" />
     <Content Include="Angular\Factories\Gestion\Documento\RequisitoFactory.js" />
-    <Content Include="Angular\Factories\Gestion\NoticiaFactory.js" />
     <Content Include="Angular\Factories\Configuracion\ObjetoFactory.js" />
     <Content Include="Angular\Factories\Gestion\Publicacion\ActualidadFactory.js" />
-    <Content Include="Angular\Factories\Gestion\Publicacion\ComunicadoFacroty.js" />
+    <Content Include="Angular\Factories\Gestion\Publicacion\ComunicadoFactory.js" />
     <Content Include="Angular\Factories\Gestion\Publicacion\EventoFactory.js" />
     <Content Include="Angular\Factories\Gestion\Publicacion\GaleriaFactory.js" />
     <Content Include="Angular\Factories\Gestion\Publicacion\PublicacionFactory.js" />
@@ -239,6 +244,8 @@
     <Content Include="Views\Gestion\Publicacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Angular\Controllers\Gestion\Informacion\" />
+    <Folder Include="Angular\Factories\Gestion\Informacion\" />
     <Folder Include="App_Data\" />
     <Folder Include="App_LocalResources\" />
     <Folder Include="Models\" />
