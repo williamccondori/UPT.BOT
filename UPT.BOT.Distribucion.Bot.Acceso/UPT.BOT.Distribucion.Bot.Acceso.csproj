@@ -47,6 +47,7 @@
     <Compile Include="Documento\BoletinProxy.cs" />
     <Compile Include="Documento\FormatoProxy.cs" />
     <Compile Include="Documento\ReglamentoProxy.cs" />
+    <Compile Include="Documento\RequisitoProxy.cs" />
     <Compile Include="Encuesta\EncuestaProxy.cs" />
     <Compile Include="Informacion\AcreditacionProxy.cs" />
     <Compile Include="Informacion\AdmisionProxy.cs" />
@@ -59,9 +60,10 @@
     <Compile Include="Informacion\TelefonoProxy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publicacion\ActualidadProxy.cs" />
+    <Compile Include="Publicacion\ComunicadoProxy.cs" />
     <Compile Include="Publicacion\EventoProxy.cs" />
     <Compile Include="Publicacion\GaleriaProxy.cs" />
-    <Compile Include="Publicacion\NoticiaProxy.cs" />
+    <Compile Include="Publicacion\PublicacionProxy.cs" />
     <Compile Include="Utilidades\RssProxy.cs" />
     <Compile Include="Seguridad\ClienteProxy.cs" />
     <Compile Include="Seguridad\MensajeProxy.cs" />

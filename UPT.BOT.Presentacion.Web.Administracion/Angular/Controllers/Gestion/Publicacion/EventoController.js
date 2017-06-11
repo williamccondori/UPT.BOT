@@ -8,11 +8,15 @@
         $scope.ListaEvento = [];
         $scope.Reset = function () {
             $scope.Modelo = {
+                CodigoEvento: 0,
                 DescripcionTitulo: '',
                 DescripcionImagen: '',
-                DescripcionResumen: '',
                 DescripcionResena: '',
                 DescripcionUrl: '',
+                FechaEvento: null,
+                DescripcionLugar: '',
+                DescripcionMapa: '',
+                IndicadorConcluido: 'N',
                 IndicadorEstado: 'A',
                 EstadoObjeto: EstadoObjeto.SinCambios
             };
@@ -58,6 +62,9 @@
         $scope.Imagen = function () {
             document.getElementById('imagen').src = $scope.Modelo.DescripcionImagen;
             Bootstrap.AbrirModal('#modalImagen');
+        };
+        $scope.ConfiguracionFecha = {
+            format: "DD/MM/YYYY"
         };
     }
     module.controller('EventoController', EventoController);

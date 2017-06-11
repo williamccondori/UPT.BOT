@@ -156,14 +156,16 @@
     <Compile Include="Controllers\Asistente\Documento\BotBoletinController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotFormatoController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotReglamentoController.cs" />
+    <Compile Include="Controllers\Asistente\Documento\BotRequisitoController.cs" />
     <Compile Include="Controllers\Asistente\Encuesta\BotEncuestaController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotConvenioController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotNosotrosController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotServicioController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotActualidadController.cs" />
+    <Compile Include="Controllers\Asistente\Publicacion\BotComunicadoController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotEventoController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotGaleriaController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotNoticiaController.cs" />
+    <Compile Include="Controllers\Asistente\Publicacion\BotPublicacionController.cs" />
     <Compile Include="Controllers\Asistente\Seguridad\BotClienteController.cs" />
     <Compile Include="Controllers\Asistente\Seguridad\BotMensajeController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />

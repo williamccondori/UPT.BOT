@@ -7,9 +7,8 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Publicacion
     [Serializable]
     public class EventoProxy : BaseProxy
     {
-        public EventoProxy(string rutaApi) : base(rutaApi)
+        public EventoProxy(string ruta) : base(ruta)
         {
-
         }
 
         public List<EventoDto> Obtener()

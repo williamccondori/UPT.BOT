@@ -1,4 +1,5 @@
 angular.module('uptbot', [
     'ngResource',
-    'toastr'
+    'toastr',
+    'ae-datetimepicker'
 ]);

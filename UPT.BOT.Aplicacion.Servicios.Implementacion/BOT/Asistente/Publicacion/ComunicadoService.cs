@@ -2,27 +2,28 @@
 using System.Linq;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Publicacion;
+using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
-using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion
 {
-    public class NoticiaService : INoticiaService
+    public class ComunicadoService : BaseService, IComunicadoService
     {
         private readonly IPublicacionRepository repositorioPublicacion;
 
-        public NoticiaService()
+        public ComunicadoService()
         {
-            repositorioPublicacion = new PublicacionRepository(new BotContext());
+            repositorioPublicacion = new PublicacionRepository(contexto);
         }
 
-        public IList<NoticiaDto> Obtener()
+        public IList<ComunicadoDto> Obtener()
         {
-            IEnumerable<PublicacionEntity> listaPublicacion = repositorioPublicacion.LeerXTipo(TipoPublicacionEntity.Noticia).Take(5);
+            List<PublicacionEntity> listaPublicacion = repositorioPublicacion
+                .LeerXTipo(TipoPublicacionEntity.Comunicado).Take(5).ToList();
 
-            return listaPublicacion.Select(p => new NoticiaDto
+            return listaPublicacion.Select(p => new ComunicadoDto
             {
                 CodigoPublicacion = p.CodigoPublicacion,
                 CodigoTipoPublicacion = p.CodigoTipoPublicacion,

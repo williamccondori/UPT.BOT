@@ -55,14 +55,16 @@
     <Compile Include="BOT\Asistente\Documento\BoletinService.cs" />
     <Compile Include="BOT\Asistente\Documento\FormatoService.cs" />
     <Compile Include="BOT\Asistente\Documento\ReglamentoService.cs" />
+    <Compile Include="BOT\Asistente\Documento\RequisitoService.cs" />
     <Compile Include="BOT\Asistente\Encuesta\EncuestaService.cs" />
     <Compile Include="BOT\Asistente\Informacion\ConvenioService.cs" />
     <Compile Include="BOT\Asistente\Informacion\NosotrosService.cs" />
     <Compile Include="BOT\Asistente\Informacion\ServicioService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\ActualidadService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\ComunicadoService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\EventoService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\GaleriaService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\NoticiaService.cs" />
+    <Compile Include="BOT\Asistente\Publicacion\PublicacionService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\ClienteService.cs" />
     <Compile Include="BOT\Asistente\Seguridad\MensajeService.cs" />
     <Compile Include="BOT\Shared\BaseService.cs" />

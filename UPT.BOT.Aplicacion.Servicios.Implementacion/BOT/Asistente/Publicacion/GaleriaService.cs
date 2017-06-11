@@ -25,7 +25,8 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion
 
         public IList<GaleriaDto> Obtener()
         {
-            IEnumerable<GaleriaEntity> listaGaleria = repositorioGaleria.Leer().Take(5);
+            List<GaleriaEntity> listaGaleria = repositorioGaleria.Leer()
+                .Take(5).ToList();
 
             return listaGaleria.Select(p => new GaleriaDto
             {
@@ -33,13 +34,23 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion
                 DescripcionResena = p.DescripcionResena,
                 DescripcionImagen = p.DescripcionImagen,
                 DescripcionTitulo = p.DescripcionTitulo,
-                DescripcionUrl = p.DescripcionUrl
+                DescripcionUrl = p.DescripcionUrl,
+                Detalles = p.DetalleGaleriaS.Select(g => new DetalleGaleriaDto
+                {
+                    CodigoDetalleGaleria = g.CodigoDetalleGaleria,
+                    CodigoGaleria = g.CodigoGaleria,
+                    DescripcionImagen = g.DescripcionImagen,
+                    DescripcionResena = g.DescripcionResena,
+                    DescripcionTitulo = g.DescripcionTitulo,
+                    IndicadorHabilitado = g.IndicadorHabilitado
+                }).ToList()
             }).ToList();
         }
 
         public IList<DetalleGaleriaDto> ObtenerDetalle(long codigoGaleria)
         {
-            IEnumerable<DetalleGaleriaEntity> listaDetalleGaleria = repositorioDetalleGaleria.Leer(codigoGaleria).Where(p => p.IndicadorHabilitado == Indicador.Si).Take(5);
+            List<DetalleGaleriaEntity> listaDetalleGaleria = repositorioDetalleGaleria.Leer(codigoGaleria)
+                .Where(p => p.IndicadorHabilitado == Indicador.Si).Take(5).ToList();
 
             return listaDetalleGaleria.Select(p => new DetalleGaleriaDto
             {

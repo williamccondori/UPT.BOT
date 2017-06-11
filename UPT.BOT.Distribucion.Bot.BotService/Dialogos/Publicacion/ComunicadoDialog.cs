@@ -11,11 +11,11 @@ using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 {
     [Serializable]
-    public class EventoDialog : BaseDialog, IDialog<object>
+    public class ComunicadoDialog : BaseDialog, IDialog<object>
     {
         private AIResponse response;
 
-        public EventoDialog(AIResponse response)
+        public ComunicadoDialog(AIResponse response)
         {
             this.response = response;
         }
@@ -29,7 +29,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 
             await context.PostAsync(actividaMensaje);
 
-            List<EventoDto> entidades = new EventoProxy(ruta).Obtener();
+            List<ComunicadoDto> entidades = new ComunicadoProxy(ruta).Obtener();
 
             List<Attachment> adjuntos = new List<Attachment>();
 
@@ -44,8 +44,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
                 {
                     new CardAction{ Value = p.DescripcionUrl, Type = ActionTypes.OpenUrl, Title = ActionTitleTypes.ShowMore }
                 };
-                tarjeta.Subtitle = string.Format("{2} Lugar: {0} <br><b>Fecha:</b> {1}", p.DescripcionLugar, p.FechaEvento.ToShortDateString(), p.IndicadorConcluido == "S" ? "[Terminado]" : "[Proximamente]");
-                tarjeta.Text = p.DescripcionResena;
+                tarjeta.Text = p.DescripcionResumen;
                 tarjeta.Images = imagenes;
                 tarjeta.Buttons = botones;
                 adjuntos.Add(tarjeta.ToAttachment());

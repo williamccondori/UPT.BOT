@@ -1,4 +1,4 @@
-﻿ @{ ViewBag.Title = "Gestión de publicaciones"; }
+﻿@{ ViewBag.Title = "Gestión de publicaciones"; }
 
 <div>
     <div class="panel panel-default">
@@ -45,7 +45,7 @@
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                 </th>
-                                <tr>
+                            <tr>
                         </table>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                 </th>
-                                <tr>
+                            <tr>
                         </table>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                 </th>
-                                <tr>
+                            <tr>
                         </table>
                     </div>
                 </div>
@@ -232,10 +232,6 @@
                                                 <input class="form-control" type="text" ng-model="Modelo.DescripcionTitulo">
                                             </div>
                                             <div class="form-group">
-                                                <label class="control-label">Resumen:</label>
-                                                <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResumen" cols="2" rows="2"></textarea>
-                                            </div>
-                                            <div class="form-group">
                                                 <label class="control-label">Reseña:</label>
                                                 <textarea class="form-control" type="text" ng-model="Modelo.DescripcionResena" cols="2" rows="3"></textarea>
                                             </div>
@@ -253,9 +249,40 @@
                                                     <a class="input-group-addon" href="" ng-href="{{ Modelo.DescripcionUrl }}" target="_blank">Ver</a>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <label class="control-label">Fecha:</label>
+                                                    <div class="input-group" datetimepicker ng-model="Modelo.FechaEvento" options="ConfiguracionFecha">
+                                                        <input class="form-control" />
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-plus-sign"></span></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">Lugar:</label>
+                                                        <input class="form-control" type="text" ng-model="Modelo.DescripcionLugar">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
-                                                <label class="control-label">Estado:</label>
-                                                <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                                <label class="control-label">Ubicación (Google Maps):</label>
+                                                <input class="form-control" type="text" ng-model="Modelo.DescripcionMapa">
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Concluido:</label>
+                                                        <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorConcluido" ng-true-value="'S'" ng-false-value="'N'">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label">Estado:</label>
+                                                        <input class="form-control-checkbox" type="checkbox" ng-model="Modelo.IndicadorEstado" ng-true-value="'A'" ng-false-value="'I'">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -294,7 +321,7 @@
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                 </th>
-                                <tr>
+                            <tr>
                         </table>
                     </div>
                 </div>
@@ -357,7 +384,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr ng-repeat="DetalleGaleria in Modelo.Detalles" ng-show="DetalleGaleria.IndicadorMostrar">
-                                                                    <td><input type="text" class="form-control" ng-model="DetalleGaleria.DescripcionImagen"/></td>
+                                                                    <td><input type="text" class="form-control" ng-model="DetalleGaleria.DescripcionImagen" /></td>
                                                                     <td>
                                                                         <button class="btn btn-danger btn-xs" ng-click="EliminarDetalle(DetalleGaleria)"><span class="glyphicon glyphicon-remove-sign"></span></button>
                                                                     </td>
@@ -404,7 +431,7 @@
                                     <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-pencil"></span></button>
                                     <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span></button>
                                 </th>
-                                <tr>
+                            <tr>
                         </table>
                     </div>
                 </div>
@@ -490,14 +517,14 @@
 </div>
 
 @section scripts{
-<script src="~/Angular/Factories/Gestion/Publicacion/ActualidadFactory.js"></script>
-<script src="~/Angular/Controllers/Gestion/Publicacion/ActualidadController.js"></script>
-<script src="~/Angular/Factories/Gestion/Publicacion/ComunicadoFactory.js"></script>
-<script src="~/Angular/Controllers/Gestion/Publicacion/ComunicadoController.js"></script>
-<script src="~/Angular/Factories/Gestion/Publicacion/EventoFactory.js"></script>
-<script src="~/Angular/Controllers/Gestion/Publicacion/EventoController.js"></script>
-<script src="~/Angular/Factories/Gestion/Publicacion/PublicacionFactory.js"></script>
-<script src="~/Angular/Controllers/Gestion/Publicacion/PublicacionController.js"></script>
-<script src="~/Angular/Factories/Gestion/Publicacion/GaleriaFactory.js"></script>
-<script src="~/Angular/Controllers/Gestion/Publicacion/GaleriaController.js"></script>
+    <script src="~/Angular/Factories/Gestion/Publicacion/ActualidadFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/Publicacion/ActualidadController.js"></script>
+    <script src="~/Angular/Factories/Gestion/Publicacion/ComunicadoFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/Publicacion/ComunicadoController.js"></script>
+    <script src="~/Angular/Factories/Gestion/Publicacion/EventoFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/Publicacion/EventoController.js"></script>
+    <script src="~/Angular/Factories/Gestion/Publicacion/PublicacionFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/Publicacion/PublicacionController.js"></script>
+    <script src="~/Angular/Factories/Gestion/Publicacion/GaleriaFactory.js"></script>
+    <script src="~/Angular/Controllers/Gestion/Publicacion/GaleriaController.js"></script>
 }

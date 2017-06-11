@@ -53,14 +53,14 @@
       <HintPath>..\packages\Chronic.Signed.0.3.2\lib\net40\Chronic.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Bot.Builder, Version=3.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.0\lib\net46\Microsoft.Bot.Builder.dll</HintPath>
+    <Reference Include="Microsoft.Bot.Builder, Version=3.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.1.0\lib\net46\Microsoft.Bot.Builder.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bot.Builder.Autofac, Version=3.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.0\lib\net46\Microsoft.Bot.Builder.Autofac.dll</HintPath>
+    <Reference Include="Microsoft.Bot.Builder.Autofac, Version=3.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.1.0\lib\net46\Microsoft.Bot.Builder.Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bot.Connector, Version=3.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.0\lib\net46\Microsoft.Bot.Connector.dll</HintPath>
+    <Reference Include="Microsoft.Bot.Connector, Version=3.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bot.Builder.3.8.1.0\lib\net46\Microsoft.Bot.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.IdentityModel.Protocol.Extensions, Version=1.0.40306.1554, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -127,6 +127,7 @@
     <Compile Include="Dialogos\Documento\FormatoDialog.cs" />
     <Compile Include="Dialogos\BaseDialog.cs" />
     <Compile Include="Dialogos\Buzon\BuzonDialog.cs" />
+    <Compile Include="Dialogos\Documento\RequsitoDialog.cs" />
     <Compile Include="Dialogos\Encuesta\EncuestaDialog.cs" />
     <Compile Include="Dialogos\Extras\MenuDialog.cs" />
     <Compile Include="Dialogos\Informacion\AcreditacionDialog.cs" />
@@ -140,8 +141,10 @@
     <Compile Include="Dialogos\Informacion\TelefonoDialog.cs" />
     <Compile Include="Dialogos\Planestudio\PlanEstudioDialog.cs" />
     <Compile Include="Dialogos\Publicacion\ActualidadDialog.cs" />
+    <Compile Include="Dialogos\Publicacion\ComunicadoDialog.cs" />
     <Compile Include="Dialogos\Publicacion\EventoDialog.cs" />
     <Compile Include="Dialogos\Publicacion\GaleriaDialog.cs" />
+    <Compile Include="Dialogos\Publicacion\PublicacionDialog.cs" />
     <Compile Include="Intents\Api\BaseAi.cs" />
     <Compile Include="Intents\Api\GestorAi.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />

@@ -7,22 +7,22 @@ using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Publicacion
 {
-    [RoutePrefix("api/v1/asistente/noticia")]
-    public class BotNoticiaController : BaseApiController
+    [RoutePrefix("api/v1/asistente/comunicado")]
+    public class BotComunicadoController : BaseApiController
     {
-        private readonly INoticiaService servicioNoticia;
+        private readonly IComunicadoService servicioComunicado;
 
-        public BotNoticiaController()
+        public BotComunicadoController()
         {
-            servicioNoticia = new NoticiaService();
+            servicioComunicado = new ComunicadoService();
         }
 
         [HttpGet, Route(Predeterminado)]
-        public RespuestaDto<IList<NoticiaDto>> Obtener()
+        public RespuestaDto<IList<ComunicadoDto>> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<IList<NoticiaDto>>(servicioNoticia.Obtener());
+                return new RespuestaDto<IList<ComunicadoDto>>(servicioComunicado.Obtener());
             });
         }
     }

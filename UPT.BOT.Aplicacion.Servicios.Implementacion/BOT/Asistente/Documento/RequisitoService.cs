@@ -9,21 +9,21 @@ using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Documento
 {
-    public class ReglamentoService : BaseService, IReglamentoService
+    public class RequisitoService : BaseService, IRequisitoService
     {
-        private readonly IDocumentoRepository repositorioDocumento;
+        IDocumentoRepository repositorioDocumento;
 
-        public ReglamentoService()
+        public RequisitoService()
         {
             repositorioDocumento = new DocumentoRepository(contexto);
         }
 
-        public IList<ReglamentoDto> Obtener()
+        public IList<RequisitoDto> Obtener()
         {
-            List<DocumentoEntity> listaDocumento = repositorioDocumento.LeerXTipo(TipoDocumentoEntity.Reglamento)
+            List<DocumentoEntity> listaDocumento = repositorioDocumento.LeerXTipo(TipoDocumentoEntity.Requisito)
                 .Take(5).ToList();
 
-            return listaDocumento.Select(p => new ReglamentoDto
+            return listaDocumento.Select(p => new RequisitoDto
             {
                 CodigoDocumento = p.CodigoDocumento,
                 CodigoTipoDocumento = p.CodigoTipoDocumento,

@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using ApiAiSDK.Model;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
@@ -10,62 +11,50 @@ using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 {
     [Serializable]
-    public class ActualidadDialog : IDialog<object>
+    public class ActualidadDialog : BaseDialog, IDialog<object>
     {
-        private string Mensaje { get; set; }
+        private AIResponse response;
 
-        public ActualidadDialog(string mensaje)
+        public ActualidadDialog(AIResponse response)
         {
-            Mensaje = mensaje;
+            this.response = response;
         }
 
-        public async Task StartAsync(IDialogContext contexto)
+        public async Task StartAsync(IDialogContext context)
         {
+            IMessageActivity actividaMensaje = context.MakeMessage();
+            actividaMensaje.Text = response.Result.Fulfillment.Speech ?? string.Empty;
+            actividaMensaje.Recipient = actividaMensaje.From;
+            actividaMensaje.Type = ActivityTypes.Message;
+            await context.PostAsync(actividaMensaje);
+            List<ActualidadDto> entidades = new ActualidadProxy(ruta).Obtener();
+            IMessageActivity actividadTarjeta = context.MakeMessage();
+            actividadTarjeta.Recipient = actividadTarjeta.From;
+            actividadTarjeta.Attachments = new List<Attachment>();
+            actividadTarjeta.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            actividadTarjeta.Type = ActivityTypes.Message;
             List<Attachment> adjuntos = new List<Attachment>();
-
-            List<ActualidadDto> listaActualidades = new ActualidadProxy(VariableConfiguracion.RutaApi()).Obtener();
-
-            foreach (var actualidad in listaActualidades)
+            entidades.ForEach(p =>
             {
-                HeroCard tarjeta = new HeroCard(actualidad.DescripcionTitulo);
-
-                List<CardImage> listaImagenes = new List<CardImage>
+                HeroCard tarjeta = new HeroCard(p.DescripcionTitulo);
+                List<CardImage> imagenes = new List<CardImage>
                 {
-                    new CardImage
-                    {
-                        Url = actualidad.DescripcionImagen
-                    }
+                    new CardImage { Url = p.DescripcionImagen }
                 };
-
-                List<CardAction> listaBotones = new List<CardAction>
+                List<CardAction> botones = new List<CardAction>
                 {
-                    new CardAction
-                    {
-                        Value = actualidad.DescripcionUrl,
-                        Type = ActionTypes.OpenUrl,
-                        Title = ActionTitleTypes.ShowMore
-                    }
+                    new CardAction{ Value = p.DescripcionUrl, Type = ActionTypes.OpenUrl, Title = ActionTitleTypes.ShowMore }
                 };
-
-                tarjeta.Text = actualidad.DescripcionResumen;
-
-                tarjeta.Images = listaImagenes;
-
-                tarjeta.Buttons = listaBotones;
-
+                tarjeta.Text = p.DescripcionResumen;
+                tarjeta.Images = imagenes;
+                tarjeta.Buttons = botones;
                 adjuntos.Add(tarjeta.ToAttachment());
-            }
+            });
+            actividadTarjeta.Attachments = adjuntos;
 
-            IMessageActivity actividadRespuesta = contexto.MakeMessage();
-            actividadRespuesta.Recipient = actividadRespuesta.From;
-            actividadRespuesta.Type = ActivityTypes.Message;
-            actividadRespuesta.Attachments = adjuntos;
-            actividadRespuesta.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            actividadRespuesta.Text = Mensaje;
+            await context.PostAsync(actividadTarjeta);
 
-            await contexto.PostAsync(actividadRespuesta);
-
-            contexto.Done(this);
+            context.Done(this);
         }
     }
 }

@@ -18,13 +18,19 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
     public class BaseAi : AiDialog<object>
     {
         protected async Task Empezar(Action funcion)
-            => await Task.Run(funcion);
+        {
+            await Task.Run(funcion);
+        }
 
         protected async Task Terminar(IDialogContext context, IAwaitable<object> result)
-            => await Task.Run(() => context.EndConversation(ActivityTypes.EndOfConversation));
+        {
+            await Task.Run(() => context.Done(this));
+        }
 
         protected async Task Menu(IDialogContext context, IAwaitable<object> result)
-            => await Empezar(() => context.Call(new MenuDialog(), Terminar));
+        {
+            await Empezar(() => context.Call(new MenuDialog(), Terminar));
+        }
 
         protected void Dialogo(IDialogContext context, AIResponse response, IDialog<object> dialogo, ResumeAfter<object> siguiente = null)
         {

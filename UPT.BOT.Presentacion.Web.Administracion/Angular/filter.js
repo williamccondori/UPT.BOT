@@ -16,7 +16,6 @@
             var listaDetalles = listaElementos.filter(function (item) {
                 return item.IndicadorMostrar;
             });
-
             return listaDetalles.length;
         };
     };

@@ -3,8 +3,8 @@ using UPT.BOT.Aplicacion.DTOs.BOT;
 
 namespace UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Publicacion
 {
-    public interface INoticiaService
+    public interface IPublicacionService
     {
-        IList<NoticiaDto> Obtener();
+        IList<PublicacionDto> Obtener();
     }
 }

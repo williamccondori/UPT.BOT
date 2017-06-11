@@ -11,11 +11,11 @@ using UPT.BOT.Distribucion.Bot.Acceso.Documento;
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento
 {
     [Serializable]
-    public class ReglamentoDialog : BaseDialog, IDialog<object>
+    public class RequsitoDialog : BaseDialog, IDialog<object>
     {
         private AIResponse response;
 
-        public ReglamentoDialog(AIResponse response)
+        public RequsitoDialog(AIResponse response)
         {
             this.response = response;
         }
@@ -29,11 +29,11 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento
 
             await context.PostAsync(actividaMensaje);
 
-            List<ReglamentoDto> entidades = new ReglamentoProxy(ruta).Obtener();
+            List<RequisitoDto> entidades = new RequisitoProxy(ruta).Obtener();
 
             List<Attachment> listaAdjuntos = new List<Attachment>();
-            HeroCard tarjetaFormato = new HeroCard("Reglamentos");
-            tarjetaFormato.Subtitle = "Puedes descargar reglamentos que te serán de gran ayuda!";
+            HeroCard tarjetaFormato = new HeroCard("Requisitos");
+            tarjetaFormato.Subtitle = "Puedes descargar archivos con requisitos que te pueden ser útiles!";
             tarjetaFormato.Buttons = entidades.Select(p => new CardAction
             {
                 Title = p.DescripcionTitulo,

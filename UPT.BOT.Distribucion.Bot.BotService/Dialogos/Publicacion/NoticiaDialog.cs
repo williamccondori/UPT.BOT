@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using ApiAiSDK.Model;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
@@ -9,64 +10,54 @@ using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
 {
     [Serializable]
-    public class NoticiaDialog : IDialog<object>
+    public class NoticiaDialog : BaseDialog, IDialog<object>
     {
-        private string Mensaje { get; set; }
+        private AIResponse response;
 
-        public NoticiaDialog(string mensaje)
+        public NoticiaDialog(AIResponse response)
         {
-            Mensaje = mensaje;
+            this.response = response;
         }
 
-        public async Task StartAsync(IDialogContext contexto)
+        public async Task StartAsync(IDialogContext context)
         {
-            List<Elemento> listaNoticias = new RssProxy("http://rpp.pe/feed/tecnologia").Obtener();
+            IMessageActivity actividaMensaje = context.MakeMessage();
+            actividaMensaje.Text = response.Result.Fulfillment.Speech ?? string.Empty;
+            actividaMensaje.Recipient = actividaMensaje.From;
+            actividaMensaje.Type = ActivityTypes.Message;
+
+            await context.PostAsync(actividaMensaje);
+
+            List<Elemento> entidades = new RssProxy("http://rpp.pe/feed/tecnologia").Obtener();
 
             List<Attachment> adjuntos = new List<Attachment>();
 
-            //List<NoticiaDto> listaNoticias = new NoticiaProxy(VariableConfiguracion.RutaApi()).Obtener();
-
-            foreach (var noticia in listaNoticias)
+            entidades.ForEach(p =>
             {
-                HeroCard tarjeta = new HeroCard(noticia.Titulo);
-
-                List<CardImage> listaImagenes = new List<CardImage>
+                HeroCard tarjeta = new HeroCard(p.Titulo);
+                List<CardImage> imagenes = new List<CardImage>
                 {
-                    new CardImage
-                    {
-                        Url = noticia.Imagen
-                    }
+                    new CardImage { Url = p.Imagen }
                 };
-
-                List<CardAction> listaBotones = new List<CardAction>
+                List<CardAction> botones = new List<CardAction>
                 {
-                    new CardAction
-                    {
-                        Value = noticia.Enlace,
-                        Type = ActionTypes.OpenUrl,
-                        Title = ActionTitleTypes.ShowMore
-                    }
+                    new CardAction{ Value = p.Enlace, Type = ActionTypes.OpenUrl, Title = ActionTitleTypes.ShowMore }
                 };
-
-                tarjeta.Text = noticia.Descripcion;
-
-                tarjeta.Images = listaImagenes;
-
-                tarjeta.Buttons = listaBotones;
-
+                tarjeta.Text = p.Descripcion;
+                tarjeta.Images = imagenes;
+                tarjeta.Buttons = botones;
                 adjuntos.Add(tarjeta.ToAttachment());
-            }
+            });
 
-            IMessageActivity actividadRespuesta = contexto.MakeMessage();
-            actividadRespuesta.Recipient = actividadRespuesta.From;
-            actividadRespuesta.Type = ActivityTypes.Message;
-            actividadRespuesta.Attachments = adjuntos;
-            actividadRespuesta.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            actividadRespuesta.Text = Mensaje;
+            IMessageActivity actividadTarjeta = context.MakeMessage();
+            actividadTarjeta.Recipient = actividadTarjeta.From;
+            actividadTarjeta.Attachments = adjuntos;
+            actividadTarjeta.AttachmentLayout = AttachmentLayoutTypes.Carousel;
+            actividadTarjeta.Type = ActivityTypes.Message;
 
-            await contexto.PostAsync(actividadRespuesta);
+            await context.PostAsync(actividadTarjeta);
 
-            contexto.Done(this);
+            context.Done(this);
         }
     }
 }

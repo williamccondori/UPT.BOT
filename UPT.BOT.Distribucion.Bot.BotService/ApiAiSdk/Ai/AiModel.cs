@@ -12,7 +12,6 @@ namespace UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Ai
     public class AiModelAttribute : Attribute, IAiModel, IEquatable<IAiModel>
     {
         private readonly string gsToken;
-        private readonly string gsRuta;
 
         public string Token => gsToken;
 
@@ -21,7 +20,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Ai
         {
             gsToken = asToken;
 
-            gsRuta = "https://api.api.ai/v1/";
+            //gsRuta = "https://api.api.ai/v1/";
         }
 
         public bool Equals(IAiModel aoModelo)

@@ -5,26 +5,25 @@ using UPT.BOT.Aplicacion.Servicios.BOT.Asistente.Publicacion;
 using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
-using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Publicacion
 {
-    public class ActualidadService : BaseService, IActualidadService
+    public class PublicacionService : BaseService, IPublicacionService
     {
         private readonly IPublicacionRepository repositorioPublicacion;
 
-        public ActualidadService()
+        public PublicacionService()
         {
             repositorioPublicacion = new PublicacionRepository(contexto);
         }
 
-        public IList<ActualidadDto> Obtener()
+        public IList<PublicacionDto> Obtener()
         {
             List<PublicacionEntity> listaPublicacion = repositorioPublicacion
-                .LeerXTipo(TipoPublicacionEntity.Actualidad).Take(5).ToList();
+                .LeerXTipo(TipoPublicacionEntity.Publicacion).Take(5).ToList();
 
-            return listaPublicacion.Select(p => new ActualidadDto
+            return listaPublicacion.Select(p => new PublicacionDto
             {
                 CodigoPublicacion = p.CodigoPublicacion,
                 CodigoTipoPublicacion = p.CodigoTipoPublicacion,

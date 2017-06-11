@@ -7,9 +7,8 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Publicacion
     [Serializable]
     public class ActualidadProxy : BaseProxy
     {
-        public ActualidadProxy(string rutaApi) : base(rutaApi)
+        public ActualidadProxy(string ruta) : base(ruta)
         {
-
         }
 
         public List<ActualidadDto> Obtener()
