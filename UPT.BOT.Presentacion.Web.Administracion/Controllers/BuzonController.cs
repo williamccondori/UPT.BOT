@@ -9,6 +9,9 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
         }
 
-        public ActionResult Inicio() => View();
+        public ActionResult Inicio()
+        {
+            return View();
+        }
     }
 }

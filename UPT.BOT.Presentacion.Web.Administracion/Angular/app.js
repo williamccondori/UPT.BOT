@@ -1,5 +1,6 @@
 angular.module('uptbot', [
     'ngResource',
     'toastr',
-    'ae-datetimepicker'
+    'ae-datetimepicker',
+    'chart.js'
 ]);

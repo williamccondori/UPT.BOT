@@ -7,70 +7,80 @@
 <div class="row">
     <div class="col-xs-24">
         <h4><b>ANÁLISIS DE DATOS</b></h4>
-        <div class="well"></div>
+        <div class="well well-sm">Puede revisar el estado de su asistente virtual.</div>
         <hr />
     </div>
 </div>
 
 <div ng-controller="AnalisisController" ng-init="Iniciar()">
     <div class="row">
-        <div class="col-xs-24 col-sm-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Tareas de análisis
-                    <span class="badge">3</span>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item active">Clientes <span class="badge">2</span></a>
-                    <a href="#" class="list-group-item">Mensajes guardados</a>
-                    <a href="#" class="list-group-item">Historial</a>
-                </div>
-                <div class="panel-footer">
-                    <button class="btn btn-info btn-sm">Ayuda</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-xs-24 col-sm-16">
+        <div class="col-xs-24 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Clientes en Facebook <span class="badge" ng-bind="ListaCliente.length"></span>
                 </div>
-                <table class="table table-condensed table-hover table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Código</th>
-                        </tr>
-                    </thead>
-                    <tbody ng-repeat="Cliente in ListaCliente">
-                        <tr>
-                            <td ng-bind="Cliente.DescripcionNombre"></td>
-                            <td ng-bind="Cliente.CodigoCliente"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Código</th>
+                                <th>Informacion</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Cliente in ListaCliente">
+                            <tr>
+                                <td ng-bind="Cliente.DescripcionNombre"></td>
+                                <td ng-bind="Cliente.CodigoCliente"></td>
+                                <td>Informacion</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-        <div class="col-xs-24 col-sm-16">
+        <div class="col-xs-24 col-sm-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Mensajes
+                    Mensajes por usuario <span class="badge" ng-bind="grafico01.Datos.length"></span>
                 </div>
                 <div class="panel-body">
-                    <canvas id="bar" class="chart chart-bar"
-                            chart-data="data" chart-labels="labels"></canvas>
+                    <canvas id="grafico01" class="chart chart-bar" chart-data="grafico01.Datos" chart-labels="grafico01.Etiquetas"></canvas>
                 </div>
             </div>
         </div>
-            
+        <div class="col-xs-24 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Numero de mensajes los ultimos meses <span class="badge" ng-bind="grafico02.Datos.length"></span>
+                </div>
+                <div class="panel-body">
+                    <canvas id="grafico02" class="chart chart-line" chart-data="grafico02.Datos" chart-labels="grafico02.Etiquetas"></canvas>
+                </div>
+            </div>
         </div>
+        <div class="col-xs-24 col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Relacion de intenciones <span class="badge" ng-bind="grafico03.Datos.length"></span>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <canvas id="grafico03" class="chart chart-doughnut" chart-data="grafico03.Datos" chart-labels="grafico03.Etiquetas"></canvas>
+                        </div>
+                        <div class="col-sm-12">
+                            <canvas id="grafico04" class="chart chart-pie" chart-data="grafico03.Datos" chart-labels="grafico03.Etiquetas"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section scripts{
+    <script src="~/Angular/Factories/BaseFactory.js"></script>
     <script src="~/Angular/Factories/Analisis/AnalisisFactory.js"></script>
     <script src="~/Angular/Controllers/Analisis/AnalisisController.js"></script>
-    <script>
-        //var ctx = document.getElementById("bar");
-        //var myChart = new Chart(ctx);
-    </script>
 }

@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analisis\ClienteProxy.cs" />
+    <Compile Include="Analisis\MensajeProxy.cs" />
     <Compile Include="BaseProxy.cs" />
     <Compile Include="Gestion\Documento\BoletinProxy.cs" />
     <Compile Include="Gestion\Documento\FormatoProxy.cs" />
@@ -77,9 +79,7 @@
       <Name>UPT.BOT.Aplicacion.DTOs</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Analisis\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

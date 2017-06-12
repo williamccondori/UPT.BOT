@@ -128,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Administracion\Analisis\" />
     <Folder Include="Controllers\Administracion\Encuesta\" />
     <Folder Include="Controllers\Asistente\Estudio\" />
     <Folder Include="Models\" />
@@ -141,6 +140,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Administracion\Analisis\ClienteController.cs" />
+    <Compile Include="Controllers\Administracion\Analisis\MensajeController.cs" />
     <Compile Include="Controllers\Administracion\Buzon\BuzonController.cs" />
     <Compile Include="Controllers\Administracion\Configuracion\UsuarioController.cs" />
     <Compile Include="Controllers\Administracion\Gestion\Documento\BoletinController.cs" />

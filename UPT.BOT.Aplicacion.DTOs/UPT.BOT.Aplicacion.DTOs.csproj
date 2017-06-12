@@ -47,6 +47,7 @@
     <Compile Include="BOT\BoletinDto.cs" />
     <Compile Include="BOT\BuzonDto.cs" />
     <Compile Include="BOT\ClienteDto.cs" />
+    <Compile Include="BOT\GraficoDto.cs" />
     <Compile Include="BOT\ComunicadoDto.cs" />
     <Compile Include="BOT\ConvenioDto.cs" />
     <Compile Include="BOT\DetalleGaleriaDto.cs" />

@@ -1,34 +1,22 @@
 ﻿(function (module) {
-
-    AnalisisFactory.$inject = ["$resource"];
-
-
-    function AnalisisFactory($resource) {
-
-        var AnalisisController = [];
-
-        AnalisisController.ObtenerCliente = function () {
-            return $resource('/Analisis/ObtenerCliente', {}, {
-                Get: {
-                    method: 'GET',
-                    isArray: false
-                }
-            }).Get();
+    AnalisisFactory.$inject = [
+        'BaseFactory'
+    ];
+    function AnalisisFactory(BaseFactory) {
+        var Analisis = [];
+        Analisis.ObtenerCliente = function () {
+            return BaseFactory.Obtener('/Analisis/ObtenerCliente');
         };
-
-        AnalisisController.ObtenerMensajeXCliente = function () {
-            return $resource('/Analisis/ObtenerMensajeXCliente', {}, {
-                Get: {
-                    method: 'GET',
-                    isArray: false
-                }
-            }).Get();
+        Analisis.ObtenerMensajeXCliente = function () {
+            return BaseFactory.Obtener('/Analisis/ObtenerMensajeXCliente');
         };
-        
-
-        return AnalisisController;
+        Analisis.ObtenerResumenMes = function () {
+            return BaseFactory.Obtener('/Analisis/ObtenerResumenMes');
+        };
+        Analisis.ObtenerResumenIntenciones = function () {
+            return BaseFactory.Obtener('/Analisis/ObtenerResumenIntenciones');
+        };
+        return Analisis;
     }
-
-    module.factory("AnalisisFactory", AnalisisFactory);
-
-})(angular.module("uptAdministracion"));
+    module.factory('AnalisisFactory', AnalisisFactory);
+})(angular.module('uptbot'));

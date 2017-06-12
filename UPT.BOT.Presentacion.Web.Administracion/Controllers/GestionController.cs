@@ -23,30 +23,43 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             return View();
         }
 
-        // gestión de información
-
         [HttpGet]
         public ActionResult Informacion()
         {
             return View();
         }
 
-        
+        [HttpGet]
+        public ActionResult Publicacion()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Planestudio()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Documento()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Contacto()
+        {
+            return View();
+        }
+
+
         [HttpGet]
         public JsonResult ObtenerConvenio()
         {
             return Json(Ejecutar(() =>
             coleccion.proxyConvenio.Obtener())
             , JsonRequestBehavior.AllowGet);
-        }
-
-
-        // gestion de publicaciones
-
-        [HttpGet]
-        public ActionResult Publicacion()
-        {
-            return View();
         }
 
         [HttpPost]
@@ -182,14 +195,6 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             return Json(Ejecutar(() =>
             coleccion.proxyEvento.Eliminar(evento.CodigoEvento))
             , JsonRequestBehavior.AllowGet);
-        }
-
-        // gestion de documentos
-
-        [HttpGet]
-        public ActionResult Documento()
-        {
-            return View();
         }
 
         [HttpPost]

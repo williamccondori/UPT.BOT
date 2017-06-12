@@ -238,6 +238,9 @@
     <Content Include="Views\Analisis\Inicio.cshtml" />
     <Content Include="Views\Gestion\Documento.cshtml" />
     <Content Include="Views\Gestion\Publicacion.cshtml" />
+    <Content Include="Views\Gestion\Informacion.cshtml" />
+    <Content Include="Views\Gestion\Planestudio.cshtml" />
+    <Content Include="Views\Gestion\Contacto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Angular\Controllers\Gestion\Informacion\" />

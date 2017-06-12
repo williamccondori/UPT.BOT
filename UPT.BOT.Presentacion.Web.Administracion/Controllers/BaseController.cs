@@ -9,10 +9,20 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
     public class BaseController : Controller
     {
         protected readonly string ruta;
+        protected readonly string usuario;
 
         public BaseController()
         {
-            ruta = VariableConfiguracion.RutaApi();
+            try
+            {
+                ruta = VariableConfiguracion.RutaApi();
+                usuario = Sesion.Usuario();
+            }
+            catch (Exception excepcion)
+            {
+                TempData["MensajeError"] = excepcion.Message;
+                Redirect("~/Seguridad/Login");
+            }
         }
 
         protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)

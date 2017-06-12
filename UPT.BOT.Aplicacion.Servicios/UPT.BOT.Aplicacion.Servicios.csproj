@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\Administracion\Analisis\IClienteService.cs" />
+    <Compile Include="BOT\Administracion\Analisis\IMensajeService.cs" />
     <Compile Include="BOT\Administracion\Buzon\IBuzonService.cs" />
     <Compile Include="BOT\Administracion\Configuracion\IUsuarioService.cs" />
     <Compile Include="BOT\Administracion\Gestion\Documento\IBoletinService.cs" />
@@ -69,9 +71,7 @@
     <Compile Include="BOT\Asistente\Seguridad\IMensajeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BOT\Administracion\Analisis\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>

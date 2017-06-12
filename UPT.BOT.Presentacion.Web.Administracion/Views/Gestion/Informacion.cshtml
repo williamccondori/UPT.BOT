@@ -1,0 +1,301 @@
+﻿
+@{ ViewBag.Title = "Gestión de la Información"; }
+
+<div class="row">
+    <div class="col-xs-24">
+        <h4><b>GESTION DE LA INFORMACION</b></h4>
+        <div class="well well-sm">
+            En esta ventana usted puede gestionar la informacion proporciaonada por el asistente virtual y que sera visible desde la opcion de informacion del mismo.
+        </div>
+        <hr />
+    </div>
+</div>
+
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+           <div class="row">
+               <div class="col-xs-12">
+                   <span class="panel-title">Presentacion</span>
+               </div>
+               <div class="col-xs-12">
+                   <div class="text-right">
+                       <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                       <button class="btn btn-xs btn-success" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-ok-sign"></span></button>
+                       <button class="btn btn-xs btn-danger" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                   </div>
+               </div>
+           </div>
+        </div>
+        <div class="panel-body">
+
+        </div>
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-xs-12">
+                    <span class="panel-title">Acreditacion</span>
+                </div>
+                <div class="col-xs-12">
+                    <div class="text-right">
+                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                        <button class="btn btn-xs btn-success" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-ok-sign"></span></button>
+                        <button class="btn btn-xs btn-danger" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-body">
+
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#direccion">Direcciones</a></li>
+        <li><a data-toggle="tab" href="#telefono">Telefonos</a></li>
+        <li><a data-toggle="tab" href="#convenio">Convenios</a></li>
+        <li><a data-toggle="tab" href="#servicio">Servicios</a></li>
+        <li><a data-toggle="tab" href="#enlaceimportante">Enlaces Importantes</a></li>
+        <li><a data-toggle="tab" href="#admision">Admision</a></li>
+        <li><a data-toggle="tab" href="#redsocial">Redes Sociales</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="direccion" class="tab-pane fade in active">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Direcciones <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Direccion</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="telefono" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Telefonos <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Telefono</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="convenio" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Convenios <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Convenio</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="servicio" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Servicios <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="enlaceimportante" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Enlaces importantes <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Titulo</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="admision" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Admision <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Admision</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="redsocial" class="tab-pane fade in">
+            <div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Redes Sociales <span class="badge" ng-bind="ListaFormato.length"></span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Red Social</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th><button class="btn btn-xs btn-success" ng-click="Crear()"><span class="glyphicon glyphicon-plus-sign"></span></button></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="elemento in ListaFormato">
+                                    <td ng-bind="elemento.DescripcionTitulo"></td>
+                                    <td ng-bind="elemento.IndicadorEstado"></td>
+                                    <td ng-bind="elemento.FechaRegistro | Fecha | date : 'dd/MM/yyyy'"></td>
+                                    <th>
+                                        <button class="btn btn-xs btn-warning" ng-click="Modificar(elemento)"><span class="glyphicon glyphicon-edit"></span></button>
+                                        <button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                                    </th>
+                                <tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <link rel="stylesheet" href="~/Content/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/4.17.37/build/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="https://unpkg.com/angular-toastr/dist/angular-toastr.css" />
     <link rel="stylesheet" href="~/Content/estilos.css">
@@ -34,13 +33,13 @@
                             <li><a href="@Url.Action("Documento", "Gestion")">Documentos</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Análisis</a></li>
-                    <li><a href="#">Configuración</a></li>
+                    <li><a href="@Url.Action("Inicio","Analisis")">Análisis</a></li>
+                    <li><a href="@Url.Action("Inicio","Configuracion")">Configuración</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Módulos <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Buzón de sugerencias</a></li>
-                            <li><a href="#">Encuestas</a></li>
+                            <li><a href="@Url.Action("Inicio","Buzon")">Buzón de sugerencias</a></li>
+                            <li><a href="@Url.Action("Inicio","Encuesta")">Encuestas</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -86,11 +85,11 @@
                     </div>
                 </div>
                 <div class="list-group">
-                    <a href="#" class="list-group-item active">Inicio</a>
-                    <a href="#" class="list-group-item">Gestión</a>
-                    <a href="#" class="list-group-item">Análisis</a>
-                    <a href="#" class="list-group-item">Módulos</a>
-                    <a href="#" class="list-group-item">Configuración</a>
+                    <a href="@Url.Action("Inicio","Principal")" class="list-group-item">Inicio</a>
+                    <a href="@Url.Action("Inicio","Gestion")" class="list-group-item">Gestión</a>
+                    <a href="@Url.Action("Inicio","Analisis")" class="list-group-item">Análisis</a>
+                    <a href="@Url.Action("Inicio","Modulo")" class="list-group-item">Módulos</a>
+                    <a href="@Url.Action("Inicio","Configuracion")" class="list-group-item">Configuración</a>
                 </div>
             </div>
         </div>

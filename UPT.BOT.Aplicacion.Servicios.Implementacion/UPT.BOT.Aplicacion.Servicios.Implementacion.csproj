@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BOT\Administracion\Analisis\ClienteService.cs" />
+    <Compile Include="BOT\Administracion\Analisis\MensajeService.cs" />
     <Compile Include="BOT\Administracion\Buzon\BuzonService.cs" />
     <Compile Include="BOT\Administracion\Configuracion\UsuarioService.cs" />
     <Compile Include="BOT\Administracion\Gestion\Documento\BoletinService.cs" />
@@ -71,7 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BOT\Administracion\Analisis\" />
     <Folder Include="BOT\Asistente\Planestudio\" />
   </ItemGroup>
   <ItemGroup>
