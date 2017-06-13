@@ -40,12 +40,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BOT\IAdjuntoRepository.cs" />
+    <Compile Include="BOT\IAdmisionRepository.cs" />
     <Compile Include="BOT\IBuzonRepository.cs" />
     <Compile Include="BOT\IDetalleGaleriaRepository.cs" />
+    <Compile Include="BOT\IDireccionRepository.cs" />
     <Compile Include="BOT\IDocumentoRepository.cs" />
     <Compile Include="BOT\IEncuestaRepository.cs" />
+    <Compile Include="BOT\IEnlaceImportanteRepository.cs" />
     <Compile Include="BOT\IEventoRepository.cs" />
     <Compile Include="BOT\IGaleriaRepository.cs" />
+    <Compile Include="BOT\IPlanEstudioRepository.cs" />
+    <Compile Include="BOT\IRedSocialRepository.cs" />
+    <Compile Include="BOT\ITelefonoRepository.cs" />
     <Compile Include="BOT\ITipoBuzonRepository.cs" />
     <Compile Include="IBaseInsercionRepository.cs" />
     <Compile Include="IBaseLecturaRepository.cs" />

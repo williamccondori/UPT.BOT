@@ -20,7 +20,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Informacion
 
         public NosotrosDto Obtener()
         {
-            IEnumerable<AdjuntoEntity> listaAdjunto = repositorioAdjunto.LeerXTipo(TipoAdjuntoEntity.Nosotros).Take(5);
+            List<AdjuntoEntity> listaAdjunto = repositorioAdjunto.LeerXTipo(TipoAdjuntoEntity.Nosotros).Take(5).ToList();
 
             AdjuntoEntity adjunto = listaAdjunto.FirstOrDefault();
 

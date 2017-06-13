@@ -23,7 +23,7 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Contextos
         public DbSet<DireccionEntity> Direccion { get; set; }
         public DbSet<DocumentoEntity> Documento { get; set; }
         public DbSet<EncuestaEntity> Encuesta { get; set; }
-        public DbSet<EnlaceEntity> Enlace { get; set; }
+        public DbSet<EnlaceImportanteEntity> Enlace { get; set; }
         public DbSet<EventoEntity> Evento { get; set; }
         public DbSet<GaleriaEntity> Galeria { get; set; }
         public DbSet<InformacionEntity> Informacion { get; set; }

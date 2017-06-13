@@ -11,6 +11,12 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         {
 
         }
+
         public const string Nosotros = "N";
+        public const string Acreditacion = "A";
+        public const string Convenio = "V";
+        public const string Servicio = "S";
+        public const string MallaCurricular = "M";
+        public const string PerfilProfesional = "P";
     }
 }

@@ -3,7 +3,7 @@ using UPT.BOT.Infraestructura.Datos.BOT.Shared;
 
 namespace UPT.BOT.Infraestructura.Datos.BOT.Configuraciones
 {
-    public class EnlaceConfiguration : BaseConfiguration<EnlaceEntity>
+    public class EnlaceConfiguration : BaseConfiguration<EnlaceImportanteEntity>
     {
         public EnlaceConfiguration()
         {

@@ -2,7 +2,7 @@
 
 namespace UPT.BOT.Dominio.Entidades.BOT
 {
-    public class EnlaceEntity : BaseEntity
+    public class EnlaceImportanteEntity : BaseEntity
     {
         public long CodigoEnlace { get; set; }
         public string DescripcionTitulo { get; set; }
@@ -10,7 +10,7 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public string DescripcionResena { get; set; }
         public string DescripcionUrl { get; set; }
 
-        public EnlaceEntity()
+        public EnlaceImportanteEntity()
         {
 
         }

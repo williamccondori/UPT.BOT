@@ -52,7 +52,7 @@
     <Compile Include="BOT\DireccionEntity.cs" />
     <Compile Include="BOT\DocumentoEntity.cs" />
     <Compile Include="BOT\EncuestaEntity.cs" />
-    <Compile Include="BOT\EnlaceEntity.cs" />
+    <Compile Include="BOT\EnlaceImportanteEntity.cs" />
     <Compile Include="BOT\EventoEntity.cs" />
     <Compile Include="BOT\GaleriaEntity.cs" />
     <Compile Include="BOT\InformacionEntity.cs" />
