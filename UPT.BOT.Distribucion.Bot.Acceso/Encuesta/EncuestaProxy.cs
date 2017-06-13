@@ -16,5 +16,10 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Encuesta
         {
             return Ejecutar<List<EncuestaDto>>("encuesta");
         }
+
+        public EncuestaDto ObtenerXCodigo(long codigoEncuesta)
+        {
+            return Ejecutar<EncuestaDto>(string.Format("encuesta/codigo/{0}", codigoEncuesta));
+        }
     }
 }

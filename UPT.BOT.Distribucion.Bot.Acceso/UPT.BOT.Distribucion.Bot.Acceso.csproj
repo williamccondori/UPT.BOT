@@ -49,6 +49,7 @@
     <Compile Include="Documento\ReglamentoProxy.cs" />
     <Compile Include="Documento\RequisitoProxy.cs" />
     <Compile Include="Encuesta\EncuestaProxy.cs" />
+    <Compile Include="Encuesta\RespuestaProxy.cs" />
     <Compile Include="Informacion\AcreditacionProxy.cs" />
     <Compile Include="Informacion\AdmisionProxy.cs" />
     <Compile Include="Informacion\ConvenioProxy.cs" />

@@ -1,19 +1,15 @@
 ﻿using System.Collections.Generic;
-using UPT.BOT.Dominio.Entidades.Shared;
+using UPT.BOT.Aplicacion.DTOs.Shared;
 
-namespace UPT.BOT.Dominio.Entidades.BOT
+namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
-    public class PreguntaEntity : BaseEntity
+    public class PreguntaDto : BaseDto
     {
         public long CodigoPregunta { get; set; }
         public long CodigoEncuesta { get; set; }
         public string DescripcionPregunta { get; set; }
         public string IndicadorHabilitado { get; set; }
-        public ICollection<AlternativaEntity> AlternativaS { get; set; }
 
-        public PreguntaEntity()
-        {
-
-        }
+        public List<AlternativaDto> Alternativas { get; set; }
     }
 }

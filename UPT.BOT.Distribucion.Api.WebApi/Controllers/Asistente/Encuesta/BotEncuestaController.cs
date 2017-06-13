@@ -25,5 +25,14 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Encuesta
                 return new RespuestaDto<IList<EncuestaDto>>(servicioEncuesta.Obtener());
             });
         }
+
+        [HttpGet, Route("codigo/{codigoEncuesta}")]
+        public RespuestaDto<EncuestaDto> ObtenerXCodigo(long codigoEncuesta)
+        {
+            return Ejecutar(() =>
+            {
+                return new RespuestaDto<EncuestaDto>(servicioEncuesta.ObtenerXCodigo(codigoEncuesta));
+            });
+        }
     }
 }

@@ -22,7 +22,22 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
         {
             return Ejecutar(() =>
             {
-                return contextoBot.Encuesta.Find(id);
+                IQueryable<EncuestaEntity> encuestas = contextoBot.Encuesta
+                    .Include(p => p.Preguntas)
+                    .Include(p => p.Preguntas.Select(g => g.AlternativaS))
+                    .Where(p => p.IndicadorEstado == EstadoEntidad.Activo && p.IndicadorHabilitado == "S" && p.CodigoEncuesta == (long)id);
+
+                foreach (var encuesta in encuestas)
+                {
+                    encuesta.Preguntas = encuesta.Preguntas.Where(p => p.IndicadorEstado == EstadoEntidad.Activo && p.IndicadorHabilitado == "S").ToList();
+                    foreach (var pregunta in encuesta.Preguntas)
+                        pregunta.AlternativaS = pregunta.AlternativaS.Where(p => p.IndicadorEstado == EstadoEntidad.Activo && p.IndicadorHabilitado == "S").ToList();
+
+                }
+
+                EncuestaEntity encuestaFinal = encuestas.FirstOrDefault();
+
+                return encuestaFinal;
             });
         }
 

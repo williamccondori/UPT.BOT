@@ -29,34 +29,36 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
 
             AcreditacionDto entidad = new AcreditacionProxy(ruta).Obtener();
 
-            List<Attachment> listaAdjuntos = new List<Attachment>();
+            List<Attachment> adjuntos = new List<Attachment>();
 
             if (entidad != null)
             {
                 HeroCard tarjetaAcreditacion = new HeroCard(entidad.DescripcionTitulo);
                 tarjetaAcreditacion.Text = entidad.DescripcionResumen;
-                tarjetaAcreditacion.Images = AcreditacionImagen(entidad.DescripcionImagen);
-                tarjetaAcreditacion.Buttons = AcreditacionAccion(entidad.DescripcionUrl);
+                tarjetaAcreditacion.Images = new List<CardImage>
+                {
+                    new CardImage { Url = entidad.DescripcionImagen }
+                };
+                tarjetaAcreditacion.Buttons = new List<CardAction>
+                {
+                    new CardAction
+                    {
+                        Title = ActionTitleTypes.ShowMore,
+                        Type = ActionTypes.OpenUrl,
+                        Value = entidad.DescripcionUrl
+                    }
+                };
+                adjuntos.Add(tarjetaAcreditacion.ToAttachment());
             }
 
             IMessageActivity actividadTarjeta = context.MakeMessage();
             actividadTarjeta.Recipient = actividadTarjeta.From;
+            actividadTarjeta.Attachments = adjuntos;
+            actividadTarjeta.AttachmentLayout = AttachmentLayoutTypes.Carousel;
             actividadTarjeta.Type = ActivityTypes.Message;
-            actividadTarjeta.Attachments = listaAdjuntos;
-
             await context.PostAsync(actividadTarjeta);
 
             context.Done(this);
         }
-
-        private IList<CardAction> AcreditacionAccion(string url) => new List<CardAction>
-        {
-            new CardAction { Title = ActionTitleTypes.ShowMore, Type = ActionTypes.OpenUrl, Value = url}
-        };
-
-        private IList<CardImage> AcreditacionImagen(string url) => new List<CardImage>
-        {
-            new CardImage{ Url = url }
-        };
     }
 }

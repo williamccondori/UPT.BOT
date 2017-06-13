@@ -4,6 +4,7 @@ using System;
 using System.Threading.Tasks;
 using UPT.BOT.Distribucion.Bot.BotService.ApiAiSdk.Dialogs;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento;
+using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Encuesta;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion;
 using UPT.BOT.Distribucion.Bot.BotService.Dialogos.Planestudio;
@@ -35,11 +36,11 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
 
         [AiIntent("informacion.direccion")]
         public async Task Direccion(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new DireccionDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new DireccionDialog(response)));
 
         [AiIntent("informacion.telefono")]
         public async Task Telefono(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new TelefonoDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new TelefonoDialog(response)));
 
         [AiIntent("informacion.convenio")]
         public async Task Convenio(IDialogContext context, AIResponse response)
@@ -51,7 +52,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
 
         [AiIntent("informacion.admision")]
         public async Task Admision(IDialogContext context, AIResponse response)
-            => await Empezar(() => Dialogo(context, response, new AdmisionDialog(response.Result.Fulfillment.Speech)));
+            => await Empezar(() => Dialogo(context, response, new AdmisionDialog(response)));
 
         [AiIntent("informacion.acreditacion")]
         public async Task Acreditacion(IDialogContext context, AIResponse response)
@@ -128,6 +129,12 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
         public async Task Requsito(IDialogContext context, AIResponse response)
         {
             await Empezar(() => Dialogo(context, response, new RequsitoDialog(response)));
+        }
+
+        [AiIntent("encuesta.calificacion")]
+        public async Task Calificacion(IDialogContext context, AIResponse response)
+        {
+            await Empezar(() => Dialogo(context, response, new CalificacionDialog(response)));
         }
     }
 }
