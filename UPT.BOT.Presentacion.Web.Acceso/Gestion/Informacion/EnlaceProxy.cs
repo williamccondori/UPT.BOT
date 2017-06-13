@@ -10,12 +10,12 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<List<EnlaceDto>> Obtener()
+        public RespuestaDto<List<EnlaceImportanteDto>> Obtener()
         {
-            return Ejecutar<List<EnlaceDto>>("enlace");
+            return Ejecutar<List<EnlaceImportanteDto>>("enlace");
         }
 
-        public RespuestaDto<bool> Guardar(EnlaceDto enlace)
+        public RespuestaDto<bool> Guardar(EnlaceImportanteDto enlace)
         {
             return Ejecutar<bool>("enlace", Metodo.Post, new object[] { enlace });
         }

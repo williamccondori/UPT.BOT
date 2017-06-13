@@ -9,6 +9,6 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Informacion
         {
         }
 
-        public List<EnlaceDto> Obtener() => Ejecutar<List<EnlaceDto>>("enlace");
+        public List<EnlaceImportanteDto> Obtener() => Ejecutar<List<EnlaceImportanteDto>>("enlace");
     }
 }

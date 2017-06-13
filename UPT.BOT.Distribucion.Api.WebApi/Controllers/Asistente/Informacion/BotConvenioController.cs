@@ -18,11 +18,11 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Informacion
         }
 
         [HttpGet, Route(Predeterminado)]
-        public RespuestaDto<List<ConvenioDto>> Obtener()
+        public RespuestaDto<IList<ConvenioDto>> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<List<ConvenioDto>>(servicioConvenio.Obtener());
+                return new RespuestaDto<IList<ConvenioDto>>(servicioConvenio.Obtener());
             });
         }
     }

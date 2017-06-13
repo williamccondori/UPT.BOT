@@ -59,9 +59,18 @@
     <Compile Include="BOT\Asistente\Documento\ReglamentoService.cs" />
     <Compile Include="BOT\Asistente\Documento\RequisitoService.cs" />
     <Compile Include="BOT\Asistente\Encuesta\EncuestaService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\AcreditacionService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\AdmisionService.cs" />
     <Compile Include="BOT\Asistente\Informacion\ConvenioService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\DireccionService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\EnlaceImportanteService.cs" />
     <Compile Include="BOT\Asistente\Informacion\NosotrosService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\RedSocialService.cs" />
     <Compile Include="BOT\Asistente\Informacion\ServicioService.cs" />
+    <Compile Include="BOT\Asistente\Informacion\TelefonoService.cs" />
+    <Compile Include="BOT\Asistente\Planestudio\MallaCurricularService.cs" />
+    <Compile Include="BOT\Asistente\Planestudio\PerfilProfesionalService.cs" />
+    <Compile Include="BOT\Asistente\Planestudio\PlanEstudioService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\ActualidadService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\ComunicadoService.cs" />
     <Compile Include="BOT\Asistente\Publicacion\EventoService.cs" />
@@ -72,9 +81,7 @@
     <Compile Include="BOT\Shared\BaseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BOT\Asistente\Planestudio\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>

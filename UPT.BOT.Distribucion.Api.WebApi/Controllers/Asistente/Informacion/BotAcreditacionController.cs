@@ -1,4 +1,3 @@
-﻿using System.Collections.Generic;
 using System.Web.Http;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
@@ -7,22 +6,22 @@ using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Informacion;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Informacion
 {
-    [RoutePrefix("api/v1/asistente/servicio")]
-    public class BotServicioController : BaseApiController
+    [RoutePrefix("api/v1/asistente/acreditacion")]
+    public class BotAcreditacionController : BaseApiController
     {
-        private readonly IServicioService servicioServicio;
+        private readonly IAcreditacionService servicioAcreditacion;
 
-        public BotServicioController()
+        public BotAcreditacionController()
         {
-            servicioServicio = new ServicioService();
+            servicioAcreditacion = new AcreditacionService();
         }
 
         [HttpGet, Route(Predeterminado)]
-        public RespuestaDto<IList<ServicioDto>> Obtener()
+        public RespuestaDto<AcreditacionDto> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<IList<ServicioDto>>(servicioServicio.Obtener());
+                return new RespuestaDto<AcreditacionDto>(servicioAcreditacion.Obtener());
             });
         }
     }

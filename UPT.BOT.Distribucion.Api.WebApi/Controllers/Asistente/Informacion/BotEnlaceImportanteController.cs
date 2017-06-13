@@ -7,22 +7,22 @@ using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Informacion;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Informacion
 {
-    [RoutePrefix("api/v1/asistente/servicio")]
-    public class BotServicioController : BaseApiController
+    [RoutePrefix("api/v1/asistente/enlace_importante")]
+    public class BotEnlaceImportanteController : BaseApiController
     {
-        private readonly IServicioService servicioServicio;
+        private readonly IEnlaceImportanteService servicioEnlaceImportante;
 
-        public BotServicioController()
+        public BotEnlaceImportanteController()
         {
-            servicioServicio = new ServicioService();
+            servicioEnlaceImportante = new EnlaceImportanteService();
         }
 
         [HttpGet, Route(Predeterminado)]
-        public RespuestaDto<IList<ServicioDto>> Obtener()
+        public RespuestaDto<IList<EnlaceImportanteDto>> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<IList<ServicioDto>>(servicioServicio.Obtener());
+                return new RespuestaDto<IList<EnlaceImportanteDto>>(servicioEnlaceImportante.Obtener());
             });
         }
     }

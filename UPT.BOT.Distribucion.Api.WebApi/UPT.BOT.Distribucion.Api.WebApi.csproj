@@ -129,7 +129,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\Administracion\Encuesta\" />
-    <Folder Include="Controllers\Asistente\Estudio\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Boticia\" />
     <Folder Include="Views\Sesion\" />
@@ -159,9 +158,18 @@
     <Compile Include="Controllers\Asistente\Documento\BotReglamentoController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotRequisitoController.cs" />
     <Compile Include="Controllers\Asistente\Encuesta\BotEncuestaController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotAcreditacionController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotAdmisionController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotConvenioController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotDireccionController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotEnlaceImportanteController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotNosotrosController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotRedSocialController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotServicioController.cs" />
+    <Compile Include="Controllers\Asistente\Informacion\BotTelefonoController.cs" />
+    <Compile Include="Controllers\Asistente\PlanEstudio\BotMallaCurricularController.cs" />
+    <Compile Include="Controllers\Asistente\PlanEstudio\BotPerfilProfesionalController.cs" />
+    <Compile Include="Controllers\Asistente\PlanEstudio\BotPlanEstudioController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotActualidadController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotComunicadoController.cs" />
     <Compile Include="Controllers\Asistente\Publicacion\BotEventoController.cs" />

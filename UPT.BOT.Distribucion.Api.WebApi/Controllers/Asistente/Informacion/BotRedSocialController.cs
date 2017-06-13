@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Web.Http;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
@@ -7,22 +7,22 @@ using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Asistente.Informacion;
 
 namespace UPT.BOT.Distribucion.Api.WebApi.Controllers.Asistente.Informacion
 {
-    [RoutePrefix("api/v1/asistente/servicio")]
-    public class BotServicioController : BaseApiController
+    [RoutePrefix("api/v1/asistente/red_social")]
+    public class BotRedSocialController : BaseApiController
     {
-        private readonly IServicioService servicioServicio;
+        private readonly IRedSocialService servicioRedSocial;
 
-        public BotServicioController()
+        public BotRedSocialController()
         {
-            servicioServicio = new ServicioService();
+            servicioRedSocial = new RedSocialService();
         }
 
         [HttpGet, Route(Predeterminado)]
-        public RespuestaDto<IList<ServicioDto>> Obtener()
+        public RespuestaDto<IList<RedSocialDto>> Obtener()
         {
             return Ejecutar(() =>
             {
-                return new RespuestaDto<IList<ServicioDto>>(servicioServicio.Obtener());
+                return new RespuestaDto<IList<RedSocialDto>>(servicioRedSocial.Obtener());
             });
         }
     }

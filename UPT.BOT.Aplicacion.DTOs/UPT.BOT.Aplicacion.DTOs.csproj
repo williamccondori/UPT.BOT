@@ -54,7 +54,7 @@
     <Compile Include="BOT\DireccionDto.cs" />
     <Compile Include="BOT\DocumentoDto.cs" />
     <Compile Include="BOT\EncuestaDto.cs" />
-    <Compile Include="BOT\EnlaceDto.cs" />
+    <Compile Include="BOT\EnlaceImportanteDto.cs" />
     <Compile Include="BOT\EventoDto.cs" />
     <Compile Include="BOT\FormatoDto.cs" />
     <Compile Include="BOT\GaleriaDto.cs" />
@@ -62,7 +62,10 @@
     <Compile Include="BOT\MensajeDto.cs" />
     <Compile Include="BOT\NosotrosDto.cs" />
     <Compile Include="BOT\NoticiaDto.cs" />
+    <Compile Include="BOT\PerfilProfesionalDto.cs" />
+    <Compile Include="BOT\PlanEstudioDto.cs" />
     <Compile Include="BOT\PublicacionDto.cs" />
+    <Compile Include="BOT\RedSocialDto.cs" />
     <Compile Include="BOT\ReglamentoDto.cs" />
     <Compile Include="BOT\RequisitoDto.cs" />
     <Compile Include="BOT\ServicioDto.cs" />

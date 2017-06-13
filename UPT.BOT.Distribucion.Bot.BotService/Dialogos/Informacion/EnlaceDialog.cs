@@ -27,7 +27,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
 
             await context.PostAsync(actividaMensaje);
 
-            List<EnlaceDto> entidades = new EnlaceProxy(ruta).Obtener();
+            List<EnlaceImportanteDto> entidades = new EnlaceProxy(ruta).Obtener();
 
             List<Attachment> listaAdjuntos = new List<Attachment>();
 

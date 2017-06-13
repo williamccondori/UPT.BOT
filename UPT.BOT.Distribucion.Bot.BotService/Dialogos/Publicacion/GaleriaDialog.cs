@@ -40,13 +40,13 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
                 {
                     new CardImage { Url = p.DescripcionImagen }
                 };
-                List<CardAction> botones = new List<CardAction>
-                {
-                    new CardAction{ Value = p.CodigoGaleria, Type = ActionTypes.PostBack, Title = ActionTitleTypes.ShowMore }
-                };
+                //List<CardAction> botones = new List<CardAction>
+                //{
+                //    new CardAction{ Value = p.CodigoGaleria, Type = ActionTypes.ImBack, Title = ActionTitleTypes.ShowMore }
+                //};
                 tarjeta.Text = p.DescripcionResena;
                 tarjeta.Images = imagenes;
-                tarjeta.Buttons = botones;
+                //tarjeta.Buttons = botones;
                 adjuntos.Add(tarjeta.ToAttachment());
             });
 
