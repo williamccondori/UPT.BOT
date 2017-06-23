@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.0 Desarrollo", "2.0 Desarrollo", "{7D1490F9-78AF-4A01-B160-EA65BE415101}"
 EndProject
@@ -52,9 +52,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPT.BOT.Infraestructura.Datos.Pruebas", "UPT.BOT.Infraestructura.Datos.Pruebas\UPT.BOT.Infraestructura.Datos.Pruebas.csproj", "{D140CA14-5DDA-460D-8D85-F83FF1A3CEFD}"
 EndProject
 Global
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -139,14 +136,5 @@ Global
 		{56D77E85-3412-4E9F-83EB-3C1A82C31F71} = {C8EC7126-2F38-4275-8CBE-B1A025F0619F}
 		{3FD743BE-9462-431B-9B2D-6E8659AE7500} = {C8EC7126-2F38-4275-8CBE-B1A025F0619F}
 		{D140CA14-5DDA-460D-8D85-F83FF1A3CEFD} = {EF8D3B05-24EA-4339-9179-9E77C2B6F1F1}
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
