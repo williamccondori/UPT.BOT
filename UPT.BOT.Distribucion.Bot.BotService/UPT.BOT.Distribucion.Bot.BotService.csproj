@@ -130,6 +130,7 @@
     <Compile Include="Dialogos\Documento\RequsitoDialog.cs" />
     <Compile Include="Dialogos\Encuesta\CalificacionDialog.cs" />
     <Compile Include="Dialogos\Encuesta\EncuestaDialog.cs" />
+    <Compile Include="Dialogos\Extras\AgradecerDialog.cs" />
     <Compile Include="Dialogos\Extras\MenuDialog.cs" />
     <Compile Include="Dialogos\Informacion\AcreditacionDialog.cs" />
     <Compile Include="Dialogos\Informacion\AdmisionDialog.cs" />

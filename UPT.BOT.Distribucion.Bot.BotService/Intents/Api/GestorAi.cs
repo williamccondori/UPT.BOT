@@ -28,6 +28,12 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intents.Api
             await Empezar(() => Dialogo(context, response, new SaludarDialog(response), Menu));
         }
 
+        [AiIntent("extras.agreadecimiento")]
+        public async Task Agradecer(IDialogContext context, AIResponse response)
+        {
+            await Empezar(() => Dialogo(context, response, new AgradecerDialog(response), Menu));
+        }
+
         // intenciones para mostrar información general
 
         [AiIntent("informacion.nosotros")]
