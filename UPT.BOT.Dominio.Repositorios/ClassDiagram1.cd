@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IAdjuntoRepository" Collapsed="true">
+    <Position X="17.75" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IAdjuntoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IAdmisionRepository" Collapsed="true">
+    <Position X="21.75" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IAdmisionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IBuzonRepository">
+    <Position X="23.5" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IBuzonRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IClienteRepository">
+    <Position X="33.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IClienteRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IDetalleGaleriaRepository" Collapsed="true">
+    <Position X="39.25" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IDetalleGaleriaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IDireccionRepository" Collapsed="true">
+    <Position X="42.25" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IDireccionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IDocumentoRepository" Collapsed="true">
+    <Position X="13.25" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IDocumentoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IEncuestaRepository" Collapsed="true">
+    <Position X="14.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IEncuestaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IEnlaceImportanteRepository">
+    <Position X="26.25" Y="6.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IEnlaceImportanteRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IEventoRepository">
+    <Position X="31.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IEventoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IGaleriaRepository" Collapsed="true">
+    <Position X="40" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IGaleriaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IMensajeRepository">
+    <Position X="23.75" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAEAAAAAAAAAAAAAAgAAAAAIAAAAAAAA=</HashCode>
+      <FileName>BOT\IMensajeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IObjetoRepository" Collapsed="true">
+    <Position X="16.25" Y="10.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IObjetoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IPlanEstudioRepository">
+    <Position X="17.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IPlanEstudioRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IPublicacionRepository">
+    <Position X="32.75" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IPublicacionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IRedSocialRepository" Collapsed="true">
+    <Position X="34.25" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IRedSocialRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IRespuestaRepository">
+    <Position X="23.75" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IRespuestaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IRolRepository">
+    <Position X="36.5" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IRolRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.ITelefonoRepository" Collapsed="true">
+    <Position X="19" Y="10.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\ITelefonoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.ITipoBuzonRepository">
+    <Position X="20.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\ITipoBuzonRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.ITipoPublicacionRepository">
+    <Position X="28.25" Y="9.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\ITipoPublicacionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IUsuarioRepository" Collapsed="true">
+    <Position X="37.25" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>BOT\IUsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.BOT.IUsuarioXRolRepository" Collapsed="true">
+    <Position X="42" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BOT\IUsuarioXRolRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.IBaseInsercionRepository&lt;T&gt;">
+    <Position X="28" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBaseInsercionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.IBaseLecturaRepository&lt;T&gt;">
+    <Position X="34.5" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>IBaseLecturaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.IBaseOperacionRepository&lt;T&gt;">
+    <Position X="28" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBaseOperacionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UPT.BOT.Dominio.Repositorios.IBaseRepository&lt;T&gt;">
+    <Position X="30.5" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

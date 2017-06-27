@@ -61,12 +61,12 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
 
         private IList<CardAction> ContactoAccion() => new List<CardAction>
         {
-            new CardAction { Title = "Contáctanos", Value = "Contáctanos" },
-            new CardAction { Title = "Sugerencias", Value = "Sugerencias" },
+            //new CardAction { Title = "Contáctanos", Value = "Contáctanos" },
+            //new CardAction { Title = "Sugerencias", Value = "Sugerencias" },
             new CardAction { Title = "Califícanos", Value = "Califícanos" },
-            new CardAction { Title = "Módulo de encuestas", Value = "Encuestas" },
-            new CardAction { Title = "Módulo de notas", Value = "Notas" },
-            new CardAction { Title = "Módulo de horarios", Value = "Horarios" }
+            //new CardAction { Title = "Módulo de encuestas", Value = "Encuestas" },
+            //new CardAction { Title = "Módulo de notas", Value = "Notas" },
+            //new CardAction { Title = "Módulo de horarios", Value = "Horarios" }
         };
 
         private IList<CardImage> ContactoImagen() => new List<CardImage>
@@ -94,9 +94,9 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
         {
             return new List<CardAction>
             {
-                new CardAction { Title = "Plan de estudios", Value = "Plan de estudios" },
-                new CardAction { Title = "Malla curricular", Value = "Malla curricular" },
-                new CardAction { Title = "Perfiles profesionales", Value = "Perfiles profesionales" }
+                //new CardAction { Title = "Plan de estudios", Value = "Plan de estudios" },
+                //new CardAction { Title = "Malla curricular", Value = "Malla curricular" },
+                //new CardAction { Title = "Perfíl profesional", Value = "Perfíl profesional" }
             };
         }
 
@@ -118,7 +118,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
 
                 new CardAction { Title = "Comunicados", Value = "Comunicados" },
                 new CardAction { Title = "Galerias", Value = "Galerias" },
-                new CardAction { Title = "Videos", Value = "Videos" }
+                new CardAction { Title = "Publicaciones", Value = "Publicaciones" }
             };
         }
 
@@ -138,14 +138,14 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
         private IList<CardAction> InformacionAccion() => new List<CardAction>
         {
             new CardAction { Title = "Nosotros", Value = "Nosotros" },
-            new CardAction { Title = "Dirección", Value = "Dirección" },
-            new CardAction { Title = "Teléfono", Value = "Teléfono" },
+            new CardAction { Title = "Direcciones", Value = "Direcciones" },
+            new CardAction { Title = "Teléfonos", Value = "Teléfonos" },
             new CardAction { Title = "Convenios", Value = "Convenios" },
-            new CardAction { Title = "Servicios", Value = "Servicios" },
-            new CardAction { Title = "Enlaces importantes", Value = "Enlaces importantes" },
-            new CardAction { Title = "Admisión", Value = "Admisión" },
+            //new CardAction { Title = "Servicios", Value = "Servicios" },
+            //new CardAction { Title = "Enlaces importantes", Value = "Enlaces importantes" },
+            //new CardAction { Title = "Admisión", Value = "Admisión" },
             new CardAction { Title = "Acreditación", Value = "Acreditación" },
-            new CardAction { Title = "Redes sociales", Value = "Redes sociales" }
+            //new CardAction { Title = "Redes sociales", Value = "Redes sociales" }
         };
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using UPT.BOT.Dominio.Entidades.Shared;
+using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Dominio.Entidades.BOT
 {
@@ -13,6 +14,20 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public RespuestaEntity()
         {
 
+        }
+
+        public static RespuestaEntity Crear(long codigoAlternativa, string codigoCliente, string usuario)
+        {
+            return new RespuestaEntity
+            {
+                CodigoAlternativa = codigoAlternativa,
+                CodigoCliente = codigoCliente,
+                FechaRespuesta = DateTime.Now,
+                EstadoObjeto = EstadoObjeto.Nuevo,
+                FechaRegistro = DateTime.Now,
+                IndicadorEstado = EstadoEntidad.Activo,
+                UsuarioRegistro = usuario
+            };
         }
     }
 }

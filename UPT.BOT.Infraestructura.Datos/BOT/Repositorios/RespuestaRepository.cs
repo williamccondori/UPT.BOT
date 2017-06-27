@@ -1,33 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
 using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Shared;
-using UPT.BOT.Utilidades.Utilidades.Constantes;
 
 namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
 {
-    public class RedSocialRepository : BaseRepository, IRedSocialRepository
+    public class RespuestaRepository : BaseRepository, IRespuestaRepository
     {
         private readonly BotContext contexto;
 
-        public RedSocialRepository(BotContext contexto)
+        public RespuestaRepository(BotContext contexto)
         {
             this.contexto = contexto;
         }
 
-        public RedSocialEntity Buscar(object id)
+        public RespuestaEntity Buscar(string codigoCliente, long codigoAlternativa)
         {
-            throw new NotImplementedException();
+            return Ejecutar(() =>
+            {
+                return contexto.Respuesta.FirstOrDefault(p => p.CodigoCliente == codigoCliente && p.CodigoAlternativa == codigoAlternativa);
+            });
         }
 
-        public void Crear(RedSocialEntity entidad)
+        public void Crear(RespuestaEntity entidad)
         {
             Ejecutar(() =>
             {
-                contexto.RedSocial.Add(entidad);
+                contexto.Respuesta.Add(entidad);
                 contexto.GuardarCambios();
             });
         }
@@ -35,14 +36,6 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
         public void Eliminar(object id)
         {
             throw new NotImplementedException();
-        }
-
-        public IList<RedSocialEntity> Leer()
-        {
-            return Ejecutar(() =>
-            {
-                return contexto.RedSocial.Where(p => p.IndicadorEstado == EstadoEntidad.Activo).OrderByDescending(p => p.FechaRegistro).ToList();
-            });
         }
 
         public void Modificar()

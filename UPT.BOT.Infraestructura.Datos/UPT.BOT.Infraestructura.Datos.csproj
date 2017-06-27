@@ -97,6 +97,7 @@
     <Compile Include="BOT\Repositorios\PlanEstudioRepository.cs" />
     <Compile Include="BOT\Repositorios\PublicacionRepository.cs" />
     <Compile Include="BOT\Repositorios\RedSocialRepository.cs" />
+    <Compile Include="BOT\Repositorios\RespuestaRepository.cs" />
     <Compile Include="BOT\Repositorios\RolRepository.cs" />
     <Compile Include="BOT\Repositorios\TelefonoRepository.cs" />
     <Compile Include="BOT\Repositorios\TipoBuzonRepository.cs" />
@@ -113,6 +114,14 @@
     <Folder Include="BOT\Utilidades\" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation2.layerdiagram">
+      <Link>DependencyValidation2.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -132,6 +141,10 @@
       <Project>{FCF535B6-81B0-4398-9E01-EFFE2653A82C}</Project>
       <Name>UPT.BOT.Utilidades.Utilidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

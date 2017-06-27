@@ -44,7 +44,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Publicacion
                 {
                     new CardAction{ Value = p.DescripcionUrl, Type = ActionTypes.OpenUrl, Title = ActionTitleTypes.ShowMore }
                 };
-                tarjeta.Subtitle = string.Format("{2} Lugar: {0} <br><b>Fecha:</b> {1}", p.DescripcionLugar, p.FechaEvento.ToShortDateString(), p.IndicadorConcluido == "S" ? "[Terminado]" : "[Proximamente]");
+                tarjeta.Subtitle = string.Format("{2} Lugar: {0} Fecha: {1}", p.DescripcionLugar, p.FechaEvento.ToShortDateString(), p.IndicadorConcluido == "S" ? "[Terminado]" : "[Proximamente]");
                 tarjeta.Text = p.DescripcionResena;
                 tarjeta.Images = imagenes;
                 tarjeta.Buttons = botones;

@@ -59,6 +59,7 @@
     <Compile Include="BOT\Asistente\Documento\IReglamentoService.cs" />
     <Compile Include="BOT\Asistente\Documento\IRequisitoService.cs" />
     <Compile Include="BOT\Asistente\Encuesta\IEncuestaService.cs" />
+    <Compile Include="BOT\Asistente\Encuesta\IRespuestaService.cs" />
     <Compile Include="BOT\Asistente\Informacion\IAcreditacionService.cs" />
     <Compile Include="BOT\Asistente\Informacion\IAdmisionService.cs" />
     <Compile Include="BOT\Asistente\Informacion\IConvenioService.cs" />
@@ -80,12 +81,28 @@
     <Compile Include="BOT\Asistente\Seguridad\IMensajeService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Aplicacion.DTOs\UPT.BOT.Aplicacion.DTOs.csproj">
       <Project>{D7D66419-ABA2-4B69-BDE3-5ED8F965A5FE}</Project>
       <Name>UPT.BOT.Aplicacion.DTOs</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation2.layerdiagram">
+      <Link>DependencyValidation2.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

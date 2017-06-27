@@ -131,6 +131,7 @@
     <Folder Include="Controllers\Administracion\Encuesta\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Boticia\" />
+    <Folder Include="Views\BotRespuesta\" />
     <Folder Include="Views\Sesion\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
@@ -158,6 +159,7 @@
     <Compile Include="Controllers\Asistente\Documento\BotReglamentoController.cs" />
     <Compile Include="Controllers\Asistente\Documento\BotRequisitoController.cs" />
     <Compile Include="Controllers\Asistente\Encuesta\BotEncuestaController.cs" />
+    <Compile Include="Controllers\Asistente\Encuesta\BotRespuestaController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotAcreditacionController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotAdmisionController.cs" />
     <Compile Include="Controllers\Asistente\Informacion\BotConvenioController.cs" />
@@ -190,6 +192,14 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation2.layerdiagram">
+      <Link>DependencyValidation2.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
     <None Include="Properties\PublishProfiles\uptbotwebapi - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -233,6 +243,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

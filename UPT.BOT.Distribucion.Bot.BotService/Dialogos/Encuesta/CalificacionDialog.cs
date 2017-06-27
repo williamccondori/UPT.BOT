@@ -34,7 +34,6 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Encuesta
 
             IMessageActivity actividadTarjeta = context.MakeMessage();
             actividadTarjeta.Recipient = actividadTarjeta.From;
-            actividadTarjeta.Attachments = new List<Attachment>();
             actividadTarjeta.AttachmentLayout = AttachmentLayoutTypes.List;
             actividadTarjeta.Type = ActivityTypes.Message;
             List<Attachment> adjuntos = new List<Attachment>();
@@ -44,28 +43,32 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Encuesta
             List<CardAction> botones = pregunta.Alternativas.Select(p => new CardAction
             {
                 Title = p.DescripcionAlternativa,
-                Value = p,
+                Value = p.DescripcionAlternativa,
                 Type = ActionTypes.PostBack,
                 Image = "http://uptbotadministracion.azurewebsites.net/images/estrella.png"
             }).ToList();
 
-
+            context.UserData.SetValue("Alternativas", pregunta.Alternativas);
 
             tarjeta.Buttons = botones;
             adjuntos.Add(tarjeta.ToAttachment());
             actividadTarjeta.Attachments = adjuntos;
+            actividadTarjeta.Value = pregunta.Alternativas;
             await context.PostAsync(actividadTarjeta);
             context.Wait(MessageReceivedAsync);
         }
 
         public async Task MessageReceivedAsync(IDialogContext context, IAwaitable<IMessageActivity> respuesta)
         {
-            var message = await respuesta;
-            AlternativaDto alternativa = (AlternativaDto)message.Value;
+            var respuestaAlternativa = await respuesta;
+            List<AlternativaDto> listaAlternativas;
+            context.UserData.TryGetValue("Alternativas", out listaAlternativas);
+
+            AlternativaDto seleccion = listaAlternativas.FirstOrDefault(p => p.DescripcionAlternativa == respuestaAlternativa.Text);
 
             RespuestasDto respuestas = new RespuestasDto
             {
-                CodigoAlternativa = Convert.ToInt64(alternativa.CodigoAlternativa),
+                CodigoAlternativa = seleccion.CodigoAlternativa,
                 CodigoCliente = context.Activity.From.Id,
                 EstadoObjeto = EstadoObjeto.Nuevo,
                 FechaRegistro = DateTime.Now

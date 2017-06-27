@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Analisis.ClienteProxy" Collapsed="true">
+    <Position X="6" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Analisis\ClienteProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Analisis.MensajeProxy" Collapsed="true">
+    <Position X="15" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAEAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Analisis\MensajeProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.BaseProxy">
+    <Position X="25.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAABAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>BaseProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Configuracion.UsuarioProxy" Collapsed="true">
+    <Position X="42.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuracion\UsuarioProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Documento.BoletinProxy" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Documento\BoletinProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Documento.FormatoProxy" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Documento\FormatoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Documento.ReglamentoProxy">
+    <Position X="30.75" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Documento\ReglamentoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Documento.RequisitoProxy" Collapsed="true">
+    <Position X="35.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Documento\RequisitoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.AcreditacionProxy" Collapsed="true">
+    <Position X="44.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\AcreditacionProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.AdmisionProxy" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\AdmisionProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.ConvenioProxy" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\ConvenioProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.DireccionProxy" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\DireccionProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.EnlaceProxy" Collapsed="true">
+    <Position X="37.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\EnlaceProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.NosotrosProxy" Collapsed="true">
+    <Position X="46.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\NosotrosProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.ServicioProxy" Collapsed="true">
+    <Position X="10.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\ServicioProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.SocialProxy">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\SocialProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion.TelefonoProxy" Collapsed="true">
+    <Position X="28.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gestion\Informacion\TelefonoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion.ActualidadProxy" Collapsed="true">
+    <Position X="40" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Publicacion\ActualidadProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion.ComunicadoProxy" Collapsed="true">
+    <Position X="49" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Publicacion\ComunicadoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion.EventoProxy" Collapsed="true">
+    <Position X="12.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Publicacion\EventoProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion.GaleriaProxy">
+    <Position X="26.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Publicacion\GaleriaProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion.PublicacionProxy" Collapsed="true">
+    <Position X="33.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Gestion\Publicacion\PublicacionProxy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="UPT.BOT.Presentacion.Web.Acceso.Metodo" Collapsed="true">
+    <Position X="51.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAACAEAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>BaseProxy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

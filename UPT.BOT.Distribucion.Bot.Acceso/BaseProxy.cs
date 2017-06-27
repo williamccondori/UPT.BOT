@@ -69,13 +69,9 @@ namespace UPT.BOT.Distribucion.Bot.Acceso
                 RespuestaDto<T> respuesta = JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
 
                 if (respuesta.Estado)
-                {
                     return respuesta.Datos;
-                }
                 else
-                {
-                    return default(T);
-                }
+                    throw new ApplicationException(respuesta.Mensaje);
             }
         }
 

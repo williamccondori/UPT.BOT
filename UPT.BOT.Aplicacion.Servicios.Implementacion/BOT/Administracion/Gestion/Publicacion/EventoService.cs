@@ -8,7 +8,6 @@ using UPT.BOT.Aplicacion.Servicios.BOT.Administracion.Gestion.Publicacion;
 using UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Shared;
 using UPT.BOT.Dominio.Entidades.BOT;
 using UPT.BOT.Dominio.Repositorios.BOT;
-using UPT.BOT.Infraestructura.Datos.BOT.Contextos;
 using UPT.BOT.Infraestructura.Datos.BOT.Repositorios;
 
 namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion.Publicacion
@@ -59,7 +58,7 @@ namespace UPT.BOT.Aplicacion.Servicios.Implementacion.BOT.Administracion.Gestion
             List<EventoDto> eventos_ = eventos.Select(p => new EventoDto
             {
                 CodigoEvento = p.CodigoEvento,
-                DescripcionImagen = p.DescripcionLugar,
+                DescripcionImagen = p.DescripcionImagen,
                 DescripcionLugar = p.DescripcionLugar,
                 DescripcionMapa = p.DescripcionMapa,
                 DescripcionResena = p.DescripcionResena,

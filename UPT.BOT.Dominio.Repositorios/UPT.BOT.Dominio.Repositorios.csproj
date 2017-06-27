@@ -51,6 +51,7 @@
     <Compile Include="BOT\IGaleriaRepository.cs" />
     <Compile Include="BOT\IPlanEstudioRepository.cs" />
     <Compile Include="BOT\IRedSocialRepository.cs" />
+    <Compile Include="BOT\IRespuestaRepository.cs" />
     <Compile Include="BOT\ITelefonoRepository.cs" />
     <Compile Include="BOT\ITipoBuzonRepository.cs" />
     <Compile Include="IBaseInsercionRepository.cs" />
@@ -67,12 +68,27 @@
     <Compile Include="BOT\IUsuarioXRolRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation1.layerdiagram">
+      <Link>DependencyValidation1.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <AdditionalFiles Include="..\Dependencias\DependencyValidation2.layerdiagram">
+      <Link>DependencyValidation2.layerdiagram</Link>
+      <Visible>False</Visible>
+    </AdditionalFiles>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UPT.BOT.Dominio.Entidades\UPT.BOT.Dominio.Entidades.csproj">
       <Project>{BA5E1E40-934F-46E0-8721-C63BF6C707F1}</Project>
       <Name>UPT.BOT.Dominio.Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
