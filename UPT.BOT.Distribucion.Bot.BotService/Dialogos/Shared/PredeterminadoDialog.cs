@@ -1,28 +1,24 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using ApiAiSDK.Model;
+using Microsoft.Bot.Builder.Dialogs;
 using System;
 using System.Threading.Tasks;
 
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Shared
 {
     [Serializable]
-    public class PredeterminadoDialog : IDialog<object>
+    public class PredeterminadoDialog : BaseDialog, IDialog<object>
     {
-        public string Mensaje { get; set; }
+        private readonly string _mensaje;
 
-        public PredeterminadoDialog(string asMensaje = "")
+        public PredeterminadoDialog(AIResponse response)
         {
-            Mensaje = asMensaje;
+            _mensaje = ObtenerMensajeServicio(response) ?? "Lo siento, no te he entendido";
         }
-        public async Task StartAsync(IDialogContext aoContexto)
+
+        public async Task StartAsync(IDialogContext context)
         {
-            if (string.IsNullOrEmpty(Mensaje))
-            {
-                Mensaje = "Lo siento, no te he entendido";
-            }
-
-            await aoContexto.PostAsync(Mensaje);
-
-            aoContexto.Done(this);
+            await context.SayAsync(_mensaje);
+            context.Done(this);
         }
     }
 }

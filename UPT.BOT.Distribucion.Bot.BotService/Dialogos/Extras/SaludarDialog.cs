@@ -1,4 +1,4 @@
-﻿using ApiAiSDK.Model;  
+﻿using ApiAiSDK.Model;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System;

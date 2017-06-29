@@ -123,16 +123,20 @@
     <Compile Include="ApiAiSdk\Ai\AiService.cs" />
     <Compile Include="ApiAiSdk\Dialogs\AiDialog.cs" />
     <Compile Include="ApiAiSdk\Scorables\AttributeString.cs" />
+    <Compile Include="Dialogos\Acreditacion\ObjetivoDialog.cs" />
+    <Compile Include="Dialogos\Acreditacion\ResultadoDialog.cs" />
     <Compile Include="Dialogos\Documento\BoletinDialog.cs" />
     <Compile Include="Dialogos\Documento\FormatoDialog.cs" />
     <Compile Include="Dialogos\BaseDialog.cs" />
     <Compile Include="Dialogos\Buzon\BuzonDialog.cs" />
-    <Compile Include="Dialogos\Documento\RequsitoDialog.cs" />
+    <Compile Include="Dialogos\Documento\RequisitoDialog.cs" />
     <Compile Include="Dialogos\Encuesta\CalificacionDialog.cs" />
     <Compile Include="Dialogos\Encuesta\EncuestaDialog.cs" />
     <Compile Include="Dialogos\Extras\AgradecerDialog.cs" />
+    <Compile Include="Dialogos\Extras\AyudaDialog.cs" />
+    <Compile Include="Dialogos\Extras\CreadorDialog.cs" />
     <Compile Include="Dialogos\Extras\MenuDialog.cs" />
-    <Compile Include="Dialogos\Informacion\AcreditacionDialog.cs" />
+    <Compile Include="Dialogos\Acreditacion\AcreditacionDialog.cs" />
     <Compile Include="Dialogos\Informacion\AdmisionDialog.cs" />
     <Compile Include="Dialogos\Informacion\ConvenioDialog.cs" />
     <Compile Include="Dialogos\Informacion\DireccionDialog.cs" />
@@ -147,8 +151,9 @@
     <Compile Include="Dialogos\Publicacion\EventoDialog.cs" />
     <Compile Include="Dialogos\Publicacion\GaleriaDialog.cs" />
     <Compile Include="Dialogos\Publicacion\PublicacionDialog.cs" />
-    <Compile Include="Intents\Api\BaseAi.cs" />
-    <Compile Include="Intents\Api\GestorAi.cs" />
+    <Compile Include="Intenciones\Acreditacion.cs" />
+    <Compile Include="Intenciones\Api\BaseAi.cs" />
+    <Compile Include="Intenciones\Api\GestorAi.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogos\Planestudio\MallaCurricularDialog.cs" />
@@ -160,6 +165,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Intenciones\Documento.cs" />
+    <Compile Include="Intenciones\Extras.cs" />
+    <Compile Include="Intenciones\Informacion.cs" />
+    <Compile Include="Intenciones\Publicacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidades\Intencion.cs" />
     <Compile Include="Utilidades\ActionTitleTypes.cs" />

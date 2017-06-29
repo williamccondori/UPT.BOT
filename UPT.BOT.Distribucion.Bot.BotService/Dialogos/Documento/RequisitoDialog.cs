@@ -11,11 +11,11 @@ using UPT.BOT.Distribucion.Bot.Acceso.Documento;
 namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Documento
 {
     [Serializable]
-    public class RequsitoDialog : BaseDialog, IDialog<object>
+    public class RequisitoDialog : BaseDialog, IDialog<object>
     {
         private AIResponse response;
 
-        public RequsitoDialog(AIResponse response)
+        public RequisitoDialog(AIResponse response)
         {
             this.response = response;
         }

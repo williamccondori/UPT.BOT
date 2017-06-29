@@ -1,4 +1,5 @@
-﻿using Microsoft.Bot.Builder.Dialogs;
+﻿using ApiAiSDK.Model;
+using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Connector;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -7,6 +8,18 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Extras
 {
     public class MenuDialog : BaseDialog, IDialog<object>
     {
+        private readonly string _mensaje;
+
+        public MenuDialog()
+        {
+
+        }
+
+        public MenuDialog(AIResponse response)
+        {
+            _mensaje = ObtenerMensajeServicio(response);
+        }
+
         public async Task StartAsync(IDialogContext context)
         {
             IMessageActivity actividaMensaje = context.MakeMessage();

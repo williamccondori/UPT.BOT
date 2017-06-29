@@ -9,7 +9,7 @@ using System.Web.Http;
 using UPT.BOT.Aplicacion.DTOs.BOT;
 using UPT.BOT.Aplicacion.DTOs.Shared;
 using UPT.BOT.Distribucion.Bot.Acceso.Seguridad;
-using UPT.BOT.Distribucion.Bot.BotService.Intents.Api;
+using UPT.BOT.Distribucion.Bot.BotService.Intenciones.Api;
 using UPT.BOT.Distribucion.Bot.BotService.Utilidades;
 
 namespace UPT.CMS.Servicios.Bot.Servicio

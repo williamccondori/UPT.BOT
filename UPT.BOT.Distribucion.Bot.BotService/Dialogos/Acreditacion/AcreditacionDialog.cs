@@ -11,17 +11,17 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
 {
     public class AcreditacionDialog : BaseDialog, IDialog<object>
     {
-        private AIResponse response;
+        public readonly string _mensaje;
 
         public AcreditacionDialog(AIResponse response)
         {
-            this.response = response;
+            _mensaje = ObtenerMensajeServicio(response);
         }
 
         public async Task StartAsync(IDialogContext context)
         {
             IMessageActivity actividaMensaje = context.MakeMessage();
-            actividaMensaje.Text = response.Result.Fulfillment.Speech ?? string.Empty;
+            actividaMensaje.Text = _mensaje ?? string.Empty;
             actividaMensaje.Recipient = actividaMensaje.From;
             actividaMensaje.Type = ActivityTypes.Message;
 
