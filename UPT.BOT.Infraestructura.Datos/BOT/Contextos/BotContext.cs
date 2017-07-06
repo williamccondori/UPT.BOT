@@ -65,7 +65,7 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Contextos
             //aoModelbuilder.Configurations.Add(new GaleriaConfiguration());
             //aoModelbuilder.Configurations.Add(new InformacionConfiguration());
             //aoModelbuilder.Configurations.Add(new MensajeConfiguration());
-            //aoModelbuilder.Configurations.Add(new ObjetoConfiguration());
+            modelBuilder.Configurations.Add(new ObjetoConfiguration());
             //aoModelbuilder.Configurations.Add(new ObjetoXRolConfiguration());
             //aoModelbuilder.Configurations.Add(new PlanEstudioConfiguration());
             //aoModelbuilder.Configurations.Add(new PreguntaConfiguration());

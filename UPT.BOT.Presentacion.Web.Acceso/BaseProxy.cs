@@ -14,7 +14,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
 
         protected BaseProxy(string ruta, string usuario)
         {
-            this.usuario = ruta;
+            this.usuario = usuario;
             this.ruta = ruta;
         }
 

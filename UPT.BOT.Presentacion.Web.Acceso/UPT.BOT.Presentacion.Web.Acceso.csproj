@@ -49,6 +49,8 @@
     <Compile Include="Analisis\ClienteProxy.cs" />
     <Compile Include="Analisis\MensajeProxy.cs" />
     <Compile Include="BaseProxy.cs" />
+    <Compile Include="Configuracion\ObjetoProxy.cs" />
+    <Compile Include="Configuracion\RolProxy.cs" />
     <Compile Include="Gestion\Documento\BoletinProxy.cs" />
     <Compile Include="Gestion\Documento\FormatoProxy.cs" />
     <Compile Include="Gestion\Documento\ReglamentoProxy.cs" />

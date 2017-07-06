@@ -1,32 +1,24 @@
 ﻿(function (module) {
 
-    ObjetoFactory.$inject = ["$resource"];
+    ObjetoFactory.$inject = ['BaseFactory'];
 
-    function ObjetoFactory($resource) {
+    function ObjetoFactory(BaseFactory) {
 
-        var GestionController = [];
+        var Objeto = [];
 
-        GestionController.ObtenerObjeto = function () {
-            return $resource('/Gestion/ObtenerObjeto', {}, {
-                Get: {
-                    method: 'GET',
-                    isArray: false
-                }
-            }).Get();
+        Objeto.ObtenerObjeto = function () {
+            return BaseFactory.Obtener('/Configuracion/ObtenerObjeto');
+        };
+        Objeto.GuardarObjeto = function (modelo) {
+            return BaseFactory.Guardar('/Configuracion/GuardarObjeto', modelo);
+        };
+        Objeto.EliminarObjeto = function (modelo) {
+            return BaseFactory.Eliminar('/Configuracion/EliminarObjeto', modelo);
         };
 
-        GestionController.GuardarObjeto = function (Objeto) {
-            return $resource('/Gestion/GuardarObjeto', {}, {
-                Post: {
-                    method: 'POST',
-                    isArray: false
-                }
-            }).Post(Objeto);
-        };
-
-        return GestionController;
+        return Objeto;
     }
 
-    module.factory("ObjetoFactory", ObjetoFactory);
+    module.factory('ObjetoFactory', ObjetoFactory);
 
-})(angular.module("uptAdministracion"));
+})(angular.module("uptbot"));

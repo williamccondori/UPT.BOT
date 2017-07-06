@@ -2,14 +2,17 @@
 
     RolController.$inject = ["$scope", "toastr", "RolFactory"];
 
-    function RolController($scope, toastr, RolFactory) {
+    function RolesController($scope, toastr, RolFactory) {
 
         $scope.ListaRol = [];
 
         $scope.ResetRol = function () {
             $scope.Rol = {
-                DescripcionRol: "",
-                EstadoObjeto: EstadoObjeto.SinCambios
+                DescripcionRol: '',
+                DescripcionControlador: '',
+                DescripcionAccion: '',
+                IndicadorHabilitado: 'S',
+                Estado: EstadoObjeto.SinCambios
             };
         }
 
@@ -18,59 +21,46 @@
             $scope.ObtenerRol();
         };
 
-        $scope.AbrirModalRolAgregar = function () {
+        $scope.CrearRol = function () {
             $scope.ResetRol();
-            $scope.Rol.EstadoObjeto = EstadoObjeto.Nuevo;
-            Bootstrap.AbrirModal(Modal.Rol);
+            $scope.Rol.Estado = EstadoObjeto.Nuevo;
+            Bootstrap.AbrirModal('#ModalRol');
         };
 
-        $scope.AbrirModalRolModificar = function (Rol) {
+        $scope.ModificarRol = function (modelo) {
             $scope.ResetRol();
-            $scope.Rol = Rol;
-            $scope.Rol.EstadoObjeto = EstadoObjeto.Modificado;
-            Bootstrap.AbrirModal(Modal.Rol);
+            $scope.Rol = modelo;
+            $scope.Rol.Estado = EstadoObjeto.Modificado;
+            Bootstrap.AbrirModal('#ModalRol');
         };
 
-        $scope.CerrarModalRol = function () {
-            Bootstrap.CerrarModal(Modal.Rol);
+        $scope.CancelarRol = function () {
+            Bootstrap.CerrarModal('#ModalRol');
         };
 
         $scope.GuardarRol = function () {
-            RolFactory.GuardarRol($scope.Rol).$promise
-                .then(function (RespuestaApi) {
-                    if (RespuestaApi.Estado) {
-                        Bootstrap.CerrarModal(Modal.Rol);
-                        toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
-                        $scope.ObtenerRol();
-                    } else {
-                        Bootstrap.CerrarModal(Modal.Rol);
-                        toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
-                    }
-                })
-                .catch(function (error) {
-                    toastr.error(Mensaje.Error.Descripcion, Mensaje.Error.Titulo);
-                });
+            RolFactory.GuardarRol($scope.Rol).then(function (response) {
+                if (response.Estado) {
+                    toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
+                    $scope.ObtenerRol();
+                } else
+                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+            });
+            Bootstrap.CerrarModal('#ModalRol');
         };
 
         $scope.ObtenerRol = function () {
-            RolFactory.ObtenerRol().$promise.then(function (RespuestaApi) {
-                if (RespuestaApi.Estado) {
-                    $scope.ListaRol = RespuestaApi.Datos;
-                } else {
-                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
-                }
-            })
-                .catch(function (error) {
-                    toastr.error(Mensaje.Error.Descripcion, Mensaje.Error.Titulo);
-                });;
+            RolFactory.ObtenerRol().then(function (response) {
+                if (response.Estado)
+                    $scope.ListaRol = response.Datos;
+                else
+                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+            }).catch(function (error) {
+                toastr.error(MensajeRespuesta.Error, Mensaje.Error.Titulo);
+            });
         };
     }
 
-    module.controller("RolController", RolController);
+    module.controller('RolController', RolController);
 
-})(angular.module("uptAdministracion"));
-
-var Modal = {
-    Rol: "#ModalRol"
-}
-
+})(angular.module('uptbot'));

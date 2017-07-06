@@ -12,29 +12,29 @@
     font-size: 18px !important;
 }
 
+.control-label {
+    font-weight: bold;
+}
+
 .jumbotron p{
     font-size: 14px !important;
 }
 
-.panel>.upt-table{
-    height: 400px !important;
-    overflow-y: scroll !important;
+.modal .modal-body{
+   padding: 5px !important;
 }
 
-.control-label{
-    font-weight: bold !important;
+.modal .panel {
+    margin-bottom: 0 !important;
 }
 
-.form-control-checkbox {
-    display: block !important;
-}
-
-blockquote {
-    border-left: 5px solid #286090;
-}
-
-.input-group a{
-    text-decoration: none !important;
-    color: #666 !important;
-    font-weight: bold;
+.form-check {
+    padding: 5px !important;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    padding-left: 10px !important;
+    width: 35px !important;
 }

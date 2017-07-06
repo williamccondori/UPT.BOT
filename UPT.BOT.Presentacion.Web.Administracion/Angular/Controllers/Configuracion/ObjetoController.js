@@ -8,12 +8,11 @@
 
         $scope.ResetObjeto = function () {
             $scope.Objeto = {
-                DescripcionObjeto: "",
-                DescripcionControlador: "",
-                DescripcionAccion: "",
-                IndicadorGeneral: false,
-                IndicadorHabilitado: true,
-                EstadoObjeto: EstadoObjeto.SinCambios
+                DescripcionObjeto: '',
+                DescripcionControlador: '',
+                DescripcionAccion: '',
+                IndicadorHabilitado: 'S',
+                Estado: EstadoObjeto.SinCambios
             };
         }
 
@@ -22,60 +21,46 @@
             $scope.ObtenerObjeto();
         };
 
-        $scope.AbrirModalObjetoAgregar = function () {
+        $scope.CrearObjeto = function () {
             $scope.ResetObjeto();
-            $scope.Objeto.EstadoObjeto = EstadoObjeto.Nuevo;
-            Bootstrap.AbrirModal(Modal.Objeto);
+            $scope.Objeto.Estado = EstadoObjeto.Nuevo;
+            Bootstrap.AbrirModal('#ModalObjeto');
         };
 
-        $scope.AbrirModalObjetoModificar = function (Objeto) {
+        $scope.ModificarObjeto = function (modelo) {
             $scope.ResetObjeto();
-            $scope.Objeto = Objeto;
-            $scope.Objeto.EstadoObjeto = EstadoObjeto.Modificado;
-            Bootstrap.AbrirModal(Modal.Objeto);
+            $scope.Objeto = modelo;
+            $scope.Objeto.Estado = EstadoObjeto.Modificado;
+            Bootstrap.AbrirModal('#ModalObjeto');
         };
 
-        $scope.CerrarModalObjeto = function () {
-            Bootstrap.CerrarModal(Modal.Objeto);
+        $scope.CancelarObjeto = function () {
+            Bootstrap.CerrarModal('#ModalObjeto');
         };
 
         $scope.GuardarObjeto = function () {
-            ObjetoFactory.GuardarObjeto($scope.Objeto).$promise
-                .then(function (RespuestaApi) {
-                if (RespuestaApi.Estado) {
-                    Bootstrap.CerrarModal(Modal.Objeto);
+            ObjetoFactory.GuardarObjeto($scope.Objeto).then(function (response) {
+                if (response.Estado) {
                     toastr.success(Mensaje.Correcto.Descripcion, Mensaje.Correcto.Titulo);
                     $scope.ObtenerObjeto();
-                } else {
-                    Bootstrap.CerrarModal(Modal.Objeto);
-                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
-                }
-                })
-                .catch(function (error) {
-                    toastr.error(Mensaje.Error.Descripcion, Mensaje.Error.Titulo);
-                });;
+                } else
+                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+            });
+            Bootstrap.CerrarModal('#ModalObjeto');
         };
 
         $scope.ObtenerObjeto = function () {
-            ObjetoFactory.ObtenerObjeto().$promise
-                .then(function (RespuestaApi) {
-                if (RespuestaApi.Estado) {
-                    $scope.ListaObjeto = RespuestaApi.Datos;
-                } else {
-                    toastr.error(RespuestaApi.Mensaje, Mensaje.Error.Titulo);
-                }
-                })
-                .catch(function (error) {
-                    toastr.error(Mensaje.Error.Descripcion, Mensaje.Error.Titulo);
-                });;
+            ObjetoFactory.ObtenerObjeto().then(function (response) {
+                if (response.Estado)
+                    $scope.ListaObjeto = response.Datos;
+                else
+                    toastr.error(response.Mensaje, Mensaje.Error.Titulo);
+            }).catch(function (error) {
+                toastr.error(MensajeRespuesta.Error, Mensaje.Error.Titulo);
+            });
         };
     }
 
-    module.controller("ObjetoController", ObjetoController);
+    module.controller('ObjetoController', ObjetoController);
 
-})(angular.module("uptAdministracion"));
-
-var Modal = {
-    Objeto: "#ModalObjeto"
-}
-
+})(angular.module('uptbot'));

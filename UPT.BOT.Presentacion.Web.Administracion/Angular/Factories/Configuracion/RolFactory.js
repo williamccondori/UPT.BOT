@@ -1,32 +1,24 @@
 ﻿(function (module) {
 
-    RolFactory.$inject = ["$resource"];
+    RolFactory.$inject = ['BaseFactory'];
 
-    function RolFactory($resource) {
+    function RolFactory(BaseFactory) {
 
-        var GestionController = [];
+        var Rol = [];
 
-        GestionController.ObtenerRol = function () {
-            return $resource('/Configuracion/ObtenerRol', {}, {
-                Get: {
-                    method: 'GET',
-                    isArray: false
-                }
-            }).Get();
+        Rol.ObtenerRol = function () {
+            return BaseFactory.Obtener('/Configuracion/ObtenerRol');
+        };
+        Rol.GuardarRol = function (modelo) {
+            return BaseFactory.Guardar('/Configuracion/GuardarRol', modelo);
+        };
+        Rol.EliminarRol = function (modelo) {
+            return BaseFactory.Eliminar('/Configuracion/EliminarRol', modelo);
         };
 
-        GestionController.GuardarRol = function (Rol) {
-            return $resource('/Configuracion/GuardarRol', {}, {
-                Post: {
-                    method: 'POST',
-                    isArray: false
-                }
-            }).Post(Rol);
-        };
-
-        return GestionController;
+        return Rol;
     }
 
-    module.factory("RolFactory", RolFactory);
+    module.factory('RolFactory', RolFactory);
 
-})(angular.module("uptAdministracion"));
+})(angular.module("uptbot"));

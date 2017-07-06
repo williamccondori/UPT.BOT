@@ -12,12 +12,12 @@ namespace UPT.BOT.Dominio.Entidades.BOT
         public string DescripcionAccion { get; set; }
         public string IndicadorHabilitado { get; set; }
 
-        public static ObjetoEntity Crear(string descripcionObjeto, string descripcionControlador,
+        public static ObjetoEntity Crear(string descripcionControlador,
             string descripcionAccion, string indicadorHabilitado, string usuario)
         {
             return new ObjetoEntity
             {
-                DescripcionObjeto = descripcionObjeto,
+                DescripcionObjeto = descripcionControlador + "/" + descripcionAccion,
                 DescripcionControlador = descripcionControlador,
                 DescripcionAccion = descripcionAccion,
                 EstadoObjeto = EstadoObjeto.Nuevo,
@@ -28,10 +28,10 @@ namespace UPT.BOT.Dominio.Entidades.BOT
             };
         }
 
-        public void Modificar(string descripcionObjeto, string descripcionControlador,
+        public void Modificar(string descripcionControlador,
             string descripcionAccion, string indicadorHabilitado, string usuario)
         {
-            DescripcionObjeto = descripcionObjeto;
+            DescripcionObjeto = descripcionControlador + "/" + descripcionAccion;
             DescripcionControlador = descripcionControlador;
             DescripcionAccion = descripcionAccion;
             IndicadorHabilitado = indicadorHabilitado;
