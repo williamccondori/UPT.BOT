@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<List<ConvenioDto>> Obtener()
+        public Response<List<ConvenioDto>> Obtener()
         {
             return Ejecutar<List<ConvenioDto>>("convenio");
         }
 
-        public RespuestaDto<bool> Guardar(ConvenioDto convenio)
+        public Response<bool> Guardar(ConvenioDto convenio)
         {
             return Ejecutar<bool>("convenio", Metodo.Post, new object[] { convenio });
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("convenio/{0}", id), Metodo.Delete);
         }

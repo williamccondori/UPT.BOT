@@ -8,7 +8,7 @@ namespace UPT.BOT.Distribucion.Bot.Acceso.Encuesta
         {
         }
 
-        public bool Guardar(RespuestasDto respuesta)
+        public bool Guardar(RespuestaDto respuesta)
         {
             return Ejecutar<bool>("respuesta", Metodo.Post, respuesta);
         }

@@ -46,7 +46,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Intenciones.Api
                 DescripcionLocalidad = actividad.Locale,
                 DescripcionServicio = actividad.ServiceUrl,
                 DescripcionTipoContenido = actividad.TextFormat,
-                EstadoObjeto = EstadoObjeto.Nuevo,
+                Estado = EstadoObjeto.Nuevo,
                 FechaMensaje = actividad.Timestamp,
                 PorcentajeIntencion = (decimal)response.Result.Score
             };

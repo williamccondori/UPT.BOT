@@ -13,8 +13,8 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Shared
 
         }
 
-        public BaseContext(string asConnectionString = "UPTBOT")
-            : base(asConnectionString)
+        public BaseContext(string cadenaConexion = "")
+            : base(cadenaConexion)
         {
             Database.SetInitializer<BaseContext>(null);
         }

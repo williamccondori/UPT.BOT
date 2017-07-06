@@ -61,20 +61,26 @@ namespace UPT.BOT.Infraestructura.Datos.BOT.Repositorios
             });
         }
 
-        public bool Verificar(string usuario, string password)
+        public bool ValidarAccesoSistema(string descripcionUsuario, string descripcionPassword)
         {
-            UsuarioEntity usuarioEncontrado = contextoBot.Usuario.FirstOrDefault(p => p.DescripcionUsuario == usuario && p.DescripcionPassword == password);
+            return Ejecutar(() =>
+            {
+                //UsuarioEntity usuarioEncontrado = contextoBot.Usuario.FirstOrDefault(p => p.DescripcionUsuario == descripcionUsuario &&
+                // p.DescripcionPassword == descripcionPassword);
 
-            if (usuarioEncontrado == null)
-                return false;
+                UsuarioEntity usuarioEncontrado = contextoBot.Usuario.FirstOrDefault();
 
-            if (usuarioEncontrado.IndicadorEstado == EstadoEntidad.Inactivo)
-                throw new ApplicationException("El usuario se encuentra incactivo");
+                if (usuarioEncontrado == null)
+                    throw new ApplicationException("No se encontró un usuario con los datos ingresados");
 
-            if (usuarioEncontrado.IndicadorHabilitado == "N")
-                throw new ApplicationException("El usuario se encuentra desabilitado");
+                if (usuarioEncontrado.IndicadorEstado == EstadoEntidad.Inactivo)
+                    throw new ApplicationException("El usuario se encuentra inactivo");
 
-            return true;
+                if (usuarioEncontrado.IndicadorHabilitado == EstadoEntidad.No)
+                    throw new ApplicationException("El usuario se encuentra desabilitado");
+
+                return true;
+            });
         }
     }
 }

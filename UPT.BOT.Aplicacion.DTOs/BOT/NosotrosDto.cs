@@ -1,6 +1,6 @@
 ﻿namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
-    public class NosotrosDto : AdjuntoDto
+    public class NosotrosDto : TarjetaDto
     {
     }
 }

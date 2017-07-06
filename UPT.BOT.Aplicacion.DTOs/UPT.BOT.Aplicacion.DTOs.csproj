@@ -42,12 +42,15 @@
   <ItemGroup>
     <Compile Include="BOT\AcreditacionDto.cs" />
     <Compile Include="BOT\ActualidadDto.cs" />
-    <Compile Include="BOT\AdjuntoDto.cs" />
+    <Compile Include="BOT\ObjetoDto.cs" />
+    <Compile Include="BOT\RolDto.cs" />
+    <Compile Include="BOT\TarjetaDto.cs" />
     <Compile Include="BOT\AdmisionDto.cs" />
     <Compile Include="BOT\AlternativaDto.cs" />
     <Compile Include="BOT\BoletinDto.cs" />
     <Compile Include="BOT\BuzonDto.cs" />
     <Compile Include="BOT\ClienteDto.cs" />
+    <Compile Include="BOT\ConfiguracionDto.cs" />
     <Compile Include="BOT\GraficoDto.cs" />
     <Compile Include="BOT\ComunicadoDto.cs" />
     <Compile Include="BOT\ConvenioDto.cs" />
@@ -70,16 +73,17 @@
     <Compile Include="BOT\RedSocialDto.cs" />
     <Compile Include="BOT\ReglamentoDto.cs" />
     <Compile Include="BOT\RequisitoDto.cs" />
-    <Compile Include="BOT\RespuestasDto.cs" />
+    <Compile Include="BOT\RespuestaDto.cs" />
     <Compile Include="BOT\ServicioDto.cs" />
     <Compile Include="BOT\SocialDto.cs" />
     <Compile Include="BOT\TelefonoDto.cs" />
     <Compile Include="BOT\TipoBuzonDto.cs" />
+    <Compile Include="BOT\TipoTarjetaDto.cs" />
     <Compile Include="BOT\UsuarioDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\BaseDto.cs" />
     <Compile Include="Shared\EstadoObjeto.cs" />
-    <Compile Include="Shared\RespuestaDto.cs" />
+    <Compile Include="Shared\Response.cs" />
   </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\Dependencias\DependencyValidation1.layerdiagram">
@@ -93,10 +97,6 @@
       <Visible>False</Visible>
     </AdditionalFiles>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

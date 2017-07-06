@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Analisis
         {
         }
 
-        public RespuestaDto<List<MensajeDto>> Obtener()
+        public Response<List<MensajeDto>> Obtener()
         {
             return Ejecutar<List<MensajeDto>>("mensaje");
         }
 
-        public RespuestaDto<List<GraficoDto>> ObtenerResumenMes()
+        public Response<List<GraficoDto>> ObtenerResumenMes()
         {
             return Ejecutar<List<GraficoDto>>("mensaje/numero/mes");
         }
 
-        public RespuestaDto<List<GraficoDto>> ObtenerResumenIntenciones()
+        public Response<List<GraficoDto>> ObtenerResumenIntenciones()
         {
             return Ejecutar<List<GraficoDto>>("mensaje/intenciones/numero");
         }

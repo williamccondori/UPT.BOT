@@ -9,17 +9,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<NosotrosDto> Obtener()
+        public Response<NosotrosDto> Obtener()
         {
             return Ejecutar<NosotrosDto>("nosotros");
         }
 
-        public RespuestaDto<bool> Guardar(NosotrosDto nosotros)
+        public Response<bool> Guardar(NosotrosDto nosotros)
         {
             return Ejecutar<bool>("nosotros", Metodo.Post, new object[] { nosotros });
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("nosotros/{0}", id), Metodo.Delete);
         }

@@ -1,6 +1,6 @@
 ﻿namespace UPT.BOT.Aplicacion.DTOs.BOT
 {
-    public class SocialDto : AdjuntoDto
+    public class SocialDto : TarjetaDto
     {
     }
 }

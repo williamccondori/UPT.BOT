@@ -34,7 +34,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
             if (entidad != null)
             {
                 HeroCard tarjetaAcreditacion = new HeroCard(entidad.DescripcionTitulo);
-                tarjetaAcreditacion.Text = entidad.DescripcionResumen;
+                tarjetaAcreditacion.Text = entidad.DescripcionResena;
                 tarjetaAcreditacion.Images = new List<CardImage>
                 {
                     new CardImage { Url = entidad.DescripcionImagen }

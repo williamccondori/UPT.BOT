@@ -40,45 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BOT\Administracion\Analisis\IClienteService.cs" />
-    <Compile Include="BOT\Administracion\Analisis\IMensajeService.cs" />
-    <Compile Include="BOT\Administracion\Buzon\IBuzonService.cs" />
-    <Compile Include="BOT\Administracion\Configuracion\IUsuarioService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Documento\IBoletinService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Documento\IFormatoService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Documento\IReglamentoService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Documento\IRequisitoService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Publicacion\IActualidadService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Publicacion\IComunicadoService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Publicacion\IEventoService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Publicacion\IPublicacionService.cs" />
-    <Compile Include="BOT\Administracion\Gestion\Publicacion\IGaleriaService.cs" />
-    <Compile Include="BOT\Asistente\Buzon\IBuzonService.cs" />
-    <Compile Include="BOT\Asistente\Documento\IBoletinService.cs" />
-    <Compile Include="BOT\Asistente\Documento\IFormatoService.cs" />
-    <Compile Include="BOT\Asistente\Documento\IReglamentoService.cs" />
-    <Compile Include="BOT\Asistente\Documento\IRequisitoService.cs" />
-    <Compile Include="BOT\Asistente\Encuesta\IEncuestaService.cs" />
-    <Compile Include="BOT\Asistente\Encuesta\IRespuestaService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IAcreditacionService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IAdmisionService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IConvenioService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IDireccionService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IEnlaceImportanteService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\INosotrosService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IRedSocialService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\IServicioService.cs" />
-    <Compile Include="BOT\Asistente\Informacion\ITelefonoService.cs" />
-    <Compile Include="BOT\Asistente\PlanEstudio\IMallaCurricularService.cs" />
-    <Compile Include="BOT\Asistente\PlanEstudio\IPerfilProfesionalService.cs" />
-    <Compile Include="BOT\Asistente\PlanEstudio\IPlanEstudioService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\IActualidadService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\IComunicadoService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\IEventoService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\IGaleriaService.cs" />
-    <Compile Include="BOT\Asistente\Publicacion\IPublicacionService.cs" />
-    <Compile Include="BOT\Asistente\Seguridad\IClienteService.cs" />
-    <Compile Include="BOT\Asistente\Seguridad\IMensajeService.cs" />
+    <Compile Include="BOT\IObjetoService.cs" />
+    <Compile Include="BOT\IRolService.cs" />
+    <Compile Include="BOT\ITarjetaService.cs" />
+    <Compile Include="BOT\IBuzonService.cs" />
+    <Compile Include="BOT\IClienteService.cs" />
+    <Compile Include="BOT\IConfiguracionService.cs" />
+    <Compile Include="BOT\IMensajeService.cs" />
+    <Compile Include="BOT\IPreguntaService.cs" />
+    <Compile Include="BOT\ITipoTarjetaService.cs" />
+    <Compile Include="BOT\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -99,10 +70,6 @@
       <Visible>False</Visible>
     </AdditionalFiles>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

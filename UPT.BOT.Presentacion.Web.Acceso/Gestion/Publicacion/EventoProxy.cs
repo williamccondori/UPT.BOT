@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Publicacion
         {
         }
 
-        public RespuestaDto<List<EventoDto>> Obtener()
+        public Response<List<EventoDto>> Obtener()
         {
             return Ejecutar<List<EventoDto>>("evento");
         }
 
-        public RespuestaDto<bool> Guardar(EventoDto evento)
+        public Response<bool> Guardar(EventoDto evento)
         {
             return Ejecutar<bool>("evento", Metodo.Post, evento);
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("evento/{0}", id), Metodo.Delete);
         }

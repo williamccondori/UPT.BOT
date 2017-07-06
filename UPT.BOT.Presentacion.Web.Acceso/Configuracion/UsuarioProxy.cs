@@ -10,14 +10,14 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Configuracion
 
         }
 
-        public RespuestaDto<bool> Agregar(UsuarioDto usuario)
+        public Response<bool> Agregar(UsuarioDto usuario)
         {
             return Ejecutar<bool>("usuario", Metodo.Post, usuario);
         }
 
-        public RespuestaDto<bool> Validar(UsuarioDto usuario)
+        public Response<bool> ValidarAccesoSistema(UsuarioDto usuario)
         {
-            return Ejecutar<bool>("usuario/validar", Metodo.Post, usuario);
+            return Ejecutar<bool>("usuario/acceso/sistema", Metodo.Post, usuario);
         }
     }
 }

@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<List<SocialDto>> Obtener()
+        public Response<List<SocialDto>> Obtener()
         {
             return Ejecutar<List<SocialDto>>("social");
         }
 
-        public RespuestaDto<bool> Guardar(SocialDto social)
+        public Response<bool> Guardar(SocialDto social)
         {
             return Ejecutar<bool>("social", Metodo.Post, new object[] { social });
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("social/{0}", id), Metodo.Delete);
         }

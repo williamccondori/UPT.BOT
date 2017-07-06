@@ -66,12 +66,12 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Encuesta
 
             AlternativaDto seleccion = listaAlternativas.FirstOrDefault(p => p.DescripcionAlternativa == respuestaAlternativa.Text);
 
-            RespuestasDto respuestas = new RespuestasDto
+            RespuestaDto respuestas = new RespuestaDto
             {
                 CodigoAlternativa = seleccion.CodigoAlternativa,
                 CodigoCliente = context.Activity.From.Id,
-                EstadoObjeto = EstadoObjeto.Nuevo,
-                FechaRegistro = DateTime.Now
+                Estado = EstadoObjeto.Nuevo,
+                Fecha = DateTime.Now
             };
 
             RespuestaProxy proxyRespuesta = new RespuestaProxy(ruta);

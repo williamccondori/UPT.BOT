@@ -9,17 +9,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<AcreditacionDto> Obtener()
+        public Response<AcreditacionDto> Obtener()
         {
             return Ejecutar<AcreditacionDto>("acreditacion");
         }
 
-        public RespuestaDto<bool> Guardar(AcreditacionDto acreditacion)
+        public Response<bool> Guardar(AcreditacionDto acreditacion)
         {
             return Ejecutar<bool>("acreditacion", Metodo.Post, new object[] { acreditacion });
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("acreditacion/{0}", id), Metodo.Delete);
         }

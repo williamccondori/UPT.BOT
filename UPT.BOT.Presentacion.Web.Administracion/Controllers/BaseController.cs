@@ -25,7 +25,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             }
         }
 
-        protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)
+        protected Response<T> Ejecutar<T>(Func<Response<T>> aoAccion)
         {
             try
             {
@@ -33,11 +33,11 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
             }
             catch (ApplicationException loExepcion)
             {
-                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new Response<T>(loExepcion.Message, loExepcion.StackTrace);
             }
             catch (Exception loExepcion)
             {
-                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new Response<T>(loExepcion.Message, loExepcion.StackTrace);
             }
         }
 

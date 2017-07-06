@@ -38,7 +38,7 @@ namespace UPT.CMS.Servicios.Bot.Servicio
                         DescripcionConversacion = actividad.Conversation.Id,
                         DescripcionMetadata = JsonConvert.SerializeObject(actividad),
                         DescripcionCanal = actividad.ChannelId,
-                        EstadoObjeto = EstadoObjeto.Nuevo
+                        Estado = EstadoObjeto.Nuevo
                     };
 
                     ClienteProxy proxyCliente = new ClienteProxy(VariableConfiguracion.RutaApi());

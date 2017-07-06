@@ -34,7 +34,7 @@ namespace UPT.BOT.Distribucion.Bot.BotService.Dialogos.Informacion
             foreach (var entidad in entidades)
             {
                 HeroCard tarjetaServicio = new HeroCard(entidad.DescripcionTitulo);
-                tarjetaServicio.Text = entidad.DescripcionResumen;
+                tarjetaServicio.Text = entidad.DescripcionResena;
                 tarjetaServicio.Images = ServicioImagen(entidad.DescripcionImagen);
                 tarjetaServicio.Buttons = ServicioAccion(entidad.DescripcionUrl);
                 listaAdjuntos.Add(tarjetaServicio.ToAttachment());

@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Informacion
         {
         }
 
-        public RespuestaDto<List<EnlaceImportanteDto>> Obtener()
+        public Response<List<EnlaceImportanteDto>> Obtener()
         {
             return Ejecutar<List<EnlaceImportanteDto>>("enlace");
         }
 
-        public RespuestaDto<bool> Guardar(EnlaceImportanteDto enlace)
+        public Response<bool> Guardar(EnlaceImportanteDto enlace)
         {
             return Ejecutar<bool>("enlace", Metodo.Post, new object[] { enlace });
         }
 
-        public RespuestaDto<bool> Eliminar(object id)
+        public Response<bool> Eliminar(object id)
         {
             return Ejecutar<bool>(string.Format("enlace/{0}", id), Metodo.Delete);
         }

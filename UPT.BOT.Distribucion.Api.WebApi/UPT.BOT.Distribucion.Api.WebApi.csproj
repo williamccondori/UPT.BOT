@@ -128,7 +128,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Administracion\Encuesta\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Boticia\" />
     <Folder Include="Views\BotRespuesta\" />
@@ -140,46 +139,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Administracion\Analisis\ClienteController.cs" />
-    <Compile Include="Controllers\Administracion\Analisis\MensajeController.cs" />
-    <Compile Include="Controllers\Administracion\Buzon\BuzonController.cs" />
-    <Compile Include="Controllers\Administracion\Configuracion\UsuarioController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Documento\BoletinController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Documento\FormatoController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Documento\ReglamentoController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Documento\RequisitoController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Publicacion\ActualidadController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Publicacion\ComunicadoController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Publicacion\EventoController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Publicacion\GaleriaController.cs" />
-    <Compile Include="Controllers\Administracion\Gestion\Publicacion\PublicacionController.cs" />
-    <Compile Include="Controllers\Asistente\Buzon\BotBuzonController.cs" />
-    <Compile Include="Controllers\Asistente\Documento\BotBoletinController.cs" />
-    <Compile Include="Controllers\Asistente\Documento\BotFormatoController.cs" />
-    <Compile Include="Controllers\Asistente\Documento\BotReglamentoController.cs" />
-    <Compile Include="Controllers\Asistente\Documento\BotRequisitoController.cs" />
-    <Compile Include="Controllers\Asistente\Encuesta\BotEncuestaController.cs" />
-    <Compile Include="Controllers\Asistente\Encuesta\BotRespuestaController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotAcreditacionController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotAdmisionController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotConvenioController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotDireccionController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotEnlaceImportanteController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotNosotrosController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotRedSocialController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotServicioController.cs" />
-    <Compile Include="Controllers\Asistente\Informacion\BotTelefonoController.cs" />
-    <Compile Include="Controllers\Asistente\PlanEstudio\BotMallaCurricularController.cs" />
-    <Compile Include="Controllers\Asistente\PlanEstudio\BotPerfilProfesionalController.cs" />
-    <Compile Include="Controllers\Asistente\PlanEstudio\BotPlanEstudioController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotActualidadController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotComunicadoController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotEventoController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotGaleriaController.cs" />
-    <Compile Include="Controllers\Asistente\Publicacion\BotPublicacionController.cs" />
-    <Compile Include="Controllers\Asistente\Seguridad\BotClienteController.cs" />
-    <Compile Include="Controllers\Asistente\Seguridad\BotMensajeController.cs" />
+    <Compile Include="Controllers\ObjetoController.cs" />
+    <Compile Include="Controllers\RolController.cs" />
+    <Compile Include="Controllers\TarjetaController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\BuzonController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ConfiguracionController.cs" />
+    <Compile Include="Controllers\MensajeController.cs" />
+    <Compile Include="Controllers\PreguntaController.cs" />
+    <Compile Include="Controllers\TipoTarjetaController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -246,7 +216,6 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.9.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

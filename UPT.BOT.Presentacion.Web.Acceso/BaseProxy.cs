@@ -18,7 +18,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
             this.ruta = ruta;
         }
 
-        protected RespuestaDto<T> Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
+        protected Response<T> Ejecutar<T>(string recurso, Metodo metodo = Metodo.Get, object parametro = null)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
                         if (string.IsNullOrEmpty(resultado))
                             throw new Exception("No se obtuvo resultados de la consulta.");
 
-                        return JsonConvert.DeserializeObject<RespuestaDto<T>>(resultado);
+                        return JsonConvert.DeserializeObject<Response<T>>(resultado);
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace UPT.BOT.Presentacion.Web.Acceso
             }
             catch (Exception excepcion)
             {
-                return new RespuestaDto<T>(excepcion.Message, excepcion.StackTrace);
+                return new Response<T>(excepcion.Message, excepcion.StackTrace);
             }
         }
     }

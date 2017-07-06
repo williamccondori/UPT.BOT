@@ -24,31 +24,36 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
 
             try
             {
-                RespuestaDto<bool> resultado = proxyUsuario.Validar(usuario);
-
-                bool permiso = resultado.Datos;
-
-                if (permiso)
-                {
-                    Sesion.IniciarSesion(usuario.DescripcionUsuario, usuario.DescripcionPassword);
-
-                    return RedirectToAction("Inicio", "Principal");
-                }
+                Response<bool> resultado = proxyUsuario.ValidarAccesoSistema(usuario);
+                if (!resultado.Estado)
+                    return MostrarErrorLogin(resultado.Mensaje);
+                
+                if (resultado.Datos)
+                    return Ingresar(usuario);
                 else
-                {
-                    MensajeError(resultado.Mensaje);
-
-                    return RedirectToAction("Login", "Seguridad");
-                }
+                    throw new Exception("El usuario no puede ingresar al sistema");
             }
             catch (Exception excepcion)
             {
-                MensajeError(excepcion.Message);
-
-                return RedirectToAction("Login", "Seguridad");
+                return MostrarErrorLogin(excepcion.Message);
             }
         }
 
-        private void MensajeError(string mensaje) => TempData["MensajeError"] = mensaje;
+        private void MensajeError(string mensaje)
+        {
+            TempData["MensajeError"] = mensaje;
+        }
+
+        private ActionResult MostrarErrorLogin(string mensaje)
+        {
+            MensajeError(mensaje);
+            return RedirectToAction("Login", "Seguridad");
+        }
+
+        private ActionResult Ingresar(UsuarioDto usuario)
+        {
+            Sesion.IniciarSesion(usuario.DescripcionUsuario, usuario.DescripcionPassword);
+            return RedirectToAction("Inicio", "Principal");
+        }
     }
 }

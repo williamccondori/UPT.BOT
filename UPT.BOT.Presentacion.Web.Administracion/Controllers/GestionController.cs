@@ -75,7 +75,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                actualidad.UsuarioRegistro = Sesion.Usuario();
+                actualidad.Usuario = Sesion.Usuario();
                 return coleccion.proxyActualidad.Guardar(actualidad);
             })
            , JsonRequestBehavior.AllowGet);
@@ -102,7 +102,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                comunicado.UsuarioRegistro = Sesion.Usuario();
+                comunicado.Usuario = Sesion.Usuario();
                 return coleccion.proxyComunicado.Guardar(comunicado);
             })
            , JsonRequestBehavior.AllowGet);
@@ -129,7 +129,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                galeria.UsuarioRegistro = Sesion.Usuario();
+                galeria.Usuario = Sesion.Usuario();
                 return coleccion.proxyGaleria.Guardar(galeria);
             })
            , JsonRequestBehavior.AllowGet);
@@ -156,7 +156,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                publicacion.UsuarioRegistro = Sesion.Usuario();
+                publicacion.Usuario = Sesion.Usuario();
                 return coleccion.proxyPublicacion.Guardar(publicacion);
             })
            , JsonRequestBehavior.AllowGet);
@@ -183,7 +183,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                evento.UsuarioRegistro = Sesion.Usuario();
+                evento.Usuario = Sesion.Usuario();
                 return coleccion.proxyEvento.Guardar(evento);
             })
            , JsonRequestBehavior.AllowGet);
@@ -210,7 +210,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                formato.UsuarioRegistro = Sesion.Usuario();
+                formato.Usuario = Sesion.Usuario();
                 return coleccion.proxyFormato.Guardar(formato);
             })
            , JsonRequestBehavior.AllowGet);
@@ -237,7 +237,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                reglamento.UsuarioRegistro = Sesion.Usuario();
+                reglamento.Usuario = Sesion.Usuario();
                 return coleccion.proxyReglamento.Guardar(reglamento);
             })
            , JsonRequestBehavior.AllowGet);
@@ -264,7 +264,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                requisito.UsuarioRegistro = Sesion.Usuario();
+                requisito.Usuario = Sesion.Usuario();
                 return coleccion.proxyRequisito.Guardar(requisito);
             })
            , JsonRequestBehavior.AllowGet);
@@ -291,7 +291,7 @@ namespace UPT.BOT.Presentacion.Web.Administracion.Controllers
         {
             return Json(Ejecutar(() =>
             {
-                boletin.UsuarioRegistro = Sesion.Usuario();
+                boletin.Usuario = Sesion.Usuario();
                 return coleccion.proxyBoletin.Guardar(boletin);
             })
             , JsonRequestBehavior.AllowGet);

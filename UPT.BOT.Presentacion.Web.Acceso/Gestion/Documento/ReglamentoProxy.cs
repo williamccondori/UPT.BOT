@@ -10,17 +10,17 @@ namespace UPT.BOT.Presentacion.Web.Acceso.Gestion.Documento
         {
         }
 
-        public RespuestaDto<bool> Eliminar(long codigoDocumento)
+        public Response<bool> Eliminar(long codigoDocumento)
         {
             return Ejecutar<bool>(string.Format("reglamento/{0}", codigoDocumento), Metodo.Delete);
         }
 
-        public RespuestaDto<bool> Guardar(ReglamentoDto reglamento)
+        public Response<bool> Guardar(ReglamentoDto reglamento)
         {
             return Ejecutar<bool>("reglamento", Metodo.Post, reglamento);
         }
 
-        public RespuestaDto<List<ReglamentoDto>> Obtener()
+        public Response<List<ReglamentoDto>> Obtener()
         {
             return Ejecutar<List<ReglamentoDto>>("reglamento");
         }

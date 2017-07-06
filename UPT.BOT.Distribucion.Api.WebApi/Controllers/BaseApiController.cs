@@ -9,19 +9,19 @@ namespace UPT.BOT.Distribucion.Api.WebApi.Controllers
 
         public const string Predeterminado = "";
 
-        protected RespuestaDto<T> Ejecutar<T>(Func<RespuestaDto<T>> aoAccion)
+        protected Response<T> Ejecutar<T>(Func<Response<T>> funcion)
         {
             try
             {
-                return aoAccion();
+                return funcion();
             }
-            catch (ApplicationException loExepcion)
+            catch (ApplicationException excepcion)
             {
-                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new Response<T>(excepcion.Message, excepcion.StackTrace);
             }
-            catch (Exception loExepcion)
+            catch (Exception excepcion)
             {
-                return new RespuestaDto<T>(loExepcion.Message, loExepcion.StackTrace);
+                return new Response<T>(excepcion.Message, excepcion.StackTrace);
             }
         }
     }
